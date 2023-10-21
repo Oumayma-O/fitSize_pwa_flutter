@@ -21,10 +21,13 @@ class MyTextField extends StatelessWidget {
         //controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10.0), // Adjust the value as needed
 
-            enabledBorder:  OutlineInputBorder(
+
+          enabledBorder:  OutlineInputBorder(
               borderSide: const BorderSide(width: 1,color: Color(0x33353537)),
               borderRadius: BorderRadius.circular(8),
+
 
             ),
             focusedBorder: OutlineInputBorder(
