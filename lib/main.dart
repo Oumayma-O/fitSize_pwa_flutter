@@ -2,8 +2,10 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/beamer_routes.dart';
+import 'package:fitsize/pages/LoginPage.dart';
 
-void main() {
+
+/*void main() {
   final routerDelegate = BeamerDelegate(
     initialPath: '/loading',
     locationBuilder: BeamerLocationBuilder(
@@ -15,6 +17,13 @@ void main() {
   );
 
   runApp(MyApp(routerDelegate));
+}*/
+
+
+void main() {
+  runApp(  MaterialApp(
+    home: LoginPage(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
