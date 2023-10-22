@@ -25,12 +25,12 @@ class LoginPage extends StatelessWidget {
       //backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
         image: DecorationImage(
         image: AssetImage('assets/images/Accueil.png'), // Change to your image path
-    fit: BoxFit.cover, // This will make the image cover the entire container
-    ),
-    ),
+        fit: BoxFit.cover, // This will make the image cover the entire container
+        ),
+        ),
           padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07179),
 
           child: Center(
@@ -46,7 +46,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: screenSize.height * 0.1469),
 
               // welcome back, you've been missed!
-              Text(
+              const Text(
                 'Connectez-vous à votre compte',
                 style: TextStyle(
                   color: Color(0xFF08293F),
@@ -64,12 +64,12 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // google button
-                  SquareTile(imagePath: 'assets/images/google.png'),
+                  const SquareTile(imagePath: 'assets/images/google.png'),
 
                   SizedBox(width: screenSize.width * 0.051),
 
                   // apple button
-                  SquareTile(imagePath: 'assets/images/apple.png')
+                  const SquareTile(imagePath: 'assets/images/apple.png')
                 ],
               ),
 
@@ -110,8 +110,8 @@ class LoginPage extends StatelessWidget {
 
               SizedBox(height: screenSize.height * 0.0533),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
               child:Row(
                 children:[
                   Text(
@@ -137,8 +137,8 @@ class LoginPage extends StatelessWidget {
               ),
 
               SizedBox(height: screenSize.height * 0.0236),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
               child:Row(
                 children:[
                   Text(
@@ -164,8 +164,8 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: screenSize.height * 0.0142),
 
               // forgot password?
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
