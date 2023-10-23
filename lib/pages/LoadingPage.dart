@@ -5,7 +5,6 @@ class LoadingPage extends StatelessWidget {
   const LoadingPage({Key? key});
 
   double calculateTextSize(BuildContext context, double baseSize) {
-    // Adjust these factors as needed for responsive text size
     double scaleFactor = MediaQuery.of(context).size.height * 0.001;
     return baseSize * scaleFactor;
   }
@@ -16,7 +15,7 @@ class LoadingPage extends StatelessWidget {
       fontFamily: 'Fors',
       fontWeight: FontWeight.w700,
       color: Color(0xFFFAFAFC),
-      fontSize: calculateTextSize(context, 28),
+      fontSize: calculateTextSize(context, 30),
     );
 
     TextStyle customTextStyle3 = TextStyle(
@@ -29,77 +28,66 @@ class LoadingPage extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          // Navigate to the AccueilPage when tapped
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccueilPage()));
         },
         child: Container(
           color: Color(0xFF08293F),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                 child: Stack(
+                  alignment: Alignment.center,
                   children: [
                     Positioned(
-                      top: -19,
+                      top: 0,
                       left: 0,
                       right: 0,
-                      height: MediaQuery.of(context).size.height * 0.6, // Adjust the height as needed
+                      height: MediaQuery.of(context).size.height * 0.8,
                       child: Image.asset(
                         'assets/images/background.png',
                         fit: BoxFit.cover,
                       ),
                     ),
                     Positioned(
-                      top: MediaQuery.of(context).size.height * 0.25,
+                      top: MediaQuery.of(context).size.height * 0.4,
                       left: 0,
                       right: 0,
-                      child: Center(
-                        child: Container(
-                          width: 200, // Set the desired width
-                          height: 150, // Set the desired height
-                          child: Image.asset(
-                            'assets/images/logo.png',
-                            fit: BoxFit.contain, // Use BoxFit.contain to fit the image within the specified dimensions
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.55,
-                      left: -70,
-                      right: 0,
-                      child: Center(
-                        child: Text(
-                          'Bienvenue sur Fitsize,',
-                          style: customTextStyle2,
-                          textAlign: TextAlign.center,
-                        ),
+                      child: Image.asset(
+                        'assets/images/logo.png',
+                        width: 150,
+                        height: 40,
+                        fit: BoxFit.contain,
                       ),
                     ),
                     Positioned(
-                      top: MediaQuery.of(context).size.height * 0.6,
-                      left: -56,
-                      right: 0,
-                      child: Center(
-                        child: Text(
-                          'découvrez une expérience de',
-                          style: customTextStyle3,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                       Positioned(
                       top: MediaQuery.of(context).size.height * 0.65,
-                      left: -185,
+                      left: 30,
                       right: 0,
-                      child: Center(
-                        child: Text(
-                          'mesure unique.',
-                          style: customTextStyle3,
-                          textAlign: TextAlign.center,
-                        ),
+                      child: Text(
+                        'Bienvenue sur Fitsize,',
+                        style: customTextStyle2,
+                        textAlign: TextAlign.left, // Align text to the left
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height * 0.7,
+                      left: 30,
+                      right: 0,
+                      child: Text(
+                        'découvrez une expérience de',
+                        style: customTextStyle3,
+                        textAlign: TextAlign.left, // Align text to the left
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height * 0.75,
+                      left: 30,
+                      right: 0,
+                      child: Text(
+                        'mesure unique.',
+                        style: customTextStyle3,
+                        textAlign: TextAlign.left, // Align text to the left
                       ),
                     ),
                   ],

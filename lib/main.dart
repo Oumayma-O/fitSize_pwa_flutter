@@ -10,6 +10,7 @@ void main() {
       beamLocations: [
         LoadingLocation(),
         AccueilLocation(),
+        SexeLocation(),
       ],
     ),
   );

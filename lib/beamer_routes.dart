@@ -1,5 +1,6 @@
 // beamer_routes.dart
 import 'package:beamer/beamer.dart';
+import 'package:fitsize/pages/SexePage.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
@@ -36,4 +37,22 @@ class AccueilLocation extends BeamLocation<BeamState> {
 
   @override
   List<Pattern> get pathPatterns => ['/accueil'];
+}
+
+
+class SexeLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      BeamPage(
+        key: ValueKey('Sexe'),
+        title: "Sexe Page",
+        name: '/sexe',
+        child: SexePage(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/sexe'];
 }
