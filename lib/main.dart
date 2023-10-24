@@ -1,5 +1,6 @@
 
 import 'package:beamer/beamer.dart';
+import 'package:fitsize/pages/HomeManPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/beamer_routes.dart';
 import 'package:fitsize/pages/LoginPage.dart';
@@ -22,7 +23,7 @@ import 'package:fitsize/pages/LoginPage.dart';
 
 void main() {
   runApp(  MaterialApp(
-    home: LoginPage(),
+    home: HomeManPage(),
   ));
 }
 

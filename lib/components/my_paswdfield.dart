@@ -37,7 +37,7 @@ class _MyTextFieldState extends State<MyPswdField> {
         fillColor: Colors.white,
         filled: true,
         hintText: widget.hintText,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: Color(0x66353537),
           fontFamily: 'TT Fors Trial',
           fontWeight: FontWeight.w400,
