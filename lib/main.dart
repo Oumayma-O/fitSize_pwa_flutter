@@ -11,6 +11,8 @@ void main() {
         LoadingLocation(),
         AccueilLocation(),
         SexeLocation(),
+        TailleLocation(),
+        PoidsLocation(),
       ],
     ),
   );
