@@ -260,12 +260,35 @@ class _PoidsPageState extends State<PoidsPage> {
                         ),
                       ),
                    
-                    Container(
+                       Container(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         children: [
                           Text(
-                            (poids - 1).toString(),
+                            ((poids ~/ 10) * 10 - 10).toString(),
+                            style: TextStyle(
+                              color: Color(0xFF989DA0),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Spacer(),
+
+                           Text(
+                            ((poids ~/ 10) * 10 - 5).toString(),
+                            style: TextStyle(
+                              color: Color(0xFF989DA0),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                          Spacer(),
+                          Spacer(),
+                          Spacer(),
+                          
+                           Text(
+                            ((poids ~/ 10) * 10 + 5).toString(),
                             style: TextStyle(
                               color: Color(0xFF989DA0),
                               fontSize: 20,
@@ -274,7 +297,7 @@ class _PoidsPageState extends State<PoidsPage> {
                           ),
                           Spacer(),
                           Text(
-                            (poids + 1).toString(),
+                            ((poids ~/ 10) * 10 + 10).toString(),
                             style: TextStyle(
                               color: Color(0xFF989DA0),
                               fontSize: 20,
@@ -284,6 +307,8 @@ class _PoidsPageState extends State<PoidsPage> {
                         ],
                       ),
                     ),
+
+
                    GestureDetector(
                     onHorizontalDragUpdate: (details) {
                       setState(() {

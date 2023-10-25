@@ -210,7 +210,7 @@ class _TaillePageState extends State<TaillePage> {
                       child: Row(
                         children: [
                           Text(
-                            (taille - 1).toString(),
+                            ((taille ~/ 10) * 10 - 10).toString(),
                             style: TextStyle(
                               color: Color(0xFF989DA0),
                               fontSize: 20,
@@ -219,7 +219,7 @@ class _TaillePageState extends State<TaillePage> {
                           ),
                           Spacer(),
                           Text(
-                            (taille + 1).toString(),
+                            ((taille ~/ 10) * 10 + 10).toString(),
                             style: TextStyle(
                               color: Color(0xFF989DA0),
                               fontSize: 20,

@@ -1,4 +1,3 @@
-import 'package:beamer/beamer.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
 import 'package:flutter/material.dart';
