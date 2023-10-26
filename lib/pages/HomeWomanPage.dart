@@ -3,8 +3,8 @@ import '../components/ScanButton.dart';
 import '../components/ScanContainer.dart';
 import '../components/blue_square_tile.dart';
 
-class HomeManPage extends StatelessWidget {
-  const HomeManPage({Key? key});
+class HomeWomanPage extends StatelessWidget {
+  const HomeWomanPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +49,10 @@ class HomeManPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      ],),
+                    ],),
 
 
-                      SizedBox(height: screenSize.height * 0.052),
+                  SizedBox(height: screenSize.height * 0.052),
 
                   ScanContainer(),
 
@@ -103,11 +103,11 @@ class HomeManPage extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const BlueSquareTile(text1: "Sexe", text2: "Homme", fontSize2: 20),
+                          const BlueSquareTile(text1: "Sexe", text2: "Femme", fontSize2: 20),
                           SizedBox(height: screenSize.height * 0.01895),
-                          const BlueSquareTile(text1: "Haut", text2: "L", fontSize2: 28),
+                          const BlueSquareTile(text1: "Haut", text2: "S", fontSize2: 28),
                           SizedBox(height: screenSize.height * 0.01895),
-                          const BlueSquareTile(text1: "Bas", text2: "42", fontSize2: 28),
+                          const BlueSquareTile(text1: "Bas", text2: "38", fontSize2: 28),
                         ],
                       )
                     ],
@@ -130,7 +130,7 @@ class HomeManPage extends StatelessWidget {
             left: screenSize.width * 0.5794,
             bottom: screenSize.height * 0.045,
             child: Image.asset(
-              'assets/images/man_model.png',
+              'assets/images/woman_model.png',
               height: screenSize.height * 0.58,
               width: screenSize.width * 0.587,
             ),

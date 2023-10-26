@@ -164,8 +164,8 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: screenSize.height * 0.0142),
 
               // forgot password?
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [

@@ -36,7 +36,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
         height: 30,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: _value ? Color(0xFF4B56DB) : Color(0xB2D8FD00),
+          color: _value ? Color(0xFF4B56DB) : Color(0xFFD7FC01),
         ),
         child: Stack(
           children: [
