@@ -1,5 +1,6 @@
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
+import 'package:fitsize/widgets/SuivantButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -49,14 +50,14 @@ class _SexePageState extends State<SexePage> {
   );
 final TextStyle customTextStyle = TextStyle(
   fontFamily: 'Fors',
-  fontSize: 16,
+  fontSize: 20,
   fontWeight: FontWeight.w700,
   color: Color(0xFF08293F),
 );
 
 final TextStyle customTextStyle2 = TextStyle(
   fontFamily: 'ForsLight',
-  fontSize: 12,
+  fontSize: 14,
   fontWeight: FontWeight.w400,
   color: Color(0xFF08293F),
 );
@@ -136,26 +137,16 @@ final TextStyle customTextStyle2 = TextStyle(
             child: Align(
               alignment: Alignment.bottomCenter,
               child: 
-             
-               ElevatedButton(
-        
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => TaillePage(selectedSexe: selectedSexe), // Pass selectedText to TaillePage
-                          ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF4B56DB),
-                      minimumSize: Size(0.8 * MediaQuery.of(context).size.width, 50),
-                      padding: EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    child: Text('Suivant', style: customTextStyle3),
-                  ),
+              SuivantButton(
+            buttonText: 'Suivant',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => TaillePage(selectedSexe: selectedSexe),
+                ),
+              );
+            },
+          ),
 
             ),
         

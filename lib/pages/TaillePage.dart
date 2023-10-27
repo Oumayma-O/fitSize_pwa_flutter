@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
-import 'package:flutter/material.dart';
+import 'package:fitsize/widgets/PrecedentButton.dart';
+import 'package:fitsize/widgets/SuivantButton.dart';
 
 class TaillePage extends StatefulWidget {
   final String selectedSexe;
@@ -13,44 +15,301 @@ class TaillePage extends StatefulWidget {
 }
 
 class _TaillePageState extends State<TaillePage> {
-  String selectedUnit = "Cm"; // Initialize with "Cm"
+  String selectedUnit = "Cm";
   int taille = 180;
-  bool isDragging = false;
 
+  double _containerWidth = 180;
 
-
-     @override
-      void initState() {
-        super.initState();
-        // Print the selectedText value to the console
-        print("Selected Sexe from SexePage: ${widget.selectedSexe}");
-
-        // Set the default value of 'taille' based on the selected unit
-        if (selectedUnit == "In") {
-          taille = 66;
-        }
-      }
-
-  double _containerWidth = 150; // Default width for "Je suis un homme" or "Je suis une femme"
-
+  @override
+  void initState() {
+    super.initState();
+    if (selectedUnit == "In") {
+      taille = 66;
+    }
+  }
 
   String _getSelectedSexe() {
     switch (widget.selectedSexe) {
       case 'Homme':
-        _containerWidth = 150;
+        _containerWidth = 180;
         return "Je suis un homme";
       case 'Femme':
-        _containerWidth = 150;
+        _containerWidth = 180;
         return "Je suis une femme";
       case 'Autres':
-        _containerWidth = 230;
+        _containerWidth = 280;
         return "Je suis une personne non binaire";
       default:
-        _containerWidth = 150; // Default width for unknown selections
+        _containerWidth = 180;
         return "";
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFFFAFAFC),
+      body: Stack(
+        children: [
+          ListView(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 10, right: 20, top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.close,
+                        color: Color(0xFF262438),
+                        size: 32,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => LoadingPage()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 15, right: 15),
+                child: Column(
+                  children: [
+                    SizedBox(height: 30),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFC0EDD8),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                              bottomLeft: Radius.circular(10.0),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(width: 10),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text(
+                                  _getSelectedSexe(),
+                                  style: customTextStyle2,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) => SexePage()),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.edit,
+                                  color: Color(0xFF08293F),
+                                  size: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                          height: 40,
+                          width: _containerWidth,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Text('Quelle taille faites-vous ?', style: customTextStyle),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 8, 41, 63),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          taille.toString(),
+                          style: customTextStyle5,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        children: [
+                          Text(
+                            ((taille ~/ 10) * 10 - 10).toString(),
+                            style: customTextStyle6,
+                          ),
+                          Spacer(),
+                          Text(
+                            ((taille ~/ 10) * 10 + 10).toString(),
+                            style: customTextStyle6,
+                          ),
+                        ],
+                      ),
+                    ),
+               
+
+                        Container(
+                            width: double.infinity, // Pour occuper toute la largeur de l'écran
+                            child: Center(
+                              child: GestureDetector(
+                                onHorizontalDragUpdate: (details) {
+                                  setState(() {
+                                    if (details.primaryDelta! > 0) {
+                                      if (taille > 1) {
+                                        taille--;
+                                      }
+                                    } else if (details.primaryDelta! < 0) {
+                                      if (taille < 250) {
+                                        taille++;
+                                      }
+                                    }
+                                  });
+                                },
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: <Widget>[
+                                Image.asset(
+                                  'assets/images/boxwhite.png',
+                                  width: 490,
+                                  height: 100,
+                                ),
+                                Positioned(
+                                  top: -15,
+                                  left: 11,
+                                  right:11,
+                                  child: Image.asset('assets/images/image3.png'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
+
+
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              selectedUnit = "Cm";
+                              taille = 170;
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: selectedUnit == "Cm" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
+                            onPrimary: selectedUnit == "Cm" ? Color.fromARGB(220, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
+                            minimumSize: Size(70, 50),
+                            padding: EdgeInsets.all(10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              side: BorderSide(
+                                color: selectedUnit == "Cm" ? Color.fromARGB(255, 8, 41, 63) : Color.fromARGB(255, 8, 41, 63),
+                                width: 1.0,
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            'Cm',
+                            style: TextStyle(
+                              fontFamily: 'Fors',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              selectedUnit = "In";
+                              taille = 66;
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: selectedUnit == "In" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
+                            onPrimary: selectedUnit == "In" ? Color.fromARGB(220, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
+                            minimumSize: Size(70, 50),
+                            padding: EdgeInsets.all(10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              side: BorderSide(
+                                color: selectedUnit == "In" ? Color.fromARGB(255, 8, 41, 63) : Color.fromARGB(255, 8, 41, 63),
+                                width: 1.0,
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            'In',
+                            style: TextStyle(
+                              fontFamily: 'Fors',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                PrecedentButton(
+                  buttonText: 'Précédent',
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                SizedBox(height: 10),
+                SuivantButton(
+                  buttonText: 'Suivant',
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => PoidsPage(
+                          selectedTaille: '$taille $selectedUnit',
+                          selectedSexe: widget.selectedSexe,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   final TextStyle customTextStyle3 = TextStyle(
     fontFamily: 'Fors',
@@ -68,339 +327,29 @@ class _TaillePageState extends State<TaillePage> {
 
   final TextStyle customTextStyle = TextStyle(
     fontFamily: 'Fors',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: FontWeight.w700,
     color: Color(0xFF08293F),
   );
 
   final TextStyle customTextStyle2 = TextStyle(
     fontFamily: 'ForsLight',
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
     color: Color(0xFF08293F),
   );
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFFAFAFC),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          // Padding for the icons at the top
-        Padding(
-          padding: EdgeInsets.only(left: 10, right: 20, top: 30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end, // Set this to MainAxisAlignment.end
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.close,
-                  color: Color(0xFF262438),
-                  size: 32,
-                ),
-                onPressed: () {
-                  // Navigate to the LoadingPage when the button is pressed
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => LoadingPage()),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+  final TextStyle customTextStyle5 = TextStyle(
+    fontFamily: 'ForsLight',
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    color: Color.fromARGB(220, 215, 253, 0),
+  );
 
-          // Middle Section with Text and Circle
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 15), // Add left and right padding
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 50),
-                 Padding(
-                  padding: const EdgeInsets.only(right: 10), // Add right padding
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFFC0EDD8),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10.0),
-                          topRight: Radius.circular(10.0),
-                          bottomLeft: Radius.circular(10.0),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          SizedBox(width: 10),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              _getSelectedSexe(),
-                              style: TextStyle(
-                                color: Color(0xFF08293F),
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => SexePage()),
-                              );
-                            },
-                            child: Icon(
-                              Icons.edit,
-                              color: Color(0xFF08293F),
-                              size: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                      height: 40,
-                      width: _containerWidth,
-                    ),
-                  ),
-                ),
-
-                  SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 20, right: 20), // Add left and right padding
-                      child: Text('Quelle taille faites-vous ?', style: customTextStyle),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 20, right: 20), // Add left and right padding
-                      child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
-                    ),
-                  ),
-                  SizedBox(height: 60),
-
-//////////////////////////////////////////
-
-              
-
-
- 
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 8, 41, 63),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            taille.toString(), // Display the value of 'taille' as text
-                            style: TextStyle(
-                              color: Color.fromARGB(220, 215, 253, 0),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
-                   
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        children: [
-                          Text(
-                            ((taille ~/ 10) * 10 - 10).toString(),
-                            style: TextStyle(
-                              color: Color(0xFF989DA0),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Spacer(),
-                          Text(
-                            ((taille ~/ 10) * 10 + 10).toString(),
-                            style: TextStyle(
-                              color: Color(0xFF989DA0),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                   GestureDetector(
-                    onHorizontalDragUpdate: (details) {
-                      setState(() {
-                        if (details.primaryDelta! > 0) {
-                          // Scrolled to the right, decrease taille by 1 if it's greater than 1
-                          if (taille > 1) {
-                            taille--;
-                          }
-                        } else if (details.primaryDelta! < 0) {
-                          // Scrolled to the left, increase taille by 1 if it's less than 250
-                          if (taille < 250) {
-                            taille++;
-                          }
-                        }
-                      });
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(0),
-                      child: Image.asset('assets/images/image3.png'),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Color.fromARGB(50, 158, 158, 158),
-                            width: 7.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                    SizedBox(height: 40),
-
-
-////////////////////////////////////////
-
-
-
-          // Add two small buttons centered and in the same line
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                // Update the selected unit and 'taille' value
-                setState(() {
-                  selectedUnit = "Cm";
-                  taille = 170; // Set the 'taille' value to 170
-                });
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: selectedUnit == "Cm" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
-                  onPrimary: selectedUnit == "Cm" ? Color.fromARGB(220, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
-                  minimumSize: Size(70, 50),
-                  padding: EdgeInsets.all(10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    side: BorderSide(
-                      color: selectedUnit == "Cm" ? Color.fromARGB(255, 8, 41, 63) : Color.fromARGB(255, 8, 41, 63),
-                      width: 1.0,
-                    ),
-                  ),
-                ),
-                child: Text(
-                  'Cm',
-                  style: TextStyle(
-                    fontFamily: 'Fors',
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-
-              SizedBox(width: 20),
-
-             ElevatedButton(
-                  onPressed: () {
-                    // Update the selected unit and 'taille' value
-                    setState(() {
-                      selectedUnit = "In";
-                      taille = 66; // Set the 'taille' value to 66
-                    });
-                  },
-                style: ElevatedButton.styleFrom(
-                  primary: selectedUnit == "In" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
-                  onPrimary: selectedUnit == "In" ? Color.fromARGB(220, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
-                  minimumSize: Size(70, 50),
-                  padding: EdgeInsets.all(10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    side: BorderSide(
-                      color: selectedUnit == "In" ? Color.fromARGB(255, 8, 41, 63) : Color.fromARGB(255, 8, 41, 63),
-                      width: 1.0,
-                    ),
-                  ),
-                ),
-                child: Text(
-                  'In',
-                  style: TextStyle(
-                    fontFamily: 'Fors',
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          // Previous Button
-          Padding(
-            padding: EdgeInsets.only(bottom: 10),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Navigate to the previous page when the button is pressed
-                  Navigator.of(context).pop();
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFF7F7F8),
-                  minimumSize: Size(0.8 * MediaQuery.of(context).size.width, 50),
-                  padding: EdgeInsets.all(10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    side: BorderSide(
-                      color: Color(0xFF4B56DB),
-                      width: 1.0,
-                    ),
-                  ),
-                ),
-                child: Text('Précédent', style: customTextStyle4),
-              ),
-            ),
-          ),
-          // Next Button
-          Padding(
-            padding: EdgeInsets.only(bottom: 25),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-              
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => PoidsPage(
-                        selectedTaille: '$taille $selectedUnit', // Concatenate 'taille' and 'selectedUnit'
-                        selectedSexe: widget.selectedSexe, // Pass the selectedSexe to PoidsPage
-                      ),
-                    ),
-                  );
-                },
-
-                  
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF4B56DB),
-                  minimumSize: Size(0.8 * MediaQuery.of(context).size.width, 50),
-                  padding: EdgeInsets.all(10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                child: Text('Suivant', style: customTextStyle3),
-              ),
-            ),
-          ),
-          SizedBox(height: 20),
-        ],
-      ),
-    );
-  }
+  final TextStyle customTextStyle6 = TextStyle(
+    fontFamily: 'ForsLight',
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    color: Color(0xFF989DA0),
+  );
 }
-

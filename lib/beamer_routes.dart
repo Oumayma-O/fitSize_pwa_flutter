@@ -1,8 +1,12 @@
 // beamer_routes.dart
 import 'package:beamer/beamer.dart';
+import 'package:fitsize/pages/ChoixScanPage.dart';
 import 'package:fitsize/pages/PoidsPage.dart';
+import 'package:fitsize/pages/ScanEtape1Page.dart';
+import 'package:fitsize/pages/ScanEtape2Page.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
+import 'package:fitsize/pages/VideoTutoPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
@@ -108,4 +112,81 @@ class PoidsLocation extends BeamLocation<BeamState> {
     '/taille/:selectedTaille/sexe/:selectedSexe',
     '/taille',
   ];
+}
+
+
+class ChoixScanLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      BeamPage(
+        key: ValueKey('choixScan'),
+        title: "Choix Scan Page",
+        name: '/ChoixScan',
+        child: ChoixScanPage(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/ChoixScan'];
+}
+
+class VideoTutoLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+final choixScan = state.pathParameters['choixScan'] ?? '';
+    return [
+      BeamPage(
+        key: ValueKey('videoTuto'),
+        title: "Video Tuto Page",
+        name: '/VideoTuto',
+    child: VideoTutoPage(choixScan: choixScan),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/VideoTuto'];
+}
+
+
+
+class ScanEtape1Location extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+   final choixScan = state.pathParameters['choixScan'] ?? '';
+    return [
+      BeamPage(
+        key: ValueKey('ScanEtape1'),
+        title: "Scan Etape1 Page",
+        name: '/ScanEtape1',
+     child: ScanEtape1Page(choixScan: choixScan),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/ScanEtape1'];
+}
+
+
+
+
+class ScanEtape2Location extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+   final choixScan = state.pathParameters['choixScan'] ?? '';
+    return [
+      BeamPage(
+        key: ValueKey('ScanEtape2'),
+        title: "Scan Etape2 Page",
+        name: '/ScanEtape2',
+     child: ScanEtape2Page(choixScan: choixScan),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/ScanEtape2'];
 }

@@ -13,6 +13,10 @@ void main() {
         SexeLocation(),
         TailleLocation(),
         PoidsLocation(),
+        ChoixScanLocation(),
+        VideoTutoLocation(),
+        ScanEtape1Location(),
+        ScanEtape2Location()
       ],
     ),
   );

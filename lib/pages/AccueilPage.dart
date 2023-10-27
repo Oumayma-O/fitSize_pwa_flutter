@@ -16,15 +16,19 @@ class _AccueilPageState extends State<AccueilPage> {
     fontFamily: 'ForsLight',
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    color: Color.fromARGB(255, 60, 60, 60),
+    color:  Color(0xFF08293F),
   );
 
-  TextStyle customTextStyle2 = TextStyle(
-    fontFamily: 'ForsLight',
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    color: Color.fromARGB(255, 60, 60, 60),
-  );
+TextStyle customTextStyle2 = TextStyle(
+  fontFamily: 'ForsLight',
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  color: Color(0xFF08293F),
+  height: 20 / 14, // This sets the line height to 20px for a 14px font size
+  letterSpacing: 0,
+
+);
+
 
   TextStyle customTextStyle3 = const TextStyle(
     fontFamily: 'Fors',
@@ -156,28 +160,35 @@ class _AccueilPageState extends State<AccueilPage> {
                     ],
                   ),
                   SizedBox(height: 0.06 * MediaQuery.of(context).size.height),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Navigate to the SexePage when the button is pressed
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => SexePage()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF4B56DB),
-                      minimumSize: Size(0.8 * MediaQuery.of(context).size.width, 50),
-                      padding: EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    child: Text('Commencer', style: customTextStyle3),
+               ElevatedButton(
+                onPressed: isCheckboxChecked
+                    ? () {
+                        // Navigate to the SexePage when the button is pressed
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => SexePage()),
+                        );
+                    }
+                    : null, // Set onPressed to null if the checkbox is not checked
+                style: ElevatedButton.styleFrom(
+                  primary: const Color(0xFF4B56DB),
+                  minimumSize: Size(0.85 * MediaQuery.of(context).size.width, 60),
+                  padding: EdgeInsets.all(10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                  SizedBox(height: 0.01 * MediaQuery.of(context).size.height),
+                ),
+                child: Text('Commencer', style: customTextStyle3),
+              ),
+
+                  SizedBox(height: 0.005 * MediaQuery.of(context).size.height),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Checkbox(
+                      ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0), // Apply the border radius
+                    child: Transform.scale(
+                      scale: 1.25, // Adjust the scale factor as needed to make the checkbox larger
+                      child: Checkbox(
                         value: isCheckboxChecked,
                         onChanged: (newValue) {
                           setState(() {
@@ -185,6 +196,9 @@ class _AccueilPageState extends State<AccueilPage> {
                           });
                         },
                       ),
+                    ),
+                  ),
+                  SizedBox(width:5),
                       Center(
                         child: Padding(
                           padding: EdgeInsets.only(top: 25),
@@ -215,7 +229,7 @@ class _AccueilPageState extends State<AccueilPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('ou', style: customTextStyle2),
+                      Text('ou', style: customTextStyle),
                     ],
                   ),
                   SizedBox(height: 0.03 * MediaQuery.of(context).size.height),

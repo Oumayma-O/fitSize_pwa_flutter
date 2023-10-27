@@ -17,17 +17,20 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  video_player: ^2.4.0
 
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/videos/tuto.mp4
     - assets/iconSVG/icon_man.svg
     - assets/iconSVG/icon_manDark.svg
     - assets/iconSVG/icon_woman.svg
     - assets/iconSVG/icon_womanDark.svg
     - assets/iconSVG/basil_other-1-outline.svg
     - assets/iconSVG/basil_other-1-outlineDark.svg
+
 
   fonts:
     - family: Kanit
