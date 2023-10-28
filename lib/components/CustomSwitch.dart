@@ -1,12 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class CustomSwitch extends StatefulWidget {
-  final Function(bool value) onChanged;
-  final bool initialValue;
+  final String activeText;
+  final String inactiveText;
 
-  const CustomSwitch({
-    required this.onChanged,
-    this.initialValue = false,
+  const CustomSwitch( {
+    super.key,
+    required this.activeText ,
+    required this.inactiveText,
   });
 
   @override
@@ -14,61 +17,34 @@ class CustomSwitch extends StatefulWidget {
 }
 
 class _CustomSwitchState extends State<CustomSwitch> {
-  late bool _value;
-
-  @override
-  void initState() {
-    super.initState();
-    _value = widget.initialValue;
-  }
+  bool status = true;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _value = !_value;
-          widget.onChanged(_value);
-        });
-      },
-      child: Container(
-        width: 50,
-        height: 30,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: _value ? Color(0xFF4B56DB) : Color(0xFFD7FC01),
-        ),
-        child: Stack(
-          children: [
-            AnimatedPositioned(
-              duration: Duration(milliseconds: 200),
-              curve: Curves.easeInOut,
-              top: 2,
-              left: _value ? 20 : 2,
-              right: _value ? 2 : 20,
-              child: Container(
-                width: 26,
-                height: 26,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                child: Center(
-                  child: Text(
-                    _value ? 'EU' : 'US',
-                    style:const TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontFamily: 'TT Fors Trial',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+    final screenSize = MediaQuery.of(context).size;
+    return Container(
+      child: FlutterSwitch(
+        width: screenSize.width*0.179,//70.0,
+        height: screenSize.height*0.036,//31.0,
+        valueFontSize: 14.0,
+        //toggleSize: 45.0,
+        value: status,
+        borderRadius: 74.0,
+        padding: 4.0,
+        showOnOff: true,
+        activeColor: const Color(0xFF4B56DB),
+        activeText: widget.activeText,
+        activeTextColor: Colors.white,
+        activeTextFontWeight: FontWeight.w400,
+        inactiveColor: const Color(0xFF4B56DB),
+        inactiveTextColor: Colors.white,
+        inactiveTextFontWeight: FontWeight.w400,
+        inactiveText: widget.inactiveText,
+        onToggle: (val) {
+          setState(() {
+            status = val;
+          });
+        },
       ),
     );
   }

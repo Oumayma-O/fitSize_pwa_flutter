@@ -80,12 +80,7 @@ class ScanContainer extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: screenSize.width * 0.03),
-                    CustomSwitch(
-                      initialValue: true,
-                      onChanged: (bool value) {
-                        // Handle switch state
-                      },
-                    ),
+                    const CustomSwitch(activeText: "EU",inactiveText:"US"),
                   ],
                 ),
                 const Spacer(),

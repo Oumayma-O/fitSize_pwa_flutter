@@ -164,22 +164,24 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: screenSize.height * 0.0142),
 
               // forgot password?
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+               Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Color(0xFF353537),
-                        fontSize: 12,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.w400,
-                        height: 0,
+                    TextButton(
+                      onPressed: ()=>{},
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Color(0xFF353537),
+                          fontSize: 12,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
                       ),
-                    ),
-
+                    )
                   ],
 
                 ),
