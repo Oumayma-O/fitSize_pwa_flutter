@@ -101,7 +101,7 @@ class _PoidsPageState extends State<PoidsPage> {
           ListView(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 20, top: 30),
+                padding: EdgeInsets.only(left: 10, right: 20, top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -120,7 +120,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Container(
@@ -206,7 +206,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -222,7 +222,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               Center(
                 child: Container(
                   decoration: BoxDecoration(
@@ -232,7 +232,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      poids.toString(), // Display the value of 'poids' as text
+                      poids.toString(), 
                       style: customTextStyle5,
                     ),
                   ),
@@ -295,14 +295,14 @@ class _PoidsPageState extends State<PoidsPage> {
                           top: -18,
                           left: 11,
                           right: 11,
-                          child: Image.asset('assets/images//Groupregle2.png'),
+                          child: Image.asset('assets/images/Groupregle2.png'),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -24,7 +24,7 @@ TextStyle customTextStyle2 = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w400,
   color: Color(0xFF08293F),
-  height: 20 / 14, // This sets the line height to 20px for a 14px font size
+  height: 20 / 14, 
   letterSpacing: 0,
 
 );
@@ -88,8 +88,8 @@ TextStyle customTextStyle2 = TextStyle(
               Stack(
                 children: [
                   Positioned(
-                    top: 20, // Adjust the top position as needed
-                   right: 20, // Adjust the left position as needed
+                    top: 20, 
+                   right: 20, 
                     child: IconButton(
                       icon: Icon(
                         Icons.close,
@@ -97,14 +97,14 @@ TextStyle customTextStyle2 = TextStyle(
                         size: 32,
                       ),
                           onPressed: () {
-                      // Navigate to the SexePage when the button is pressed
+               
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => LoadingPage()),
                       );
                     },
                     ),
                   ),
-            // Rest of your UI components
+    
             Padding(
               padding: EdgeInsets.only(top: 0.35 * MediaQuery.of(context).size.height),
               child: Column(
@@ -118,7 +118,7 @@ TextStyle customTextStyle2 = TextStyle(
                           SizedBox(width: 0.1 * MediaQuery.of(context).size.width),
                           Align(
                             alignment: Alignment.centerLeft,
-                            child: Image.asset('assets/images/vector.png'),
+                            child: Image.asset('assets/images/Vector.png'),
                           ),
                           SizedBox(width: 0.06 * MediaQuery.of(context).size.width),
                           Text(
@@ -163,12 +163,12 @@ TextStyle customTextStyle2 = TextStyle(
                ElevatedButton(
                 onPressed: isCheckboxChecked
                     ? () {
-                        // Navigate to the SexePage when the button is pressed
+                       
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => SexePage()),
                         );
                     }
-                    : null, // Set onPressed to null if the checkbox is not checked
+                    : null, 
                 style: ElevatedButton.styleFrom(
                   primary: const Color(0xFF4B56DB),
                   minimumSize: Size(0.85 * MediaQuery.of(context).size.width, 60),
@@ -185,9 +185,9 @@ TextStyle customTextStyle2 = TextStyle(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0), // Apply the border radius
+                    borderRadius: BorderRadius.circular(20.0), 
                     child: Transform.scale(
-                      scale: 1.25, // Adjust the scale factor as needed to make the checkbox larger
+                      scale: 1.25,
                       child: Checkbox(
                         value: isCheckboxChecked,
                         onChanged: (newValue) {
@@ -238,7 +238,7 @@ TextStyle customTextStyle2 = TextStyle(
                     children: [
                       TextButton(
                         onPressed: () {
-                          // Add your link's onPressed logic here
+                      
                         },
                         child: Text(
                           'Créer un compte / Se connecter',

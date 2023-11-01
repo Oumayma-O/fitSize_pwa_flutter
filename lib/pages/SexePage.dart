@@ -16,7 +16,7 @@ class SexePage extends StatefulWidget {
 
 
 class _SexePageState extends State<SexePage> {
-  String selectedCard = ""; // Variable to track the selected card
+  String selectedCard = ""; 
   String selectedSexe = "Homme";
 
 
@@ -70,7 +70,7 @@ final TextStyle customTextStyle2 = TextStyle(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          // Padding for the icons at the top
+   
           Padding(
             padding: EdgeInsets.only(left: 10, right: 20, top: 30),
             child: Row(
@@ -89,7 +89,7 @@ final TextStyle customTextStyle2 = TextStyle(
                     size: 32,
                   ),
                  onPressed: () {
-                      // Navigate to the SexePage when the button is pressed
+               
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => LoadingPage()),
                       );
@@ -98,18 +98,18 @@ final TextStyle customTextStyle2 = TextStyle(
               ],
             ),
           ),
-          // Middle Section with Text and Cards
+       
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 15), // Add left and right padding
+              padding: EdgeInsets.only(left: 15, right: 15), 
               child: Column(
-              //  mainAxisAlignment: MainAxisAlignment.center,
+    
                 children: <Widget>[
                 SizedBox(height: 50),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20), // Add left padding
+                      padding: EdgeInsets.only(left: 20), 
                       child: Text('Quel est votre sexe ?', style: customTextStyle),
                     ),
                   ),
@@ -117,7 +117,7 @@ final TextStyle customTextStyle2 = TextStyle(
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20), // Add left padding
+                      padding: EdgeInsets.only(left: 20),
                       child: Text('Cela me permet de mieux concevoir votre profil', style: customTextStyle2),
                     ),
                   ),
@@ -131,7 +131,7 @@ final TextStyle customTextStyle2 = TextStyle(
               ),
             ),
           ),
-          // Separated button at the bottom
+      
           Padding(
             padding: EdgeInsets.only(bottom: 25),
             child: Align(
@@ -162,7 +162,7 @@ final TextStyle customTextStyle2 = TextStyle(
 void _onCardSelected(CardData card) {
   setState(() {
     selectedCard = card.text;
-    selectedSexe = card.text; // Store the selected text
+    selectedSexe = card.text; 
     for (var item in cardData) {
       item.isSelected = item.text == selectedCard;
     }
@@ -173,7 +173,7 @@ void _onCardSelected(CardData card) {
 
 class CardData {
   final String svgIconPath;
-  final String svgDarkIconPath; // Path to the dark icon
+  final String svgDarkIconPath; 
   final String text;
   bool isSelected;
 
@@ -181,7 +181,7 @@ class CardData {
     required this.svgIconPath,
     required this.svgDarkIconPath,
     required this.text,
-    this.isSelected = false, // Set isSelected to false by default
+    this.isSelected = false, 
   });
 }
 
@@ -215,9 +215,7 @@ class CardWidget extends StatelessWidget {
             card.isSelected ? card.svgIconPath : card.svgDarkIconPath,
             width: 30,
             height: 30,
-            // color: card.isSelected
-            //     ? Color.fromARGB(220, 215, 253, 0)
-            //     : Color.fromARGB(255, 8, 41, 63),
+        
           ),
           SizedBox(height: 10),
           Text(

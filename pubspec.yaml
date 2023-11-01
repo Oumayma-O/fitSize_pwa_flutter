@@ -1,6 +1,6 @@
 name: fitsize
-description: A new Flutter project.
-publish_to: 'none' 
+description: Fitsize.
+publish_to: 'none'
 version: 1.0.0+1
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -8,29 +8,33 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^0.22.0  
+  flutter_svg: ^0.22.0
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.1.0
   beamer: ^1.5.2
+  camera: ^0.10.5+5
+  video_player: ^2.5.0
+  path_provider: ^2.0.13 
+  image_picker: ^1.0.4
+  getwidget: ^4.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  video_player: ^2.4.0
 
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
     - assets/videos/tuto.mp4
+    - assets/videos/tuto2.mp4
     - assets/iconSVG/icon_man.svg
     - assets/iconSVG/icon_manDark.svg
     - assets/iconSVG/icon_woman.svg
     - assets/iconSVG/icon_womanDark.svg
     - assets/iconSVG/basil_other-1-outline.svg
     - assets/iconSVG/basil_other-1-outlineDark.svg
-
 
   fonts:
     - family: Kanit
@@ -44,4 +48,4 @@ flutter:
         - asset: assets/fonts/TT Fors Trial Light.ttf
     - family: ForsLight
       fonts:
-        - asset: assets/fonts/TT Fors Trial Regular.ttf    
+        - asset: assets/fonts/TT Fors Trial Regular.ttf

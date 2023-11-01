@@ -1,7 +1,9 @@
 // beamer_routes.dart
 import 'package:beamer/beamer.dart';
 import 'package:fitsize/pages/ChoixScanPage.dart';
+import 'package:fitsize/pages/LoadingPage2.dart';
 import 'package:fitsize/pages/PoidsPage.dart';
+import 'package:fitsize/pages/ResultatsPage.dart';
 import 'package:fitsize/pages/ScanEtape1Page.dart';
 import 'package:fitsize/pages/ScanEtape2Page.dart';
 import 'package:fitsize/pages/SexePage.dart';
@@ -11,7 +13,9 @@ import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
 
+
 class LoadingLocation extends BeamLocation<BeamState> {
+
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     return [
@@ -27,6 +31,27 @@ class LoadingLocation extends BeamLocation<BeamState> {
   @override
   List<Pattern> get pathPatterns => ['/loading'];
 }
+
+
+
+class Loading2Location extends BeamLocation<BeamState> {
+
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      BeamPage(
+        key: ValueKey('loading2'),
+        title: "Loading2 Page",
+        name: '/loading2',
+        child: LoadingPage2(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/loading2'];
+}
+
 
 class AccueilLocation extends BeamLocation<BeamState> {
   @override
@@ -189,4 +214,23 @@ class ScanEtape2Location extends BeamLocation<BeamState> {
 
   @override
   List<Pattern> get pathPatterns => ['/ScanEtape2'];
+}
+
+
+
+class ResultatsLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      BeamPage(
+        key: ValueKey('resultats'),
+        title: "Resultats Page",
+        name: '/Resultats',
+        child: ResultatsPage(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/Resultats'];
 }

@@ -9,6 +9,7 @@ void main() {
     locationBuilder: BeamerLocationBuilder(
       beamLocations: [
         LoadingLocation(),
+        Loading2Location(),
         AccueilLocation(),
         SexeLocation(),
         TailleLocation(),
@@ -16,7 +17,8 @@ void main() {
         ChoixScanLocation(),
         VideoTutoLocation(),
         ScanEtape1Location(),
-        ScanEtape2Location()
+        ScanEtape2Location(),
+        ResultatsLocation(),
       ],
     ),
   );

@@ -9,7 +9,7 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  bool navigationCompleted = false; // Flag to track whether navigation has occurred
+  bool navigationCompleted = false; 
 
   double calculateTextSize(BuildContext context, double baseSize) {
     double scaleFactor = MediaQuery.of(context).size.height * 0.001;
@@ -20,11 +20,11 @@ class _LoadingPageState extends State<LoadingPage> {
   void initState() {
     super.initState();
 
-    // Introduce a delay before navigating to AccueilPage
-    Future.delayed(Duration(seconds: 2), () {
+
+    Future.delayed(Duration(seconds: 3), () {
       if (!navigationCompleted) {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccueilPage()));
-        navigationCompleted = true; // Set the flag to true after navigation
+        navigationCompleted = true; 
       }
     });
   }

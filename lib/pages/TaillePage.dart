@@ -54,7 +54,7 @@ class _TaillePageState extends State<TaillePage> {
           ListView(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 20, top: 30),
+                padding: EdgeInsets.only(left: 10, right: 20, top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -77,7 +77,7 @@ class _TaillePageState extends State<TaillePage> {
                 padding: EdgeInsets.only(left: 15, right: 15),
                 child: Column(
                   children: [
-                    SizedBox(height: 30),
+                    SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Container(
@@ -120,7 +120,7 @@ class _TaillePageState extends State<TaillePage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
@@ -136,7 +136,7 @@ class _TaillePageState extends State<TaillePage> {
                         child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
                       ),
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: 30),
                     Container(
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 8, 41, 63),
@@ -169,7 +169,7 @@ class _TaillePageState extends State<TaillePage> {
                
 
                         Container(
-                            width: double.infinity, // Pour occuper toute la largeur de l'écran
+                            width: double.infinity, 
                             child: Center(
                               child: GestureDetector(
                                 onHorizontalDragUpdate: (details) {
@@ -207,7 +207,7 @@ class _TaillePageState extends State<TaillePage> {
 
 
 
-                    SizedBox(height: 10),
+                    SizedBox(height: 0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

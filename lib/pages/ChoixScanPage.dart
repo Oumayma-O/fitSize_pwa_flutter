@@ -13,7 +13,7 @@ class ChoixScanPage extends StatelessWidget {
     fontWeight: FontWeight.w600,
     color: Color.fromARGB(255, 254, 254, 255),
     letterSpacing: 0.0,
-    height: 1.4, // Line height
+    height: 1.4,
   );
 
   @override
@@ -28,13 +28,13 @@ class ChoixScanPage extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
           ),
-          // Darken the background image
+        
           Container(
             width: double.infinity,
             height: double.infinity,
             color: Colors.black.withOpacity(0.3),
           ),
-          // Top-left icon
+         
           Container(
             padding: EdgeInsets.all(20),
             alignment: Alignment.topLeft,
@@ -45,12 +45,12 @@ class ChoixScanPage extends StatelessWidget {
               },
             ),
           ),
-          // Your page content on top of the background image
+        
           Column(
-            mainAxisAlignment: MainAxisAlignment.end, // Align buttons to the bottom
+            mainAxisAlignment: MainAxisAlignment.end, 
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40), // Add left and right padding
+                padding: EdgeInsets.symmetric(horizontal: 40), 
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -60,19 +60,19 @@ class ChoixScanPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30),
-              // Replace the existing SuivantButton widgets with this code
+           
               Padding(
                 padding: EdgeInsets.only(bottom: 10),
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: SuivantButtonWithIcon(
-                    buttonText: "Seul(e)", // Add your desired text
-                    iconData: Icons.person, // Use the Icons.group icon
+                    buttonText: "Seul(e)", 
+                    iconData: Icons.person,
                    onPressed: () {
-                    // Navigate to VideoTutoPage when "Seul(e)" button is pressed
+             
                 Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => VideoTutoPage(choixScan: "Seul(e)"), // Pass the button text
+                      builder: (context) => VideoTutoPage(choixScan: "Seul(e)"), 
                     ),
                   );
 
@@ -80,19 +80,19 @@ class ChoixScanPage extends StatelessWidget {
                   ),
                 ),
               ),
-              // Next Button
+       
               Padding(
                 padding: EdgeInsets.only(bottom: 10),
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: PrecedentButtonWithIcon(
-                    buttonText: "Par un ami", // Add your desired text
-                    iconData: Icons.group, // Use the Icons.group icon
+                    buttonText: "Par un ami", 
+                    iconData: Icons.group, 
                    onPressed: () {
 
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => VideoTutoPage(choixScan: "Par un ami"), // Pass the button text
+                      builder: (context) => VideoTutoPage(choixScan: "Par un ami"), 
                     ),
                   );
                   },

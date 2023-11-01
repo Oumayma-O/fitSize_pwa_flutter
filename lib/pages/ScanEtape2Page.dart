@@ -1,10 +1,11 @@
+import 'package:fitsize/pages/LoadingPage2.dart';
 import 'package:flutter/material.dart';
 
 class ScanEtape2Page extends StatefulWidget {
 
-  final String choixScan; // Add a parameter to accept the button text
+  final String choixScan;
 
-  ScanEtape2Page({required this.choixScan}); // Constructor to initialize the parameter
+  ScanEtape2Page({required this.choixScan}); 
 
 
 
@@ -49,7 +50,7 @@ List<String> boxes = [];
             height: double.infinity,
             color: Colors.black.withOpacity(0.3),
           ),
-          // Top-left icon
+      
           Container(
             padding: EdgeInsets.all(20),
             alignment: Alignment.topLeft,
@@ -62,22 +63,22 @@ List<String> boxes = [];
           ),
 
           Container(
-            height: 700, // Set the height of the container
+            height: 700, 
             child: Stack(
               children: [
-                // Image to the left of "Group 205"
+           
                 Positioned(
-                  right: 35, // Position the image to the left
-                  top: 350, // Adjust the top position relative to the container
+                  right: 35, 
+                  top: 350, 
                   child: Image.asset(
-                    'assets/images/polygon 1.png', // Replace with your image path
+                    'assets/images/Polygon 1.png', 
                     fit: BoxFit.cover,
                   ),
                 ),
-                // "Group 205" image
+           
                 Positioned(
-                  right: 20, // Position the "Group 205" image to the right
-                  top: 60, // Adjust the top position relative to the container
+                  right: 20, 
+                  top: 60, 
                   child: Image.asset(
                     'assets/images/Group 205.png',
                     fit: BoxFit.cover,
@@ -95,7 +96,7 @@ List<String> boxes = [];
              
 
          Padding(
-          padding: const EdgeInsets.only(right: 80.0), // Adjust the padding as needed
+          padding: const EdgeInsets.only(right: 80.0), 
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -137,11 +138,19 @@ List<String> boxes = [];
                         border: Border.all(color: Colors.white, width: 4.0),
                         color: Color(0xFF4B56DB),
                       ),
-                      // You can add an icon or text here for your circular button
+                   
                     ),
-                    onTap: () {
-                      // Define the action to take when the button is tapped
-                    },
+                     onTap: () {
+                
+                    // Use Navigator to push a new route when the circle button is pressed.
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LoadingPage2();
+                        },
+                      ),
+                    );
+                  },
                   ),
                 ),
 
