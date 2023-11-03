@@ -5,7 +5,7 @@ import 'package:fitsize/beamer_routes.dart';
 
 void main() {
   final routerDelegate = BeamerDelegate(
-    initialPath: '/loading',
+    initialPath: '/accueil',
     locationBuilder: BeamerLocationBuilder(
       beamLocations: [
         LoadingLocation(),
@@ -15,10 +15,12 @@ void main() {
         TailleLocation(),
         PoidsLocation(),
         ChoixScanLocation(),
-        VideoTutoLocation(),
+        TutorielEtape1Location(),
         ScanEtape1Location(),
         ScanEtape2Location(),
         ResultatsLocation(),
+        TutorielEtape1Location(),
+        TutorielEtape2Location(),
       ],
     ),
   );

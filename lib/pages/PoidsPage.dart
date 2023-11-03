@@ -1,10 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:fitsize/pages/ChoixScanPage.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
-import 'package:fitsize/widgets/PrecedentButton.dart';
 import 'package:fitsize/widgets/SuivantButton.dart';
-import 'package:flutter/material.dart';
 
 class PoidsPage extends StatefulWidget {
   final String selectedSexe;
@@ -53,7 +52,7 @@ class _PoidsPageState extends State<PoidsPage> {
     fontFamily: 'ForsLight',
     fontSize: 24,
     fontWeight: FontWeight.w500,
-    color: Color.fromARGB(220, 215, 253, 0),
+    color: Color.fromARGB(255, 215, 253, 0),
   );
 
   final TextStyle customTextStyle6 = TextStyle(
@@ -101,7 +100,7 @@ class _PoidsPageState extends State<PoidsPage> {
           ListView(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 20, top: 10),
+                padding: EdgeInsets.only(left: 10, right: 20, top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -120,7 +119,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Container(
@@ -163,7 +162,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Container(
@@ -206,7 +205,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 30),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -214,7 +213,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   child: Text('Quel poids faites-vous ?', style: customTextStyle),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -222,7 +221,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 30),
               Center(
                 child: Container(
                   decoration: BoxDecoration(
@@ -315,8 +314,8 @@ class _PoidsPageState extends State<PoidsPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: selectedUnit == "Kg" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
-                      onPrimary: selectedUnit == "Kg" ? Color.fromARGB(220, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
-                      minimumSize: Size(70, 50),
+                      onPrimary: selectedUnit == "Kg" ? Color.fromARGB(255, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
+                      minimumSize: Size(90, 50),
                       padding: EdgeInsets.all(10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -345,8 +344,8 @@ class _PoidsPageState extends State<PoidsPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: selectedUnit == "Ib" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
-                      onPrimary: selectedUnit == "Ib" ? Color.fromARGB(220, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
-                      minimumSize: Size(70, 50),
+                      onPrimary: selectedUnit == "Ib" ? Color.fromARGB(255, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
+                     minimumSize: Size(90, 50),
                       padding: EdgeInsets.all(10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -375,23 +374,18 @@ class _PoidsPageState extends State<PoidsPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+               
                 Padding(
-                  padding: EdgeInsets.only(bottom: 10),
-                  child: PrecedentButton(
-                    buttonText: 'Précédent',
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 25),
+                  padding: EdgeInsets.only(bottom: 35),
                   child: SuivantButton(
                     buttonText: 'Suivant',
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ChoixScanPage(),
+                          builder: (context) => ChoixScanPage( 
+                          selectedPoids: '$poids $selectedUnit',
+                          selectedTaille: widget.selectedTaille,
+                          selectedSexe: widget.selectedSexe,),
                         ),
                       );
                     },

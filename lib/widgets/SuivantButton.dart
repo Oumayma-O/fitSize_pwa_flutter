@@ -30,7 +30,7 @@ class _SuivantButtonState extends State<SuivantButton> {
       },
       style: ElevatedButton.styleFrom(
         primary: buttonColor,
-        minimumSize: Size(0.8 * MediaQuery.of(context).size.width, 50),
+        minimumSize: Size(334, 50),
         padding: EdgeInsets.all(10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),

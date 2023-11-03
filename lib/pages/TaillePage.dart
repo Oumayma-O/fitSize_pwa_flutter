@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
-import 'package:fitsize/widgets/PrecedentButton.dart';
 import 'package:fitsize/widgets/SuivantButton.dart';
 
 class TaillePage extends StatefulWidget {
@@ -54,7 +53,7 @@ class _TaillePageState extends State<TaillePage> {
           ListView(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 20, top: 10),
+                padding: EdgeInsets.only(left: 10, right: 20, top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -77,7 +76,7 @@ class _TaillePageState extends State<TaillePage> {
                 padding: EdgeInsets.only(left: 15, right: 15),
                 child: Column(
                   children: [
-                    SizedBox(height: 20),
+                    SizedBox(height: 40),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Container(
@@ -120,7 +119,7 @@ class _TaillePageState extends State<TaillePage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 30),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
@@ -136,7 +135,7 @@ class _TaillePageState extends State<TaillePage> {
                         child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 50),
                     Container(
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 8, 41, 63),
@@ -220,8 +219,8 @@ class _TaillePageState extends State<TaillePage> {
                           },
                           style: ElevatedButton.styleFrom(
                             primary: selectedUnit == "Cm" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
-                            onPrimary: selectedUnit == "Cm" ? Color.fromARGB(220, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
-                            minimumSize: Size(70, 50),
+                            onPrimary: selectedUnit == "Cm" ? Color.fromARGB(255, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
+                            minimumSize: Size(90, 50),
                             padding: EdgeInsets.all(10),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
@@ -250,8 +249,8 @@ class _TaillePageState extends State<TaillePage> {
                           },
                           style: ElevatedButton.styleFrom(
                             primary: selectedUnit == "In" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
-                            onPrimary: selectedUnit == "In" ? Color.fromARGB(220, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
-                            minimumSize: Size(70, 50),
+                            onPrimary: selectedUnit == "In" ? Color.fromARGB(255, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
+                            minimumSize: Size(90, 50),
                             padding: EdgeInsets.all(10),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
@@ -282,13 +281,7 @@ class _TaillePageState extends State<TaillePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                PrecedentButton(
-                  buttonText: 'Précédent',
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                SizedBox(height: 10),
+               
                 SuivantButton(
                   buttonText: 'Suivant',
                   onPressed: () {
@@ -302,7 +295,7 @@ class _TaillePageState extends State<TaillePage> {
                     );
                   },
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 35),
               ],
             ),
           ),
@@ -343,7 +336,7 @@ class _TaillePageState extends State<TaillePage> {
     fontFamily: 'ForsLight',
     fontSize: 24,
     fontWeight: FontWeight.w500,
-    color: Color.fromARGB(220, 215, 253, 0),
+    color: Color.fromARGB(255, 215, 253, 0),
   );
 
   final TextStyle customTextStyle6 = TextStyle(

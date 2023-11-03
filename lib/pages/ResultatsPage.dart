@@ -1,3 +1,4 @@
+import 'package:fitsize/pages/AccueilPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/widgets/PrecedentButton.dart';
@@ -34,16 +35,34 @@ class _ResultatsPageState extends State<ResultatsPage> {
                     left: 0,
                     right: 0,
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.7,
+                   
                       child: Image.asset(
                         'assets/images/Jupe.png',
                         fit: BoxFit.cover,
+                        height: MediaQuery.of(context).size.height * 0.65,
                         width: MediaQuery.of(context).size.height * 0.6,
                       ),
                     ),
                   ),
+                 Positioned(
+                    top: 8,
+                    left: 320,
+                    right: 0,
+                    child: IconButton(
+                          icon: Icon(
+                            Icons.close,
+                            color: Color.fromARGB(255, 38, 36, 56),
+                            size: 32,
+                          ),
+                        onPressed: () {                    
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => AccueilPage()),
+                              );
+                            },
+                        ),
+                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.67,
+                    top: MediaQuery.of(context).size.height * 0.61,
                     left: 0,
                     right: 0,
                     child: Center(
@@ -88,7 +107,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.7,
+                    top: MediaQuery.of(context).size.height * 0.67,
                     left: 0,
                     right: 0,
                     child: Padding(
@@ -97,12 +116,14 @@ class _ResultatsPageState extends State<ResultatsPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: sizeValues.keys.map((key) {
                           final isSelected = selectedSize == key;
-                          final buttonColor = isSelected
-                              ? Color.fromARGB(255, 132, 246, 174)
-                              : Color.fromARGB(219, 158, 238, 187);
-                          final onPrimaryColor = isSelected
-                              ? Color.fromARGB(255, 8, 41, 63)
-                              : Color.fromARGB(105, 8, 41, 63);
+                       final buttonColor = isSelected
+                        ? Color(0xFFC0EDD8)
+                        : Color(0xFFF0F5F8);
+
+                      final onPrimaryColor = isSelected
+                        ? Color(0xFF08293F)
+                        : Color(0xFF989DA0);
+
 
                           return Padding(
                             padding: EdgeInsets.symmetric(horizontal: 8),
@@ -121,9 +142,9 @@ class _ResultatsPageState extends State<ResultatsPage> {
                                   borderRadius: BorderRadius.circular(8.0),
                                   side: BorderSide(
                                     color: isSelected
-                                        ? Color.fromARGB(255, 8, 41, 63)
-                                        : Color.fromARGB(144, 8, 41, 63),
-                                    width: 2.0,
+                                        ? Color(0xFF08293F)
+                                        :Color(0xFF989DA0),
+                                    width: 1.0,
                                   ),
                                 ),
                               ),
@@ -142,7 +163,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.85,
+                    top: MediaQuery.of(context).size.height * 0.83,
                     left: 0,
                     right: 0,
                     child: Column(
@@ -156,7 +177,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                               onPressed: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => LoadingPage(),
+                                    builder: (context) => AccueilPage(),
                                   ),
                                 );
                               },
@@ -172,7 +193,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                               onPressed: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => LoadingPage(),
+                                    builder: (context) => AccueilPage(),
                                   ),
                                 );
                               },

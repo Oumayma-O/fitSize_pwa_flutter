@@ -13,10 +13,12 @@ dependencies:
   font_awesome_flutter: ^10.1.0
   beamer: ^1.5.2
   camera: ^0.10.5+5
-  video_player: ^2.5.0
-  path_provider: ^2.0.13 
+  video_player: ^2.2.14
+  path_provider: ^2.0.5
   image_picker: ^1.0.4
   getwidget: ^4.0.0
+  video_viewer: ^1.2.7
+  html: ^0.15.0
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +37,10 @@ flutter:
     - assets/iconSVG/icon_womanDark.svg
     - assets/iconSVG/basil_other-1-outline.svg
     - assets/iconSVG/basil_other-1-outlineDark.svg
+    - assets/iconSVG/selfie.svg
+    - assets/iconSVG/selfieDark.svg
+    - assets/iconSVG/parAmi.svg
+    - assets/iconSVG/parAmiDark.svg
 
   fonts:
     - family: Kanit

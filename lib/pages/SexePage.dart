@@ -1,4 +1,4 @@
-import 'package:fitsize/pages/LoadingPage.dart';
+import 'package:fitsize/pages/AccueilPage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
 import 'package:fitsize/widgets/SuivantButton.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +91,7 @@ final TextStyle customTextStyle2 = TextStyle(
                  onPressed: () {
                
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoadingPage()),
+                        MaterialPageRoute(builder: (context) => AccueilPage()),
                       );
                     },
                 ),
@@ -223,7 +223,7 @@ class CardWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               color: card.isSelected
-                  ? Color.fromARGB(220, 215, 253, 0)
+                  ? Color.fromARGB(250, 215, 253, 0)
                   : Color.fromARGB(255, 8, 41, 63),
             ),
           ),

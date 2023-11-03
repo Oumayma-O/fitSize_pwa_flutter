@@ -8,7 +8,8 @@ import 'package:fitsize/pages/ScanEtape1Page.dart';
 import 'package:fitsize/pages/ScanEtape2Page.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
-import 'package:fitsize/pages/VideoTutoPage.dart';
+import 'package:fitsize/pages/TutorielEtape1Page.dart';
+import 'package:fitsize/pages/TutorielEtape2Page.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
@@ -139,54 +140,84 @@ class PoidsLocation extends BeamLocation<BeamState> {
   ];
 }
 
-
 class ChoixScanLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    final selectedTaille = state.pathParameters['selectedTaille'] ?? '';
+    final selectedSexe = state.pathParameters['selectedSexe'] ?? '';
+    final selectedPoids = state.pathParameters['selectedPoids'] ?? '';
     return [
       BeamPage(
         key: ValueKey('choixScan'),
         title: "Choix Scan Page",
-        name: '/ChoixScan',
-        child: ChoixScanPage(),
+        name: '/choix-scan',
+        child: ChoixScanPage(
+          selectedTaille: selectedTaille,
+          selectedSexe: selectedSexe,
+          selectedPoids: selectedPoids,
+        ),
       ),
     ];
   }
 
   @override
-  List<Pattern> get pathPatterns => ['/ChoixScan'];
+  List<Pattern> get pathPatterns => [
+    '/choix-scan/taille/:selectedTaille/sexe/:selectedSexe/poids/:selectedPoids',
+    '/choix-scan',
+  ];
 }
 
-class VideoTutoLocation extends BeamLocation<BeamState> {
+class TutorielEtape1Location extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
-final choixScan = state.pathParameters['choixScan'] ?? '';
+final selectedChoix = state.pathParameters['selectedChoix'] ?? '';
     return [
       BeamPage(
-        key: ValueKey('videoTuto'),
-        title: "Video Tuto Page",
-        name: '/VideoTuto',
-    child: VideoTutoPage(choixScan: choixScan),
+        key: ValueKey('TutorielEtape1'),
+        title: "Tutoriel Etape1 Page",
+        name: '/TutorielEtape1',
+    child: TutorielEtape1Page(selectedChoix: selectedChoix),
       ),
     ];
   }
 
   @override
-  List<Pattern> get pathPatterns => ['/VideoTuto'];
+  List<Pattern> get pathPatterns => ['/TutorielEtape1'];
 }
+
+
+class TutorielEtape2Location extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+final selectedChoix = state.pathParameters['selectedChoix'] ?? '';
+    return [
+      BeamPage(
+        key: ValueKey('TutorielEtape2'),
+        title: "Tutoriel Etape2 Page",
+        name: '/TutorielEtape2',
+    child: TutorielEtape2Page(selectedChoix: selectedChoix),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/TutorielEtape2'];
+}
+
+
 
 
 
 class ScanEtape1Location extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
-   final choixScan = state.pathParameters['choixScan'] ?? '';
+   final selectedChoix = state.pathParameters['selectedChoix'] ?? '';
     return [
       BeamPage(
         key: ValueKey('ScanEtape1'),
         title: "Scan Etape1 Page",
         name: '/ScanEtape1',
-     child: ScanEtape1Page(choixScan: choixScan),
+     child: ScanEtape1Page(selectedChoix: selectedChoix),
       ),
     ];
   }
