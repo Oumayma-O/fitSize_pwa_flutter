@@ -44,7 +44,7 @@ class BlueSquareTile extends StatelessWidget {
               height: 0,
             ),
           ),
-          SizedBox(height: screenSize.height * 0.028),
+          SizedBox(height: screenSize.height * 0.0094),
           Text(
             text2,
             style: TextStyle(

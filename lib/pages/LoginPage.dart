@@ -38,7 +38,9 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              SizedBox(height: screenSize.height * 0.1279),
+              //SizedBox(height: screenSize.height * 0.1279),
+              Expanded(child: SizedBox(height: screenSize.height * 0.1279)),
+
 
               // logo
              Image.asset('assets/images/fitsize_blue_logo.png'),

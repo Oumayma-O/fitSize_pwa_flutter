@@ -76,7 +76,7 @@ class HomeManPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: screenSize.height * 0.02),
+                      SizedBox(height: screenSize.height * 0.0094),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [

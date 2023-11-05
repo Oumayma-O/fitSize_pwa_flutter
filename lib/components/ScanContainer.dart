@@ -42,11 +42,19 @@ class ScanContainer extends StatelessWidget {
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.schedule),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        'assets/images/uil_schedule.png',
+                        width: screenSize.width * 0.0427,
+                        height: screenSize.height * 0.0197,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                     SizedBox(width: screenSize.width * 0.02),
                     const Text(
                       '01/09/2023',
@@ -59,10 +67,10 @@ class ScanContainer extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
+                )
               ],
             ),
-            Divider(),
+            const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

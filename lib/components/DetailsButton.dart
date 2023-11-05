@@ -3,27 +3,25 @@ import 'package:flutter/material.dart';
 class DetailsButton extends StatelessWidget {
   final Function()? onTap;
 
-  const DetailsButton({Key? key, required this.onTap});
+  const DetailsButton({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
 
     return GestureDetector(
       onTap: onTap,
-      child: OutlinedButton(
-        onPressed: onTap,
-        style: OutlinedButton.styleFrom(
+      child: Container(
+        width: screenSize.width*0.2435,
+        height: screenSize.height*0.04739,
+        decoration: ShapeDecoration(
+          color: Color(0xFFF9F9FB),
           shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: Color(0xFF4B56DB)),
             borderRadius: BorderRadius.circular(8),
           ),
-          side: const BorderSide(
-            width: 1,
-            color: Color(0xFF4B56DB),
-          ),
-          backgroundColor: Color(0xFFF9F9FB),
-          fixedSize: Size(screenSize.width*0.2435, screenSize.height*0.04739),
-
         ),
         child: const Center(
           child: Column(
@@ -41,8 +39,8 @@ class DetailsButton extends StatelessWidget {
               ),
             ],
           ),
+          ),
         ),
-      ),
     );
   }
 }

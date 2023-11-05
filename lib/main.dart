@@ -27,7 +27,7 @@ import 'package:fitsize/pages/LoginPage.dart';
 
 void main() {
   runApp(   MaterialApp(
-    home: DetailsPage(),
+    home: HomeManPage(),
   ));
 }
 
