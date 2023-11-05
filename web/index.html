@@ -60,6 +60,17 @@
   </script>
 
   <link rel="stylesheet" type="text/css" href="style.css">
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('flutter_service_worker.js');
+      });
+    }
+  </script>
+  
+
 </head>
 
 <body>

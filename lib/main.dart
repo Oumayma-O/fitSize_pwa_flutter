@@ -12,11 +12,22 @@ import 'package:fitsize/pages/LoginPage.dart';
 
 /*void main() {
   final routerDelegate = BeamerDelegate(
-    initialPath: '/loading',
+    initialPath: '/accueil',
     locationBuilder: BeamerLocationBuilder(
       beamLocations: [
         LoadingLocation(),
+        Loading2Location(),
         AccueilLocation(),
+        SexeLocation(),
+        TailleLocation(),
+        PoidsLocation(),
+        ChoixScanLocation(),
+        TutorielEtape1Location(),
+        ScanEtape1Location(),
+        ScanEtape2Location(),
+        ResultatsLocation(),
+        TutorielEtape1Location(),
+        TutorielEtape2Location(),
       ],
     ),
   );
