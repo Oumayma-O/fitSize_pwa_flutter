@@ -19,6 +19,9 @@ dependencies:
   getwidget: ^4.0.0
   video_viewer: ^1.2.7
   html: ^0.15.0
+  vertical_weight_slider: ^2.5.1
+  rulers: ^1.0.7
+  flutter_ruler_picker: ^1.0.6
 
 dev_dependencies:
   flutter_test:

@@ -21,6 +21,7 @@ void main() {
         ResultatsLocation(),
         TutorielEtape1Location(),
         TutorielEtape2Location(),
+        sliderLocation()
       ],
     ),
   );

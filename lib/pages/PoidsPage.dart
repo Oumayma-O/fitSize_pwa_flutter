@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:fitsize/pages/ChoixScanPage.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
 import 'package:fitsize/widgets/SuivantButton.dart';
+import 'package:flutter/material.dart';
+import  'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 
 class PoidsPage extends StatefulWidget {
   final String selectedSexe;
@@ -17,62 +18,80 @@ class PoidsPage extends StatefulWidget {
 
 class _PoidsPageState extends State<PoidsPage> {
   String selectedUnit = "Kg";
-  int poids = 85;
-  bool isDragging = false;
+  double _containerWidth = 170;
 
-  final TextStyle customTextStyle3 = TextStyle(
-    fontFamily: 'Fors',
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    color: Color(0xFFFAFAFC),
-  );
+ 
+   RulerPickerController? _rulerPickerController;
+   num currentValue = 71;
+ 
 
-  final TextStyle customTextStyle4 = TextStyle(
-    fontFamily: 'Fors',
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    color: Color(0xFF4B56DB),
-  );
 
-  final TextStyle customTextStyle = TextStyle(
-    fontFamily: 'Fors',
-    fontSize: 20,
-    fontWeight: FontWeight.w700,
-    color: Color(0xFF08293F),
-  );
+   List<RulerRange> ranges = const [
 
-  final TextStyle customTextStyle2 = TextStyle(
-    fontFamily: 'ForsLight',
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    color: Color(0xFF08293F),
-  );
+    RulerRange(begin: 0, end: 400, scale: 1),
+  
+  
+  ];
 
-  final TextStyle customTextStyle5 = TextStyle(
-    fontFamily: 'ForsLight',
-    fontSize: 24,
-    fontWeight: FontWeight.w500,
-    color: Color.fromARGB(255, 215, 253, 0),
-  );
 
-  final TextStyle customTextStyle6 = TextStyle(
-    fontFamily: 'ForsLight',
-    fontSize: 24,
-    fontWeight: FontWeight.w500,
-    color: Color(0xFF989DA0),
-  );
 
-  @override
-  void initState() {
-    super.initState();
-    print("Selected Sexe from SexePage: ${widget.selectedSexe}");
-    print("Selected Taille from TaillePage: ${widget.selectedTaille}");
-    if (selectedUnit == "Ib") {
-      poids = 187;
-    }
+@override
+void initState() {
+  super.initState();
+
+   _rulerPickerController = RulerPickerController(value: currentValue);
+}
+
+
+  Widget _buildPositionBtn(num value) {
+    return InkWell(
+      onTap: () {
+        _rulerPickerController?.value = value;
+      },
+      child: Container(
+          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+          color:Color.fromARGB(255, 32, 32, 32),
+          child: Text(
+            value.toString(),
+            style: TextStyle(color: Color(0xFFFAFAFC),),
+          )),
+    );
   }
 
-  double _containerWidth = 180;
+  Widget _buildChangeRangerBtn(String tip, List<RulerRange> rangeList) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          ranges = rangeList;
+        });
+      },
+      child: Container(
+          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+          color:  Color.fromARGB(255, 23, 23, 23),
+          child: Text(
+            tip,
+            style: TextStyle(color:Color(0xFFFAFAFC),),
+          )),
+    );
+  }
+
+  bool selected = false;
+
+
+    void _updateCurrentValueAndUnit(String unit, num value) {
+    setState(() {
+      selectedUnit = unit;
+      currentValue = value;
+      if (selectedUnit == "Kg") {
+        currentValue=71;
+        _rulerPickerController?.value = currentValue; 
+      } else if (selectedUnit == "Ib") {
+        currentValue=155;
+        _rulerPickerController?.value = currentValue ;
+      }
+    });
+  }
+
 
   String _getSelectedSexe() {
     switch (widget.selectedSexe) {
@@ -91,35 +110,39 @@ class _PoidsPageState extends State<PoidsPage> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFAFAFC),
+
       body: Stack(
+  children: [
+    Padding(
+      padding: EdgeInsets.only(left: 10, right: 20, top: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          ListView(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 10, right: 20, top: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.close,
-                        color: Color(0xFF262438),
-                        size: 32,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoadingPage()),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 30),
+          IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Color(0xFF262438),
+              size: 32,
+            ),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => LoadingPage()),
+              );
+            },
+          ),
+        ],
+      ),
+    ),
+    Padding(
+      padding: EdgeInsets.only(left: 15, right: 15,top: 40),
+      child: Column(
+        children: [
+           SizedBox(height: 40),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Container(
@@ -205,7 +228,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -213,7 +236,7 @@ class _PoidsPageState extends State<PoidsPage> {
                   child: Text('Quel poids faites-vous ?', style: customTextStyle),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -221,87 +244,62 @@ class _PoidsPageState extends State<PoidsPage> {
                   child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
                 ),
               ),
-              SizedBox(height: 30),
-              Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 8, 41, 63),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      poids.toString(), 
-                      style: customTextStyle5,
-                    ),
-                  ),
-                ),
-              ),
+              SizedBox(height: 20),
+             Container(
+            decoration: BoxDecoration(
+              color: Color.fromARGB(255, 8, 41, 63),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:Text(
+        
+              "${(currentValue-1).toStringAsFixed(0)}",
+              style: customTextStyle5,
+            ),
+
+            ),
+          ),
+          SizedBox(height: 20),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 27),
-                child: Row(
-                  children: [
-                    Text(
-                      (poids - 10).toString(),
-                      style: customTextStyle6,
+                child: RulerPicker(
+                  controller: _rulerPickerController!,
+                  onBuildRulerScaleText: (index, value) {
+                    return value.toInt().toString();
+                  },
+                  ranges: ranges,
+                      scaleLineStyleList: const [
+                        ScaleLineStyle(
+                      color: Color.fromARGB(255, 43, 42, 42),
+                      width: 1.5,
+                      height: 30,
+                      scale: 0,
                     ),
-                    Spacer(),
-                    Text(
-                      (poids - 5).toString(),
-                      style: customTextStyle6,
+                    ScaleLineStyle(
+                      color:Color.fromARGB(255, 45, 43, 43),
+                      width: 1,
+                      height: 25,
+                      scale: 5,
                     ),
-                    Spacer(),
-                    Spacer(),
-                    Spacer(),
-                    Text(
-                      (poids + 5).toString(),
-                      style: customTextStyle6,
+                    ScaleLineStyle(
+                      color:Color.fromARGB(255, 45, 44, 44),
+                      width: 1,
+                      height: 15,
+                      scale: -1,
                     ),
-                    Spacer(),
-                    Text(
-                      (poids + 10).toString(),
-                      style: customTextStyle6,
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                child: Center(
-                  child: GestureDetector(
-                    onHorizontalDragUpdate: (details) {
-                      setState(() {
-                        if (details.primaryDelta! > 0) {
-                          if (poids > 1) {
-                            poids--;
-                          }
-                        } else if (details.primaryDelta! < 0) {
-                          if (poids < 250) {
-                            poids++;
-                          }
-                        }
-                      });
-                    },
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: <Widget>[
-                        Image.asset(
-                          'assets/images/boxwhite.png',
-                          width: 490,
-                          height: 100,
-                        ),
-                        Positioned(
-                          top: -18,
-                          left: 11,
-                          right: 11,
-                          child: Image.asset('assets/images/Groupregle2.png'),
-                        ),
                       ],
-                    ),
-                  ),
+                  onValueChanged: (value) {
+                    setState(() {
+                      currentValue = value;
+                    });
+                  },
+                  width: MediaQuery.of(context).size.width,
+                  height: 80,
+                  rulerMarginTop: 8,
                 ),
               ),
-              SizedBox(height: 0),
+
+              SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -309,7 +307,8 @@ class _PoidsPageState extends State<PoidsPage> {
                     onPressed: () {
                       setState(() {
                         selectedUnit = "Kg";
-                        poids = 170;
+                        currentValue = 71;
+                        _updateCurrentValueAndUnit("Kg", 71);
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -334,18 +333,19 @@ class _PoidsPageState extends State<PoidsPage> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 20),
+                  SizedBox(width: 40),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
                         selectedUnit = "Ib";
-                        poids = 154;
+                        currentValue = 155;
+                        _updateCurrentValueAndUnit("Ib", 155);
                       });
                     },
                     style: ElevatedButton.styleFrom(
                       primary: selectedUnit == "Ib" ? Color.fromARGB(255, 8, 41, 63) : Colors.white,
                       onPrimary: selectedUnit == "Ib" ? Color.fromARGB(255, 215, 253, 0) : Color.fromARGB(255, 8, 41, 63),
-                     minimumSize: Size(90, 50),
+                      minimumSize: Size(90, 50),
                       padding: EdgeInsets.all(10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -366,37 +366,70 @@ class _PoidsPageState extends State<PoidsPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 9),
             ],
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-               
-                Padding(
-                  padding: EdgeInsets.only(bottom: 35),
-                  child: SuivantButton(
-                    buttonText: 'Suivant',
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => ChoixScanPage( 
-                          selectedPoids: '$poids $selectedUnit',
-                          selectedTaille: widget.selectedTaille,
-                          selectedSexe: widget.selectedSexe,),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-        
-              ],
-            ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SuivantButton(
+                buttonText: 'Suivant',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ChoixScanPage(
+                        selectedPoids: '${(currentValue-1)} $selectedUnit',         
+                        selectedTaille: widget.selectedTaille,
+                        selectedSexe: widget.selectedSexe,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              SizedBox(height: 35),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
+    ),
     );
   }
+
+  final TextStyle customTextStyle3 = TextStyle(
+    fontFamily: 'Fors',
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: Color(0xFFFAFAFC),
+  );
+
+  final TextStyle customTextStyle4 = TextStyle(
+    fontFamily: 'Fors',
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: Color(0xFF4B56DB),
+  );
+
+  final TextStyle customTextStyle = TextStyle(
+    fontFamily: 'Fors',
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    color: Color(0xFF08293F),
+  );
+
+  final TextStyle customTextStyle2 = TextStyle(
+    fontFamily: 'ForsLight',
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Color(0xFF08293F),
+  );
+
+  final TextStyle customTextStyle5 = TextStyle(
+    fontFamily: 'ForsLight',
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    color: Color.fromARGB(255, 215, 253, 0),
+  );
 }
+

@@ -10,6 +10,7 @@ import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
 import 'package:fitsize/pages/TutorielEtape1Page.dart';
 import 'package:fitsize/pages/TutorielEtape2Page.dart';
+import 'package:fitsize/pages/slider.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
@@ -32,6 +33,31 @@ class LoadingLocation extends BeamLocation<BeamState> {
   @override
   List<Pattern> get pathPatterns => ['/loading'];
 }
+
+
+
+
+
+
+class sliderLocation extends BeamLocation<BeamState> {
+
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      BeamPage(
+        key: ValueKey('slider'),
+        title: "slider",
+        name: '/slider',
+        child: SliderScreen(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/slider'];
+}
+
+
 
 
 

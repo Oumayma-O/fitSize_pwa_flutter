@@ -124,7 +124,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
             child: ListView(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 10, right: 20, top: 30),
+                  padding: EdgeInsets.only(left: 10, right: 20, top: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -143,7 +143,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Container(

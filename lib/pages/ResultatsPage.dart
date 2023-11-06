@@ -1,6 +1,5 @@
 import 'package:fitsize/pages/AccueilPage.dart';
 import 'package:flutter/material.dart';
-import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/widgets/PrecedentButton.dart';
 import 'package:fitsize/widgets/SuivantButton.dart';
 
