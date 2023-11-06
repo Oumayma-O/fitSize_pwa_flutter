@@ -20,7 +20,7 @@ class DetailsPage extends StatelessWidget {
             const Measurement(
               text: 'Tour de cou',
               value: '54',
-              imagePath: 'assets/images/apple.png',
+              imagePath: 'assets/images/Rectangle50.png',
             ),
             SizedBox(height: screenSize.height * 0.0213),
           ],
@@ -72,8 +72,8 @@ class DetailsPage extends StatelessWidget {
                 ),
 
                 SizedBox(height: screenSize.height*0.047),
-                /*measurement(text:'Tour de cou',value:'54',imagePath:'asset/images/epaule'),
-                SizedBox(height: screenSize.height*0.0213,),*/
+                const Measurement(text:'Tour de cou',value:'54',imagePath:'assets/images/Rectangle50.png'),
+                SizedBox(height: screenSize.height*0.0213,),
                 ...replicatedMeasurements,
 
               ],
