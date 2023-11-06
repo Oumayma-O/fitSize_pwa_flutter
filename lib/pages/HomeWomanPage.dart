@@ -1,10 +1,25 @@
+import 'package:fitsize/components/haut_blue_square_tile.dart';
 import 'package:flutter/material.dart';
 import '../components/ScanButton.dart';
 import '../components/ScanContainer.dart';
-import '../components/blue_square_tile.dart';
+import '../components/bas_blue_square_tile.dart';
+import '../components/sexe_blue_square_tile.dart';
+import 'SettingsPage.dart';
 
-class HomeWomanPage extends StatelessWidget {
-  const HomeWomanPage({Key? key});
+class HomeWomanPage extends StatefulWidget {
+
+  @override
+  _HomeWomanPageState createState() => _HomeWomanPageState();
+}
+
+class _HomeWomanPageState extends State<HomeWomanPage> {
+  bool isUSStandard = false;
+
+  void _handleSwitch(bool value) {
+    setState(() {
+      isUSStandard = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +57,17 @@ class HomeWomanPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Image.asset(
-                            'assets/images/settings_wheel.png',
-                            width: 28,
-                            height: 28,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => SettingsPage()),
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/images/settings_wheel.png',
+                              width: 28,
+                              height: 28,
+                            ),
                           ),
                         ],
                       ),
@@ -54,7 +76,10 @@ class HomeWomanPage extends StatelessWidget {
 
                   SizedBox(height: screenSize.height * 0.052),
 
-                  ScanContainer(),
+                  ScanContainer(
+                    isUSStandard: isUSStandard,
+                    onSwitch: _handleSwitch,
+                  ),
 
                   SizedBox(height: screenSize.height * 0.028),
 
@@ -103,11 +128,11 @@ class HomeWomanPage extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const BlueSquareTile(text1: "Sexe", text2: "Femme", fontSize2: 20),
+                          const SexeBlueSquareTile(text1: "Sexe", text2: "Femme", fontSize2: 20),
                           SizedBox(height: screenSize.height * 0.01895),
-                          const BlueSquareTile(text1: "Haut", text2: "S", fontSize2: 28),
+                          HautBlueSquareTile(text1: "Haut", text2: "S", fontSize2: 28,isUSStandard: isUSStandard),
                           SizedBox(height: screenSize.height * 0.01895),
-                          const BlueSquareTile(text1: "Bas", text2: "38", fontSize2: 28),
+                          BasBlueSquareTile(text1: "Bas", text2: "38", fontSize2: 28,isUSStandard: isUSStandard),
                         ],
                       )
                     ],

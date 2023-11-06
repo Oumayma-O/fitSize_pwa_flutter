@@ -1,10 +1,16 @@
-import 'package:fitsize/components/DetailsButton.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/DetailsPage.dart';
 import 'CustomSwitch.dart';
+import 'DetailsButton.dart';
 
 class ScanContainer extends StatelessWidget {
-  const ScanContainer({super.key});
+  final bool isUSStandard;
+  final Function(bool) onSwitch;
+
+  ScanContainer({required this.isUSStandard, required this.onSwitch});
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +94,14 @@ class ScanContainer extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: screenSize.width * 0.03),
-                    const CustomSwitch(activeText: "EU",inactiveText:"US"),
+                    CustomSwitch(
+                      activeText: "EU",
+                      inactiveText: "US",
+                      initialValue: isUSStandard,
+                      onSwitch: (value) {
+                        onSwitch(value);
+                      },
+                    )
                   ],
                 ),
                 const Spacer(),
@@ -97,7 +110,9 @@ class ScanContainer extends StatelessWidget {
                   children: [
                     DetailsButton(
                       onTap: () {
-                        // Handle button tap
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => DetailsPage()),
+                        );
                       },
                     ),
                   ],

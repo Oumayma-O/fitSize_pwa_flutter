@@ -1,11 +1,15 @@
-// beamer_routes.dart
 import 'package:beamer/beamer.dart';
 import 'package:fitsize/pages/ChoixScanPage.dart';
+import 'package:fitsize/pages/DetailsPage.dart';
+import 'package:fitsize/pages/HomeManPage.dart';
+import 'package:fitsize/pages/HomeWomanPage.dart';
 import 'package:fitsize/pages/LoadingPage2.dart';
+import 'package:fitsize/pages/LoginPage.dart';
 import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/ResultatsPage.dart';
 import 'package:fitsize/pages/ScanEtape1Page.dart';
 import 'package:fitsize/pages/ScanEtape2Page.dart';
+import 'package:fitsize/pages/SettingsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
 import 'package:fitsize/pages/TutorielEtape1Page.dart';
@@ -58,7 +62,7 @@ class AccueilLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     return [
-      BeamPage(
+      const BeamPage(
         key: ValueKey('accueil'),
         title: "Accueil Page",
         name: '/accueil',
@@ -77,7 +81,7 @@ class SexeLocation extends BeamLocation<BeamState> {
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     return [
       BeamPage(
-        key: ValueKey('Sexe'),
+        key: const ValueKey('Sexe'),
         title: "Sexe Page",
         name: '/sexe',
         child: SexePage(),
@@ -96,7 +100,7 @@ class TailleLocation extends BeamLocation<BeamState> {
     final selectedSexe = state.pathParameters['selectedSexe'] ?? '';
     return [
       BeamPage(
-        key: ValueKey('Taille'),
+        key: const ValueKey('Taille'),
         title: "Taille Page",
         name: '/taille',
         child: TaillePage(
@@ -265,3 +269,89 @@ class ResultatsLocation extends BeamLocation<BeamState> {
   @override
   List<Pattern> get pathPatterns => ['/Resultats'];
 }
+
+class SettingsLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      const BeamPage(
+        key: ValueKey('settings'),
+        title: "Settings Page",
+        name: '/settings',
+        child: SettingsPage(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/settings'];
+}
+
+class HomeManLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      BeamPage(
+        key: ValueKey('home-man'),
+        title: "HomeMan Page",
+        name: '/home-man',
+        child: HomeManPage(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/home-man'];
+}
+
+class HomeWomanLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+       BeamPage(
+        key: ValueKey('home-woman'),
+        title: "HomeWoman Page",
+        name: '/home-woman',
+        child: HomeWomanPage(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/home-woman'];
+}
+
+class DetailsLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      const BeamPage(
+        key: ValueKey('details'),
+        title: "Details Page",
+        name: '/details',
+        child: DetailsPage(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/details'];
+}
+
+class LoginPageLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    return [
+      BeamPage(
+        key: const ValueKey('login'),
+        title: "Login Page",
+        name: '/login',
+        child: LoginPage(),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/login'];
+}
+

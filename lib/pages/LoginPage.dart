@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
 import '../components/square_tile.dart';
+import 'HomeManPage.dart';
+import 'HomeWomanPage.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -11,8 +13,18 @@ class LoginPage extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() {}
+  // Sign user in method
+  void signUserIn(String gender, BuildContext context) {
+    if (gender == 'male') {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => HomeManPage()),
+      );
+    } else if (gender == 'female') {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => HomeWomanPage()),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -191,12 +203,17 @@ class LoginPage extends StatelessWidget {
 
               SizedBox(height: screenSize.height * 0.071),
 
-              // sign in button
-              MyButton(
-                onTap: signUserIn,
-              ),
+            // Sign in button
+            MyButton(
+              onTap: () {
+                // Determine the user's gender based on some logic
+                String userGender = 'male'; // Change this based on your logic
 
-              SizedBox(height: screenSize.height * 0.0568),
+                signUserIn(userGender, context);
+              },
+            ),
+
+            SizedBox(height: screenSize.height * 0.0568),
 
 
             ],

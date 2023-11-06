@@ -10,11 +10,12 @@ import 'package:fitsize/pages/LoginPage.dart';
 
 
 
-/*void main() {
+void main() {
   final routerDelegate = BeamerDelegate(
-    initialPath: '/accueil',
+    initialPath: '/accueil', // or your desired initial path
     locationBuilder: BeamerLocationBuilder(
       beamLocations: [
+        // Existing locations
         LoadingLocation(),
         Loading2Location(),
         AccueilLocation(),
@@ -28,20 +29,27 @@ import 'package:fitsize/pages/LoginPage.dart';
         ResultatsLocation(),
         TutorielEtape1Location(),
         TutorielEtape2Location(),
+        SettingsLocation(),
+        // Add the new locations
+        HomeManLocation(),
+        HomeWomanLocation(),
+        DetailsLocation(),
+        LoginPageLocation(),
       ],
     ),
   );
 
+
   runApp(MyApp(routerDelegate));
-}*/
+}
 
-
+/*
 void main() {
   runApp(   MaterialApp(
     home: HomeManPage(),
   ));
 }
-
+*/
 class MyApp extends StatelessWidget {
   final BeamerDelegate routerDelegate;
 

@@ -39,7 +39,7 @@ class TextAndSwitch extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              CustomSwitch(activeText: activeText, inactiveText: inactiveText),
+              CustomSwitch(activeText: activeText, inactiveText: inactiveText,initialValue: true,onSwitch: (bool value)=>{},),
             ],
           ),
         ],

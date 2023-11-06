@@ -1,6 +1,7 @@
 import 'package:fitsize/components/TextAndSwitch.dart';
 import 'package:flutter/material.dart';
 import '../components/DeconnexionButton.dart';
+import 'AccueilPage.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key});
@@ -18,16 +19,43 @@ class SettingsPage extends StatelessWidget {
             children: [
               SizedBox(height: screenSize.height * 0.0734),
 
-              const Text(
-                'Paramètres',
-                style: TextStyle(
-                  color: Color(0xFF08293F),
-                  fontSize: 18,
-                  fontFamily: 'TT Fors Trial',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Paramètres',
+                        style: TextStyle(
+                          color: Color(0xFF08293F),
+                          fontSize: 18,
+                          fontFamily: 'TT Fors Trial',
+                          fontWeight: FontWeight.w600,
+                          height: 0,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.close,
+                        color: Color.fromARGB(255, 38, 36, 56),
+                        size: 32,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+
+                    ),
+                  ],)
+                ],
               ),
+
               SizedBox(height: screenSize.height * 0.04739),
               Container(
                 decoration: BoxDecoration(
@@ -75,7 +103,13 @@ class SettingsPage extends StatelessWidget {
               ),
 
               SizedBox(height: screenSize.height * 0.4123),
-              DeconnexionButton(onTap: () {}),
+              DeconnexionButton(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AccueilPage()),
+                  );
+                },
+              ),
               SizedBox(height: screenSize.height * 0.0236),
               TextButton(
                 onPressed: () {},

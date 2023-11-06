@@ -44,9 +44,11 @@ class DetailsPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
                           icon: Icon(Icons.arrow_back),
-                        ),
+                        )
                       ],
                     ),
                     Spacer(),

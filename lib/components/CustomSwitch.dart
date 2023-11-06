@@ -5,11 +5,15 @@ import 'package:flutter_switch/flutter_switch.dart';
 class CustomSwitch extends StatefulWidget {
   final String activeText;
   final String inactiveText;
+  final bool initialValue;
+  final Function(bool) onSwitch; // Callback for switch state changes
 
-  const CustomSwitch( {
+  const CustomSwitch({
     super.key,
-    required this.activeText ,
+    required this.activeText,
     required this.inactiveText,
+    required this.initialValue, // Initialize the switch state
+    required this.onSwitch, // Callback for switch state changes
   });
 
   @override
@@ -17,17 +21,22 @@ class CustomSwitch extends StatefulWidget {
 }
 
 class _CustomSwitchState extends State<CustomSwitch> {
-  bool status = true;
+  late bool status;
+
+  @override
+  void initState() {
+    super.initState();
+    status = widget.initialValue; // Initialize the switch state
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Container(
       child: FlutterSwitch(
-        width: screenSize.width*0.179,//70.0,
-        height: screenSize.height*0.036,//31.0,
+        width: screenSize.width * 0.179,
+        height: screenSize.height * 0.036,
         valueFontSize: 14.0,
-        //toggleSize: 45.0,
         value: status,
         borderRadius: 74.0,
         padding: 4.0,
@@ -44,6 +53,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
           setState(() {
             status = val;
           });
+          widget.onSwitch(val); // Call the callback when the switch changes
         },
       ),
     );
