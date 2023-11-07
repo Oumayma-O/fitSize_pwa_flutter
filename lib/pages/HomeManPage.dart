@@ -14,11 +14,23 @@ class HomeManPage extends StatefulWidget {
 }
 
 class _HomeManPageState extends State<HomeManPage> {
-  bool isUSStandard = false;
+  bool isEUStandard = true;
+  bool isMetricStandard =true;
+
+  void updateMetricStandard(bool value) {
+    setState(() {
+      isMetricStandard = value;
+    });
+  }
+  void updateUSStandard(bool value) {
+    setState(() {
+      isEUStandard = value;
+    });
+  }
 
   void _handleSwitch(bool value) {
     setState(() {
-      isUSStandard = value;
+      isEUStandard = value;
     });
   }
 
@@ -64,7 +76,7 @@ class _HomeManPageState extends State<HomeManPage> {
                               GestureDetector(
                                 onTap: () {
                                   Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                                    MaterialPageRoute(builder: (context) => SettingsPage(updateMetricStandard: updateMetricStandard,updateUSStandard: updateUSStandard)),
                                   );
                                 },
                                 child: Image.asset(
@@ -79,7 +91,8 @@ class _HomeManPageState extends State<HomeManPage> {
                       ),
                       SizedBox(height: screenSize.height * 0.052),
                       ScanContainer(
-                        isUSStandard: isUSStandard,
+                        isEUStandard:isEUStandard,
+                        isMetricStandard:isMetricStandard,
                         onSwitch: _handleSwitch,
                       ),
                       SizedBox(height: screenSize.height * 0.028),
@@ -128,9 +141,9 @@ class _HomeManPageState extends State<HomeManPage> {
                             children: [
                               const SexeBlueSquareTile(text1: "Sexe", text2: "Homme", fontSize2: 20),
                               SizedBox(height: screenSize.height * 0.01895),
-                              HautBlueSquareTile(text1: "Haut", text2: "L", fontSize2: 28, isUSStandard:isUSStandard),
+                              HautBlueSquareTile(text1: "Haut", text2: "L", fontSize2: 28, isEUStandard:isEUStandard),
                               SizedBox(height: screenSize.height * 0.01895),
-                              BasBlueSquareTile(text1: "Bas", text2: "42", fontSize2: 28, isUSStandard: isUSStandard),
+                              BasBlueSquareTile(text1: "Bas", text2: "42", fontSize2: 28, isEUStandard: isEUStandard),
                             ],
                           )
                         ],

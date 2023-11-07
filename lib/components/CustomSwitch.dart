@@ -6,14 +6,14 @@ class CustomSwitch extends StatefulWidget {
   final String activeText;
   final String inactiveText;
   final bool initialValue;
-  final Function(bool) onSwitch; // Callback for switch state changes
+  final Function(bool) onSwitch;
 
   const CustomSwitch({
     super.key,
     required this.activeText,
     required this.inactiveText,
-    required this.initialValue, // Initialize the switch state
-    required this.onSwitch, // Callback for switch state changes
+    required this.initialValue,
+    required this.onSwitch,
   });
 
   @override
@@ -26,7 +26,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
   @override
   void initState() {
     super.initState();
-    status = widget.initialValue; // Initialize the switch state
+    status = widget.initialValue;
   }
 
   @override
@@ -53,7 +53,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
           setState(() {
             status = val;
           });
-          widget.onSwitch(val); // Call the callback when the switch changes
+          widget.onSwitch(val);
         },
       ),
     );

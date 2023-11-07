@@ -12,10 +12,9 @@ import 'package:fitsize/pages/LoginPage.dart';
 
 void main() {
   final routerDelegate = BeamerDelegate(
-    initialPath: '/accueil', // or your desired initial path
+    initialPath: '/accueil',
     locationBuilder: BeamerLocationBuilder(
       beamLocations: [
-        // Existing locations
         LoadingLocation(),
         Loading2Location(),
         AccueilLocation(),
@@ -29,16 +28,19 @@ void main() {
         ResultatsLocation(),
         TutorielEtape1Location(),
         TutorielEtape2Location(),
-        SettingsLocation(),
-        // Add the new locations
+        SettingsLocation(
+          updateMetricStandard: (bool value) {
+          },
+          updateUSStandard: (bool value) {
+          },
+        ),
         HomeManLocation(),
         HomeWomanLocation(),
-        DetailsLocation(),
+       DetailsLocation(isMetricStandard: true),
         LoginPageLocation(),
       ],
     ),
   );
-
 
   runApp(MyApp(routerDelegate));
 }

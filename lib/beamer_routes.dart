@@ -271,14 +271,19 @@ class ResultatsLocation extends BeamLocation<BeamState> {
 }
 
 class SettingsLocation extends BeamLocation<BeamState> {
+  final Function(bool) updateMetricStandard;
+  final Function(bool) updateUSStandard;
+
+  SettingsLocation({required this.updateMetricStandard, required this.updateUSStandard});
+
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     return [
-      const BeamPage(
+      BeamPage(
         key: ValueKey('settings'),
         title: "Settings Page",
         name: '/settings',
-        child: SettingsPage(),
+        child: SettingsPage(updateMetricStandard: updateMetricStandard, updateUSStandard: updateUSStandard),
       ),
     ];
   }
@@ -322,14 +327,18 @@ class HomeWomanLocation extends BeamLocation<BeamState> {
 }
 
 class DetailsLocation extends BeamLocation<BeamState> {
+  final bool isMetricStandard;
+
+  DetailsLocation({required this.isMetricStandard});
+
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     return [
-      const BeamPage(
+      BeamPage(
         key: ValueKey('details'),
         title: "Details Page",
         name: '/details',
-        child: DetailsPage(),
+        child: DetailsPage(isMetricStandard: isMetricStandard),
       ),
     ];
   }
@@ -337,6 +346,7 @@ class DetailsLocation extends BeamLocation<BeamState> {
   @override
   List<Pattern> get pathPatterns => ['/details'];
 }
+
 
 class LoginPageLocation extends BeamLocation<BeamState> {
   @override

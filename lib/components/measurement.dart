@@ -2,19 +2,26 @@ import 'package:flutter/material.dart';
 
 class Measurement extends StatelessWidget {
   final String text;
-  final String value;
+  final double value;
   final String imagePath;
+  final bool isMetricStandard;
+
 
   const Measurement({
     super.key,
     required this.text,
     required this.value,
     this.imagePath = 'assets/images/echec.png',
+    required this.isMetricStandard,
+
   });
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+
+    String convertedValue = isMetricStandard ? '$value Cm' : '${convertToInches(value)} In';
+
 
     return Container(
       child: Row(
@@ -45,7 +52,7 @@ class Measurement extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                '$value cm',
+                convertedValue,
                 style: const TextStyle(
                   color: Color(0xFF4B56DB),
                   fontSize: 16,
@@ -60,4 +67,12 @@ class Measurement extends StatelessWidget {
       ),
     );
   }
+
+  double convertToInches(double cmValue) {
+    // Conversion factor from cm to inches
+    const double cmToInchesConversionFactor = 0.393701;
+    return cmValue * cmToInchesConversionFactor;
+  }
+
+
 }

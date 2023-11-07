@@ -1,9 +1,11 @@
-import 'package:fitsize/components/TextAndSwitch.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../components/measurement.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key});
+  final bool isMetricStandard;
+
+  DetailsPage({Key? key, required this.isMetricStandard});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,11 @@ class DetailsPage extends StatelessWidget {
       replicatedMeasurements.add(
         Column(
           children: [
-            const Measurement(
+            Measurement(
               text: 'Tour de cou',
-              value: '54',
+              value: 54.0, // Set the value as a double
               imagePath: 'assets/images/Rectangle50.png',
+              isMetricStandard: isMetricStandard,
             ),
             SizedBox(height: screenSize.height * 0.0213),
           ],
@@ -48,7 +51,7 @@ class DetailsPage extends StatelessWidget {
                             Navigator.of(context).pop();
                           },
                           icon: Icon(Icons.arrow_back),
-                        )
+                        ),
                       ],
                     ),
                     Spacer(),
@@ -71,11 +74,8 @@ class DetailsPage extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(height: screenSize.height*0.047),
-                const Measurement(text:'Tour de cou',value:'54',imagePath:'assets/images/Rectangle50.png'),
-                SizedBox(height: screenSize.height*0.0213,),
+                SizedBox(height: screenSize.height * 0.047),
                 ...replicatedMeasurements,
-
               ],
             ),
           ),

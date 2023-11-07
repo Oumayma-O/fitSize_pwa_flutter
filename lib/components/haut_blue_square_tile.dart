@@ -5,21 +5,21 @@ class HautBlueSquareTile extends StatelessWidget {
   final String text1;
   final String text2;
   final double fontSize2;
-  final bool isUSStandard; // Add this parameter
+  final bool isEUStandard;
 
   const HautBlueSquareTile({
     super.key,
     required this.text1,
     required this.text2,
     required this.fontSize2,
-    required this.isUSStandard,
+    required this.isEUStandard,
   });
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    String convertedText2 = isUSStandard ? convertToUS(text2) : text2; // Convert the value if needed
+    String convertedText2 = !isEUStandard ? convertToUS(text2) : text2;
 
     return Container(
       width: screenSize.width * 0.3897,

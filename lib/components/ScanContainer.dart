@@ -7,10 +7,11 @@ import 'CustomSwitch.dart';
 import 'DetailsButton.dart';
 
 class ScanContainer extends StatelessWidget {
-  final bool isUSStandard;
+  final bool isEUStandard;
+  final bool isMetricStandard;
   final Function(bool) onSwitch;
 
-  ScanContainer({required this.isUSStandard, required this.onSwitch});
+  ScanContainer({required this.isEUStandard,required this.isMetricStandard, required this.onSwitch});
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +96,9 @@ class ScanContainer extends StatelessWidget {
                     ),
                     SizedBox(width: screenSize.width * 0.03),
                     CustomSwitch(
-                      activeText: "EU",
-                      inactiveText: "US",
-                      initialValue: isUSStandard,
+                      inactiveText: "EU",
+                      activeText: "US",
+                      initialValue: isEUStandard,
                       onSwitch: (value) {
                         onSwitch(value);
                       },
@@ -111,10 +112,12 @@ class ScanContainer extends StatelessWidget {
                     DetailsButton(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => DetailsPage()),
+                          MaterialPageRoute(
+                            builder: (context) => DetailsPage(isMetricStandard: isMetricStandard),
+                          ),
                         );
                       },
-                    ),
+                    )
                   ],
                 ),
               ],

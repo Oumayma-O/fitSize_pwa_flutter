@@ -4,7 +4,12 @@ import '../components/DeconnexionButton.dart';
 import 'AccueilPage.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key});
+  final Function(bool) updateMetricStandard;
+  final Function(bool) updateUSStandard;
+
+
+  const SettingsPage({super.key, required this.updateMetricStandard ,required this.updateUSStandard});
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,11 +96,13 @@ class SettingsPage extends StatelessWidget {
                         color: Colors.black.withOpacity(0.1),
                       ),
                       SizedBox(height: screenSize.height * 0.028),
-                      const TextAndSwitch(text: 'EU/US :', activeText: 'US', inactiveText: 'EU'),
+                      TextAndSwitch(text: 'EU/US :', activeText: 'US', inactiveText: 'EU', onSwitch: (bool value) {
+                        updateUSStandard(value);},),
                       SizedBox(height: screenSize.height * 0.021),
-                      const TextAndSwitch(text: 'Poids :', activeText: 'Kg', inactiveText: 'Lb'),
+                      TextAndSwitch(text: 'Poids :', activeText: 'Kg', inactiveText: 'Lb', onSwitch: (bool value)=>{},),
                       SizedBox(height: screenSize.height * 0.021),
-                      const TextAndSwitch(text: 'Taille :', activeText: 'Cm', inactiveText: 'In'),
+                      TextAndSwitch(text: 'Taille :', activeText: 'Cm', inactiveText: 'In',onSwitch: (bool value) {
+                        updateMetricStandard(value);},),
                       SizedBox(height: screenSize.height * 0.0059),
                     ],
                   ),
@@ -106,7 +113,7 @@ class SettingsPage extends StatelessWidget {
               DeconnexionButton(
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => AccueilPage()),
+                    MaterialPageRoute(builder: (context) => const AccueilPage()),
                   );
                 },
               ),
