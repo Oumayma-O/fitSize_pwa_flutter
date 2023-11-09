@@ -215,44 +215,47 @@ void initState() {
 
                     ),
                   ),
-       SizedBox(height: 20),
-          Container(
-            child: RulerPicker(
-              controller: _rulerPickerController!,
-              onBuildRulerScaleText: (index, value) {
-                return value.toInt().toString();
-              },
-              ranges: ranges,
-              scaleLineStyleList: const [
-                ScaleLineStyle(
-                  color: Color.fromARGB(255, 43, 42, 42),
-                  width: 1.5,
-                  height: 30,
-                  scale: 0,
+                SizedBox(height: 20),
+                Container(
+                child: RulerPicker(
+                  controller: _rulerPickerController!,
+                  onBuildRulerScaleText: (index, value) {
+                    return value.toInt().toString();
+                  },
+                  ranges: ranges,
+                  scaleLineStyleList: const [
+                    ScaleLineStyle(
+                      color: Color.fromARGB(255, 43, 42, 42),
+                      width: 1.5,
+                      height: 30,
+                      scale: 0,
+                    ),
+                    ScaleLineStyle(
+                      color: Color.fromARGB(255, 45, 43, 43),
+                      width: 1,
+                      height: 25,
+                      scale: 5,
+                    ),
+                    ScaleLineStyle(
+                      color: Color.fromARGB(255, 45, 44, 44),
+                      width: 1,
+                      height: 15,
+                      scale: -1,
+                    ),
+                  ],
+                  onValueChanged: (value) {
+                    setState(() {
+                      currentValue = value;
+                    });
+                  },
+                  width: MediaQuery.of(context).size.width,
+                  height: 80,
+                  rulerMarginTop: 8,
+                  rulerBackgroundColor:Color(0xFFFAFAFC),
+
                 ),
-                ScaleLineStyle(
-                  color:Color.fromARGB(255, 45, 43, 43),
-                  width: 1,
-                  height: 25,
-                  scale: 5,
-                ),
-                ScaleLineStyle(
-                  color:Color.fromARGB(255, 45, 44, 44),
-                  width: 1,
-                  height: 15,
-                  scale: -1,
-                ),
-              ],
-              onValueChanged: (value) {
-                setState(() {
-                  currentValue = value;
-                });
-              },
-              width: MediaQuery.of(context).size.width,
-              height: 80,
-              rulerMarginTop: 8,
-            ),
-          ),
+              ),
+
 
           SizedBox(height: 40),
           Row(

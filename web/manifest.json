@@ -9,6 +9,17 @@
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     
+    "permissions": {
+        "camera": {
+            "description": "Access the camera for capturing images and video.",
+            "scope": "video"
+        },
+        "microphone": {
+            "description": "Access the microphone for recording audio."
+        }
+    },
+    
+    
     "icons": [
         {
             "src": "icons/logo.png",
@@ -34,4 +45,3 @@
         }
     ]
 }
-

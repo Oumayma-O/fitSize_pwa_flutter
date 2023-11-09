@@ -5,115 +5,188 @@ import 'package:flutter/material.dart';
 
 class TutorielEtape2Page extends StatefulWidget {
   final String selectedChoix;
+  final String selectedSexe;
 
-  TutorielEtape2Page({required this.selectedChoix});
+  TutorielEtape2Page({required this.selectedChoix, required this.selectedSexe});
 
   @override
   _TutorielEtape2PageState createState() => _TutorielEtape2PageState();
 }
-
 class _TutorielEtape2PageState extends State<TutorielEtape2Page> {
   @override
   Widget build(BuildContext context) {
     print("choixScan tutoriel Etape2 page: ${widget.selectedChoix}");
 
-    return Scaffold(
-      body: SingleChildScrollView( 
+
+    String backgroundImage = widget.selectedSexe == 'Femme'
+        ? 'assets/images/Photo-femme-profil.png'
+        : 'assets/images/Photo-homme-profil.png';
+
+       return Scaffold(
+      backgroundColor: Color.fromARGB(255, 195, 194, 194),
+      body: Container(
+        
         child: Stack(
+          
           children: [
-       
-            Container(
-              width: MediaQuery.of(context).size.width+40,
-              height: MediaQuery.of(context).size.height+ 70,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/fond photo profil.png'),
-                  fit: BoxFit.cover,
+         Positioned(
+              child: Container(
+                constraints: BoxConstraints.expand(),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(backgroundImage),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      child: IconButton(
-                        icon: Icon(Icons.arrow_back, color: Color(0xFF262438), size: 30),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    Spacer(),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.close,
-                          color: Color.fromARGB(255, 38, 36, 56),
-                          size: 32,
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => AccueilPage()),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
 
-             Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      
+              Column(
                 children: [
-                  Container(
-                    height:150,
-                    width:334,
-                    child: Stack(
-                      alignment: Alignment.center, 
-                      children: [
-                        Image.asset('assets/images/etape1.png'),
-                        Positioned(
-                          top: 20, 
-                          child: Image.asset('assets/images/Group 229.png'), 
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-                SizedBox(height: 20),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Row(
                     children: [
-                      RichText(
-                        text: TextSpan(
-                          text: 'Passer', 
-                          style: TextStyle(
-                              color: Color(0xFF353637), 
+                      Container(
+                        padding: EdgeInsets.all(12),
+                        child: IconButton(
+                          icon: Icon(Icons.arrow_back, color: Color(0xFF262438), size: 30),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                        padding: EdgeInsets.all(12),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.close,
+                            color: Color.fromARGB(255, 38, 36, 56),
+                            size: 32,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => AccueilPage()),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  
+                  SizedBox(height: 0),                          
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 162,
+                            width: 334,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                // Replace etape1 image with a Container containing texts
+                                Container(
+                                  padding: EdgeInsets.all(22), // Add padding here
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(229, 8, 41, 63),
+                                    borderRadius: BorderRadius.circular(12), // Add this for rounded corners
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center, // Center text vertically
+                                    mainAxisSize: MainAxisSize.min, // Take minimum vertical space
+                                    children: [
+                                    SizedBox(height: 10),
+                                      Text(
+                                        'Position de profil',
+                                        style: TextStyle(
+                                          fontFamily: 'Fors',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xFFFAFAFC),
+                                        ),
+                                      ),
+                                      SizedBox(height: 5),
+                                        Text(
+                                        "Tenez-vous de profil en maintenant les",
+                                        style: TextStyle(
+                                          fontFamily: 'ForsLight',
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300,
+                                          color: Color.fromARGB(151, 255, 255, 255),
+                                        ),
+                                      ),
+                                      
+                                      Text(
+                                        "jambes rapprochées et les bras le long du",
+                                        style: TextStyle(
+                                          fontFamily: 'ForsLight',
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300,
+                                          color: Color.fromARGB(151, 255, 255, 255),
+                                        ),
+                                      ),
+
+                                        Text(
+                                        "corps dans la photo.",
+                                        style: TextStyle(
+                                          fontFamily: 'ForsLight',
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300,
+                                          color:  Color.fromARGB(151, 255, 255, 255),
+                                        ),
+                                      ),
+                                 
+                                      
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 27,
+                                  child: Image.asset(
+                                    'assets/images/Group 229.png',
+                                    width: 61,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                  SizedBox(height: 5),
+                 Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            text: 'Passer',
+                            style: TextStyle(
+                              color: Color(0xFF353637),
                               fontFamily: 'Fors',
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
                               decoration: TextDecoration.underline,
                             ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                             Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => ScanEtape1Page(selectedChoix: widget.selectedChoix),),
-                              );
-                            },
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                         
+                                Navigator.of(context).push(
+                                      MaterialPageRoute(builder: (context) => ScanEtape1Page(selectedChoix: widget.selectedChoix),),
+                                );
+                              },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
+      
+                ],
+              ),
+            ],
+          ),
       ),
+
     );
   }
 }

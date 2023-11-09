@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:fitsize/pages/LoadingPage2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -81,6 +82,30 @@ class _ScanEtape1PageState extends State<ScanEtape1Page> {
     } else if (widget.selectedChoix == "Par un ami") {
       texts = ['Par un ami', 'Tout seul'];
     }
+
+//  void showAlertDialog(BuildContext context) {
+//     showCupertinoDialog<void>(
+//       context: context,
+//       barrierDismissible: false,
+//       builder: (BuildContext context) => CupertinoAlertDialog(
+//         title: const Text('Permission Denied'),
+//         content: const Text('Allow access to gallery and photos'),
+//         actions: <CupertinoDialogAction>[
+//           CupertinoDialogAction(
+//             onPressed: () => Navigator.of(context).pop(),
+//             child: const Text('Cancel'),
+//           ),
+//           CupertinoDialogAction(
+//             isDefaultAction: true,
+//             onPressed: () => openAppSettings(),
+//             child: const Text('Settings'),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+
 
     return Scaffold(
       body: isLoading

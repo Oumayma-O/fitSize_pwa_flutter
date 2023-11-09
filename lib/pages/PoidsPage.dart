@@ -296,6 +296,7 @@ void initState() {
                   width: MediaQuery.of(context).size.width,
                   height: 80,
                   rulerMarginTop: 8,
+                  rulerBackgroundColor:Color(0xFFFAFAFC),
                 ),
               ),
 

@@ -112,7 +112,7 @@ void startProgress() {
                             lineHeight: 20,
                             alignment: MainAxisAlignment.spaceBetween,
                             backgroundColor: Color.fromARGB(251, 255, 255, 255),
-                            progressBarColor: Color.fromARGB(255, 39, 241, 255),
+                            progressBarColor: Color.fromARGB(255, 39, 255, 136),
                           ),
                         ),
                       ),

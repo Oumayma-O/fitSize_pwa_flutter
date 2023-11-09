@@ -295,31 +295,26 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                 SizedBox(height: 30),
 
 
-                ListView.builder(
-                  itemCount: cardData.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final card = cardData[index];
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0), 
-                      child: Column(
-                        children: [
-                          CardWidget(
-                            card: card,
-                            isSelected: card.text == widget.selectedChoix,
-                            onTap: () {
-                              _onCardSelected(card);
-                            },
-                          ),
-                          SizedBox(height: 20), 
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                    Row( // Add a Row here
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: cardData.map((card) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: CardWidget(
+                      card: card,
+                      isSelected: card.text == widget.selectedChoix,
+                      onTap: () {
+                        _onCardSelected(card);
+                      },
+                    ),
+                  );
+                }).toList(),
+              ),
+            ],
+          ),
 
-              ],
-            ),
+
+           
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 30),
@@ -329,7 +324,10 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) =>
-                        TutorielEtape1Page(selectedChoix: widget.selectedChoix),
+                     TutorielEtape1Page(
+                  selectedChoix: widget.selectedChoix,
+                  selectedSexe: widget.selectedSexe, // Pass the selectedSexe here
+                ),
                   ),
                 );
               },
@@ -381,8 +379,8 @@ class CardWidget extends StatelessWidget {
     return GestureDetector( // Wrap with GestureDetector to capture onTap
       onTap: onTap,
       child: Container(
-        width: 333,
-        height: 108,
+        width: 150,
+        height: 100,
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border.all(
@@ -399,7 +397,7 @@ class CardWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 8),
+            SizedBox(height: 4),
             SvgPicture.asset(
               isSelected ? card.svgDarkIconPath : card.svgIconPath,
               width: 27,
@@ -417,7 +415,7 @@ class CardWidget extends StatelessWidget {
                     : Color.fromARGB(255, 8, 41, 63),
               ),
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 4),
           ],
         ),
       ),
