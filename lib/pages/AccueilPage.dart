@@ -2,6 +2,8 @@ import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:flutter/material.dart';
 
+import 'LoginPage.dart';
+
 class AccueilPage extends StatefulWidget {
   const AccueilPage({Key? key}) : super(key: key);
 
@@ -238,13 +240,15 @@ TextStyle customTextStyle2 = TextStyle(
                     children: [
                       TextButton(
                         onPressed: () {
-                      
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => LoginPage()),
+                          );
                         },
                         child: Text(
                           'Créer un compte / Se connecter',
                           style: customTextStyle4,
                         ),
-                      ),
+                      )
                     ],
                   ),
                    SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
