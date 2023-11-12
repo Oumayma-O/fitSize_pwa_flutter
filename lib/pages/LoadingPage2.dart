@@ -42,14 +42,14 @@ void startProgress() {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle customTextStyle2 = TextStyle(
+    TextStyle customTextStyle2 = const TextStyle(
       fontFamily: 'Fors',
       fontWeight: FontWeight.w600,
       color: Color(0xFFFAFAFC),
       fontSize: 16,
     );
 
-    TextStyle customTextStyle3 = TextStyle(
+    TextStyle customTextStyle3 = const TextStyle(
       fontFamily: 'ForsThin',
       fontWeight: FontWeight.w400,
       color: Color(0xFFFAFAFC),
@@ -106,10 +106,10 @@ void startProgress() {
                       right: 0,
                       child: Center(
                         child: SizedBox(
-                          width: 300,
+                          width: MediaQuery.of(context).size.width*0.802,
                           child: GFProgressBar(
                             percentage: progressBarValue,
-                            lineHeight: 20,
+                            lineHeight: MediaQuery.of(context).size.height * 0.026,
                             alignment: MainAxisAlignment.spaceBetween,
                             backgroundColor: Color.fromARGB(251, 255, 255, 255),
                             progressBarColor: Color.fromARGB(255, 39, 255, 136),
@@ -123,10 +123,13 @@ void startProgress() {
                     left: 0,
                     right: 0,
                     child: Center(
-                      child: Text(
-                        'Notre couturier est en train de relever vos mesures !',
-                        style: customTextStyle2,
-                        textAlign: TextAlign.center,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 28.0),
+                        child: Text(
+                          'Notre couturier est en train de relever vos mesures !',
+                          style: customTextStyle2,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ),
@@ -135,13 +138,17 @@ void startProgress() {
                     left: 0,
                     right: 0,
                     child: Center(
-                      child: Text(
-                        'Cela prend quelques secondes.',
-                        style: customTextStyle3,
-                        textAlign: TextAlign.center,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 28.0),
+                        child: Text(
+                          'Cela prend quelques secondes.',
+                          style: customTextStyle3,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ),
+
                 ],
               ),
             ),

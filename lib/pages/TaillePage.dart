@@ -140,7 +140,7 @@ void initState() {
               padding: EdgeInsets.only(left: 15, right: 15,top: 40),
               child: Column(
                 children: [
-                  SizedBox(height: 30),
+                  SizedBox(height: 40),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: Container(
@@ -291,7 +291,7 @@ void initState() {
                   ),
                 ),
               ),
-              SizedBox(width: 40),
+              SizedBox(width: MediaQuery.of(context).size.width * 0.03),
               ElevatedButton(
                 onPressed: () {
                   setState(() {

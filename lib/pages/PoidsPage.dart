@@ -124,7 +124,7 @@ void initState() {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.close,
               color: Color(0xFF262438),
               size: 32,
@@ -143,55 +143,55 @@ void initState() {
       child: Column(
         children: [
            SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Container(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFFC0EDD8),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0),
-                        bottomLeft: Radius.circular(10.0),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        SizedBox(width: 10),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            _getSelectedSexe(),
-                            style: customTextStyle2,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => SexePage()),
-                            );
-                          },
-                          child: Icon(
-                            Icons.edit,
-                            color: Color(0xFF08293F),
-                            size: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    height: 40,
-                    width: _containerWidth,
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Container(
+              alignment: Alignment.centerRight,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFFC0EDD8),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
+                    bottomLeft: Radius.circular(10.0),
                   ),
                 ),
+                child: Row(
+                  children: [
+                    SizedBox(width: 10),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        _getSelectedSexe(),
+                        style: customTextStyle2,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => SexePage()),
+                        );
+                      },
+                      child: Icon(
+                        Icons.edit,
+                        color: Color(0xFF08293F),
+                        size: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                height: 40,
+                width: _containerWidth,
               ),
-              SizedBox(height: 20),
+            ),
+          ),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Container(
                   alignment: Alignment.centerRight,
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFC0EDD8),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10.0),
@@ -199,6 +199,8 @@ void initState() {
                         bottomLeft: Radius.circular(10.0),
                       ),
                     ),
+                    height: 40,
+                    width: 160,
                     child: Row(
                       children: [
                         SizedBox(width: 10),
@@ -215,7 +217,7 @@ void initState() {
                               MaterialPageRoute(builder: (context) => TaillePage(selectedSexe: widget.selectedSexe)),
                             );
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.edit,
                             color: Color(0xFF08293F),
                             size: 16,
@@ -223,44 +225,42 @@ void initState() {
                         ),
                       ],
                     ),
-                    height: 40,
-                    width: 160,
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Text('Quel poids faites-vous ?', style: customTextStyle),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
              Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 8, 41, 63),
+              color: const Color.fromARGB(255, 8, 41, 63),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child:Text(
         
-              "${(currentValue-1).toStringAsFixed(0)}",
+              (currentValue-1).toStringAsFixed(0),
               style: customTextStyle5,
             ),
 
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
               Container(
                 child: RulerPicker(
                   controller: _rulerPickerController!,
@@ -300,7 +300,7 @@ void initState() {
                 ),
               ),
 
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -325,7 +325,7 @@ void initState() {
                         ),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Kg',
                       style: TextStyle(
                         fontFamily: 'Fors',
@@ -334,7 +334,7 @@ void initState() {
                       ),
                     ),
                   ),
-                  SizedBox(width: 40),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {

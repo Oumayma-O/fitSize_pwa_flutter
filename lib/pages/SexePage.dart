@@ -42,20 +42,20 @@ class _SexePageState extends State<SexePage> {
     ),
   ];
 
-  final TextStyle customTextStyle3 = TextStyle(
+  final TextStyle customTextStyle3 = const TextStyle(
     fontFamily: 'Fors',
     fontSize: 16,
     fontWeight: FontWeight.w700,
     color: Color(0xFFFAFAFC),
   );
-final TextStyle customTextStyle = TextStyle(
+final TextStyle customTextStyle = const TextStyle(
   fontFamily: 'Fors',
   fontSize: 20,
   fontWeight: FontWeight.w700,
   color: Color(0xFF08293F),
 );
 
-final TextStyle customTextStyle2 = TextStyle(
+final TextStyle customTextStyle2 = const TextStyle(
   fontFamily: 'ForsLight',
   fontSize: 14,
   fontWeight: FontWeight.w400,
@@ -72,18 +72,18 @@ final TextStyle customTextStyle2 = TextStyle(
         children: <Widget>[
    
           Padding(
-            padding: EdgeInsets.only(left: 10, right: 20, top: 30),
+            padding: const EdgeInsets.only(left: 10, right: 20, top: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.arrow_back, color: Color.fromARGB(255, 38, 36, 56), size: 30),
+                  icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 38, 36, 56), size: 30),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.close,
                     color: Color.fromARGB(255, 38, 36, 56),
                     size: 32,
@@ -101,7 +101,7 @@ final TextStyle customTextStyle2 = TextStyle(
        
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 15), 
+              padding: const EdgeInsets.only(left: 15, right: 15),
               child: Column(
     
                 children: <Widget>[
@@ -109,22 +109,22 @@ final TextStyle customTextStyle2 = TextStyle(
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20), 
+                      padding: const EdgeInsets.only(left: 20),
                       child: Text('Quel est votre sexe ?', style: customTextStyle),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: const EdgeInsets.only(left: 20),
                       child: Text('Cela me permet de mieux concevoir votre profil', style: customTextStyle2),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
 
 
-             CardList(cardData: cardData, onCardSelected: _onCardSelected),
+                CardList(cardData: cardData, onCardSelected: _onCardSelected),
 
                   
                 ],

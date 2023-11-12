@@ -18,9 +18,9 @@ class _TutorielEtape2PageState extends State<TutorielEtape2Page> {
     print("choixScan tutoriel Etape2 page: ${widget.selectedChoix}");
 
 
-    String backgroundImage = widget.selectedSexe == 'Femme'
-        ? 'assets/images/Photo-femme-profil.png'
-        : 'assets/images/Photo-homme-profil.png';
+    String backgroundImage = widget.selectedSexe == 'Homme'
+        ? 'assets/images/Photo-homme-profil.png'
+        : 'assets/images/Photo-femme-profil.png';
 
        return Scaffold(
       backgroundColor: Color.fromARGB(255, 195, 194, 194),

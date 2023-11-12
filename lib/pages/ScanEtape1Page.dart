@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:fitsize/pages/LoadingPage2.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ScanEtape1Page extends StatefulWidget {
   final String selectedChoix;
@@ -24,8 +24,31 @@ class _ScanEtape1PageState extends State<ScanEtape1Page> {
   @override
   void initState() {
     super.initState();
-    _initializeCamera();
+    _requestPermissionsAndInitializeCamera();
   }
+
+  Future<void> _requestPermissionsAndInitializeCamera() async {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.camera,
+    ].request();
+
+    if (statuses[Permission.camera] == PermissionStatus.granted) {
+      // Permissions granted, initialize the camera
+      _initializeCamera();
+    } else {
+      // Handle the case where permissions are denied
+      if (statuses[Permission.camera] == PermissionStatus.denied ||
+          statuses[Permission.camera] == PermissionStatus.permanentlyDenied) {
+        if (kDebugMode) {
+          print('Access Denied');
+        }
+        showAlertDialog(context);
+      } else {
+        print('Permissions are required for this feature.');
+      }
+    }
+  }
+
 
   Future<void> _initializeCamera() async {
     try {
@@ -54,12 +77,12 @@ class _ScanEtape1PageState extends State<ScanEtape1Page> {
   CameraDescription? _getSelectedCamera() {
     if (widget.selectedChoix == "Seul(e)") {
       return _cameras.firstWhere(
-        (camera) => camera.lensDirection == CameraLensDirection.front,
+            (camera) => camera.lensDirection == CameraLensDirection.front,
         orElse: () => _cameras[0],
       );
     } else if (widget.selectedChoix == "Par un ami") {
       return _cameras.firstWhere(
-        (camera) => camera.lensDirection == CameraLensDirection.back,
+            (camera) => camera.lensDirection == CameraLensDirection.back,
         orElse: () => _cameras[0],
       );
     }
@@ -166,7 +189,7 @@ class _ScanEtape1PageState extends State<ScanEtape1Page> {
                         children: [
                           Text(
                             texts[0], // You need to define the 'texts' list
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: 'Fors',
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -176,7 +199,7 @@ class _ScanEtape1PageState extends State<ScanEtape1Page> {
                           SizedBox(width: 20),
                           Text(
                             texts[1], // You need to define the 'texts' list
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: 'ForsLight',
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -186,7 +209,7 @@ class _ScanEtape1PageState extends State<ScanEtape1Page> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () async {
                       if (!_cameraController.value.isInitialized) {
@@ -227,11 +250,37 @@ class _ScanEtape1PageState extends State<ScanEtape1Page> {
                     ),
                   ),
 
-                    SizedBox(height: 30,),
+                    const SizedBox(height: 30,),
                   ],
                 ),
               ],
             ),
+    );
+  }
+
+  void showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Permission Denied'),
+          content: Text('Allow access to camera and storage to use this feature.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                openAppSettings(); // Open app settings
+              },
+              child: Text('Settings'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

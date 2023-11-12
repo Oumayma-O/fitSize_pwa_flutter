@@ -15,13 +15,13 @@ class _ResultatsPageState extends State<ResultatsPage> {
     "XL": 0.99,
   };
 
-  String selectedSize = "M";
+  String selectedSize = "L";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color.fromARGB(255, 255, 255, 255),
+        color: const Color.fromARGB(255, 255, 255, 255),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -48,7 +48,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                     left: 320,
                     right: 0,
                     child: IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.close,
                             color: Color.fromARGB(255, 38, 36, 56),
                             size: 32,
@@ -79,7 +79,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                  
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color.fromARGB(255, 8, 41, 63),
+                            primary: const Color.fromARGB(255, 8, 41, 63),
                             minimumSize: Size(128, 59),
                             padding: EdgeInsets.all(10),
                             shape: RoundedRectangleBorder(
@@ -91,13 +91,13 @@ class _ResultatsPageState extends State<ResultatsPage> {
                             children: [
                               Text(
                                 "Fit ${(sizeValues[selectedSize] ?? 0) * 100}%",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'Fors',
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              SizedBox(width: 5), 
+                              const SizedBox(width: 5),
                               Image.asset('assets/images/Group 117.png'), 
                             ],
                           ),
@@ -116,16 +116,16 @@ class _ResultatsPageState extends State<ResultatsPage> {
                         children: sizeValues.keys.map((key) {
                           final isSelected = selectedSize == key;
                        final buttonColor = isSelected
-                        ? Color(0xFFC0EDD8)
-                        : Color(0xFFF0F5F8);
+                        ? const Color(0xFFC0EDD8)
+                        : const Color(0xFFF0F5F8);
 
                       final onPrimaryColor = isSelected
-                        ? Color(0xFF08293F)
-                        : Color(0xFF989DA0);
+                        ? const Color(0xFF08293F)
+                        : const Color(0xFF989DA0);
 
 
                           return Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
@@ -135,21 +135,21 @@ class _ResultatsPageState extends State<ResultatsPage> {
                               style: ElevatedButton.styleFrom(
                                 primary: buttonColor,
                                 onPrimary: onPrimaryColor,
-                                minimumSize: Size(101, 48),
-                                padding: EdgeInsets.all(10),
+                                minimumSize: const Size(101, 48),
+                                padding: const EdgeInsets.all(10),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0),
                                   side: BorderSide(
                                     color: isSelected
-                                        ? Color(0xFF08293F)
-                                        :Color(0xFF989DA0),
+                                        ? const Color(0xFF08293F)
+                                        :const Color(0xFF989DA0),
                                     width: 1.0,
                                   ),
                                 ),
                               ),
                               child: Text(
                                 key,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'Fors',
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
@@ -183,7 +183,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10), 
+                        const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -192,7 +192,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                               onPressed: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => AccueilPage(),
+                                    builder: (context) => const AccueilPage(),
                                   ),
                                 );
                               },

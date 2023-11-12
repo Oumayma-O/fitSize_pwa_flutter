@@ -3,7 +3,12 @@ import 'package:beamer/beamer.dart';
 import 'package:fitsize/pages/DetailsPage.dart';
 import 'package:fitsize/pages/HomeManPage.dart';
 import 'package:fitsize/pages/HomeWomanPage.dart';
+import 'package:fitsize/pages/LoadingPage.dart';
+import 'package:fitsize/pages/LoadingPage2.dart';
+import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/SettingsPage.dart';
+import 'package:fitsize/pages/SexePage.dart';
+import 'package:fitsize/pages/TaillePage.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/beamer_routes.dart';
 import 'package:fitsize/pages/LoginPage.dart';
@@ -39,7 +44,7 @@ void main() {
         DetailsLocation(isMetricStandard: true),
         LoginPageLocation(),
       ],
-    ),
+    ).call,
   );
 
   runApp(MyApp(routerDelegate));
@@ -48,10 +53,10 @@ void main() {
 /*
 void main() {
   runApp(   MaterialApp(
-    home: HomeManPage(),
+    home: SexePage(),
   ));
-}
-*/
+}*/
+
 class MyApp extends StatelessWidget {
   final BeamerDelegate routerDelegate;
 

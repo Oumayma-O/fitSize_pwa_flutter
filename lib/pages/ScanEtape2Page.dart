@@ -55,7 +55,7 @@ List<String> boxes = [];
             padding: EdgeInsets.all(20),
             alignment: Alignment.topLeft,
             child: IconButton(
-              icon: Icon(Icons.arrow_back, color: Color.fromARGB(255, 255, 255, 255), size: 30),
+              icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 255, 255, 255), size: 30),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -92,7 +92,7 @@ List<String> boxes = [];
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
              
 
          Padding(
@@ -102,17 +102,17 @@ List<String> boxes = [];
             children: [
               Text(
                 texts[0],
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'Fors',
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Color.fromARGB(255, 255, 255, 255),
                 ),
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Text(
                 texts[1],
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'ForsLight',
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
@@ -123,10 +123,10 @@ List<String> boxes = [];
           ),
         ),
 
-             SizedBox(height: 20),
+             const SizedBox(height: 20),
               
               Padding(
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: InkWell(
@@ -136,7 +136,7 @@ List<String> boxes = [];
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.white, width: 4.0),
-                        color: Color(0xFF4B56DB),
+                        color: const Color(0xFF4B56DB),
                       ),
                    
                     ),
@@ -157,7 +157,7 @@ List<String> boxes = [];
 
                 
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
             ],
           ),
         ],
@@ -172,7 +172,7 @@ class _ScrollableBox extends StatefulWidget {
   final Function onTap;
   final bool isSelected;
 
-  _ScrollableBox({
+  const _ScrollableBox({
     required this.text,
     required this.customTextStyle,
     required this.onTap,

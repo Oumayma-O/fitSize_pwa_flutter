@@ -1,6 +1,6 @@
 name: fitsize
 description: A new Flutter project.
-publish_to: 'none' 
+publish_to: 'none'
 version: 1.0.0+1
 environment:
   sdk: '>=3.3.0-26.0.dev <4.0.0'
@@ -12,16 +12,21 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   getwidget: ^4.0.0
-
+  camera: ^0.10.5+5
+  permission_handler: ^11.0.1
+  font_awesome_flutter: ^10.6.0
+  beamer: ^1.5.6
+  video_player: ^2.2.14
+  path_provider: ^2.0.5
+  image_picker: ^1.0.4
   video_viewer: ^1.2.7
   html: ^0.15.0
   vertical_weight_slider: ^2.5.1
   rulers: ^1.0.7
   flutter_ruler_picker: ^1.0.6
   app_settings: ^5.0.0
-  camera: ^0.10.5+5
-  font_awesome_flutter: ^10.6.0
-  beamer: ^1.5.6
+
+
 
 dev_dependencies:
   flutter_test:
@@ -32,6 +37,19 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/videos/tuto.mp4
+    - assets/videos/tuto2.mp4
+    - assets/iconSVG/icon_man.svg
+    - assets/iconSVG/icon_manDark.svg
+    - assets/iconSVG/icon_woman.svg
+    - assets/iconSVG/icon_womanDark.svg
+    - assets/iconSVG/basil_other-1-outline.svg
+    - assets/iconSVG/basil_other-1-outlineDark.svg
+    - assets/iconSVG/selfie.svg
+    - assets/iconSVG/selfieDark.svg
+    - assets/iconSVG/parAmi.svg
+    - assets/iconSVG/parAmiDark.svg
+
   fonts:
     - family: Kanit
       fonts:

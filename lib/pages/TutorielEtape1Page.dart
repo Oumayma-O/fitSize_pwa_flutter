@@ -20,9 +20,9 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
     print("choixScan tutoriel Etape1 page: ${widget.selectedChoix}");
 
     // Define the image path based on the selectedSexe
-    String backgroundImage = widget.selectedSexe == 'Femme'
-        ? 'assets/images/Photo-femme-face.png'
-        : 'assets/images/Photo-homme-face.png';
+    String backgroundImage = widget.selectedSexe == 'Homme'
+        ? 'assets/images/Photo-homme-face.png'
+        : 'assets/images/Photo-femme-face.png';
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 195, 194, 194),
@@ -61,7 +61,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                       Container(
                         padding: EdgeInsets.all(12),
                         child: IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.close,
                             color: Color.fromARGB(255, 38, 36, 56),
                             size: 32,
@@ -93,7 +93,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                     color: Color.fromARGB(229, 8, 41, 63),
                                     borderRadius: BorderRadius.circular(12), // Add this for rounded corners
                                   ),
-                                  child: Column(
+                                  child: const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center, // Center text vertically
                                     mainAxisSize: MainAxisSize.min, // Take minimum vertical space
@@ -173,7 +173,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                         RichText(
                           text: TextSpan(
                             text: 'Passer',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Color(0xFF353637),
                               fontFamily: 'Fors',
                               fontSize: 14,
