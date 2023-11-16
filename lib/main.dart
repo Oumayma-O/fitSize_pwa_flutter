@@ -54,7 +54,7 @@ void main() {
 
 void main() {
   runApp(   MaterialApp(
-    home: TutorielEtape1Page(selectedChoix: 'Seul(e)', selectedSexe: 'Femme',),
+    home: DetailsPage(isMetricStandard: true,),
   ));
 }
 

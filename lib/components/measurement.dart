@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 class Measurement extends StatelessWidget {
   final String text;
   final double value;
-  final String imagePath;
   final bool isMetricStandard;
 
 
   const Measurement({
     super.key,
     required this.text,
-    required this.value,
-    this.imagePath = 'assets/images/echec.png',
+    this.value=0,
     required this.isMetricStandard,
 
   });
@@ -24,17 +22,26 @@ class Measurement extends StatelessWidget {
 
 
     return Container(
+        padding: EdgeInsets.symmetric(horizontal: screenSize.width*0.025,vertical: screenSize.height*0.014),
+        decoration: const BoxDecoration(
+        border: Border(
+        bottom: BorderSide(
+        width: 1,
+        color: Color(0x14505056),
+        ),
+        ),
+        ),
       child: Row(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(
+             /* Image.asset(
                 imagePath,
                 width: screenSize.width*0.105,
                 height: screenSize.height*0.085,
               ),
-              SizedBox(width:screenSize.width*0.0769 ),
+              SizedBox(width:screenSize.width*0.0769 ),*/
               Text(
                 text,
                 style: const TextStyle(
