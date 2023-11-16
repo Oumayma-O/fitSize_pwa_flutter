@@ -30,7 +30,7 @@ class TextAndSwitch extends StatelessWidget {
                 text,
                 style: const TextStyle(
                   color: Color(0xFF08293F),
-                  fontSize: 14,
+                  fontSize: 13,
                   fontFamily: 'TT Fors Trial',
                   fontWeight: FontWeight.w400,
                   height: 0,

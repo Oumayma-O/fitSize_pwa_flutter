@@ -7,9 +7,7 @@ class SettingsPage extends StatelessWidget {
   final Function(bool) updateMetricStandard;
   final Function(bool) updateUSStandard;
 
-
-  const SettingsPage({super.key, required this.updateMetricStandard ,required this.updateUSStandard});
-
+  const SettingsPage({super.key, required this.updateMetricStandard, required this.updateUSStandard});
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +26,14 @@ class SettingsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Spacer(),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         'Paramètres',
                         style: TextStyle(
                           color: Color(0xFF08293F),
-                          fontSize: 18,
+                          fontSize: screenSize.width * 0.04, // Responsive font size
                           fontFamily: 'TT Fors Trial',
                           fontWeight: FontWeight.w600,
                           height: 0,
@@ -44,20 +42,21 @@ class SettingsPage extends StatelessWidget {
                     ],
                   ),
                   const Spacer(),
-                  Row(mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.close,
-                        color: Color.fromARGB(255, 38, 36, 56),
-                        size: 32,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.close,
+                          color: Color.fromARGB(255, 38, 36, 56),
+                          size: screenSize.width * 0.08, // Responsive icon size
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-
-                    ),
-                  ],)
+                    ],
+                  )
                 ],
               ),
 
@@ -75,19 +74,19 @@ class SettingsPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Row(
+                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                          'Informations par défaut',
-                          style: TextStyle(
-                            color: Color(0xFF08293F),
-                            fontSize: 14,
-                            fontFamily: 'TT Fors Trial',
-                            fontWeight: FontWeight.w500,
-                            height: 0,
+                            'Informations par défaut',
+                            style: TextStyle(
+                              color: Color(0xFF08293F),
+                              fontSize: screenSize.width * 0.03, // Responsive font size
+                              fontFamily: 'TT Fors Trial',
+                              fontWeight: FontWeight.w500,
+                              height: 0,
+                            ),
                           ),
-                        ),
                         ],
                       ),
 
@@ -96,13 +95,30 @@ class SettingsPage extends StatelessWidget {
                         color: Colors.black.withOpacity(0.1),
                       ),
                       SizedBox(height: screenSize.height * 0.028),
-                      TextAndSwitch(text: 'EU/US :', activeText: 'US', inactiveText: 'EU', onSwitch: (bool value) {
-                        updateUSStandard(value);},),
+                      TextAndSwitch(
+                        text: 'EU/US :',
+                        activeText: 'US',
+                        inactiveText: 'EU',
+                        onSwitch: (bool value) {
+                          updateUSStandard(value);
+                        },
+                      ),
                       SizedBox(height: screenSize.height * 0.021),
-                      TextAndSwitch(text: 'Poids :', activeText: 'Kg', inactiveText: 'Lb', onSwitch: (bool value)=>{},),
+                      TextAndSwitch(
+                        text: 'Poids :',
+                        activeText: 'Kg',
+                        inactiveText: 'Lb',
+                        onSwitch: (bool value) {},
+                      ),
                       SizedBox(height: screenSize.height * 0.021),
-                      TextAndSwitch(text: 'Taille :', activeText: 'Cm', inactiveText: 'In',onSwitch: (bool value) {
-                        updateMetricStandard(value);},),
+                      TextAndSwitch(
+                        text: 'Taille :',
+                        activeText: 'Cm',
+                        inactiveText: 'In',
+                        onSwitch: (bool value) {
+                          updateMetricStandard(value);
+                        },
+                      ),
                       SizedBox(height: screenSize.height * 0.0059),
                     ],
                   ),
@@ -120,12 +136,12 @@ class SettingsPage extends StatelessWidget {
               SizedBox(height: screenSize.height * 0.0236),
               TextButton(
                 onPressed: () {},
-                child: const Text(
+                child: Text(
                   'Supprimer mon compte',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF4B56DB),
-                    fontSize: 12,
+                    fontSize: screenSize.width * 0.03, // Responsive font size
                     fontFamily: 'TT Fors Trial',
                     fontWeight: FontWeight.w600,
                     decoration: TextDecoration.underline,

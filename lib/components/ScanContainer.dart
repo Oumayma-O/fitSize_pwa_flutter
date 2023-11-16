@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +10,7 @@ class ScanContainer extends StatelessWidget {
   final bool isMetricStandard;
   final Function(bool) onSwitch;
 
-  ScanContainer({required this.isEUStandard,required this.isMetricStandard, required this.onSwitch});
+  ScanContainer({required this.isEUStandard, required this.isMetricStandard, required this.onSwitch});
 
   @override
   Widget build(BuildContext context) {
@@ -34,22 +33,17 @@ class ScanContainer extends StatelessWidget {
           children: [
             Row(
               children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Votre Scan',
-                      style: TextStyle(
-                        color: Color(0xFF08293F),
-                        fontSize: 18,
-                        fontFamily: 'TT Fors Trial',
-                        fontWeight: FontWeight.w600,
-                        height: 0,
-                      ),
-                    ),
-                  ],
+                Text(
+                  'Votre Scan',
+                  style: TextStyle(
+                    color: Color(0xFF08293F),
+                    fontSize: screenSize.width * 0.04, // Responsive font size
+                    fontFamily: 'TT Fors Trial',
+                    fontWeight: FontWeight.w600,
+                    height: 0,
+                  ),
                 ),
-                const Spacer(),
+                Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -63,11 +57,11 @@ class ScanContainer extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: screenSize.width * 0.02),
-                    const Text(
+                    Text(
                       '01/09/2023',
                       style: TextStyle(
                         color: Color(0xFF08293F),
-                        fontSize: 14,
+                        fontSize: screenSize.width * 0.03, // Responsive font size
                         fontFamily: 'TT Fors Trial',
                         fontWeight: FontWeight.w400,
                         height: 0,
@@ -84,17 +78,17 @@ class ScanContainer extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'EU/US :',
                       style: TextStyle(
                         color: Color(0xFF08293F),
-                        fontSize: 14,
+                        fontSize: screenSize.width * 0.03, // Responsive font size
                         fontFamily: 'TT Fors Trial',
                         fontWeight: FontWeight.w400,
                         height: 0,
                       ),
                     ),
-                    SizedBox(width: screenSize.width * 0.03),
+                    SizedBox(width: screenSize.width * 0.02),
                     CustomSwitch(
                       inactiveText: "EU",
                       activeText: "US",
@@ -105,7 +99,7 @@ class ScanContainer extends StatelessWidget {
                     )
                   ],
                 ),
-                const Spacer(),
+                Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
