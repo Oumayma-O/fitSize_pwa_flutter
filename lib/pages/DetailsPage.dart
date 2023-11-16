@@ -32,7 +32,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   icon: Icon(Icons.arrow_back),
                 ),
                 Spacer(),
-                Text(
+                const Text(
                   'Détails des mensurations',
                   style: TextStyle(
                     color: Color(0xFF08293F),
@@ -97,27 +97,30 @@ class CategoryItem extends StatelessWidget {
 
     return GestureDetector(
       onTap: onSelect,
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: screenSize.width * 0.03),
-        padding: EdgeInsets.symmetric(
-          horizontal: screenSize.width * 0.025,
-          vertical: screenSize.height * 0.011,
-        ),
-        decoration: ShapeDecoration(
-          color: isSelected ? Color(0xFF08293F) : Color(0x33989DA0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+      child: Opacity(
+        opacity: isSelected ? 1.0 : 0.7, // Adjust opacity values as needed
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: screenSize.width * 0.03),
+          padding: EdgeInsets.symmetric(
+            horizontal: screenSize.width * 0.025,
+            vertical: screenSize.height * 0.011,
           ),
-        ),
-        child: Center(
-          child: Text(
-            category,
-            style: TextStyle(
-              color: isSelected ? Colors.white : Color(0xFF08293F),
-              fontSize: 12,
-              fontFamily: 'TT Fors Trial',
-              fontWeight: FontWeight.w500,
-              height: 1.2,
+          decoration: ShapeDecoration(
+            color: isSelected ? Color(0xFF08293F) : Color(0x33989DA0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          child: Center(
+            child: Text(
+              category,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Color(0xFF08293F),
+                fontSize: 12,
+                fontFamily: 'TT Fors Trial',
+                fontWeight: FontWeight.w500,
+                height: 1.2,
+              ),
             ),
           ),
         ),
@@ -125,6 +128,7 @@ class CategoryItem extends StatelessWidget {
     );
   }
 }
+
 
 class ListWidget extends StatelessWidget {
   final List<String> items;

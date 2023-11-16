@@ -26,6 +26,7 @@ class DetailsButton extends StatelessWidget {
         child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'Voir détails',

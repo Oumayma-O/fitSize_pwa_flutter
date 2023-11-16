@@ -17,8 +17,8 @@ class ScanContainer extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
 
     return Container(
-      width: screenSize.width * 0.8564,
-      height: screenSize.height * 0.1398,
+      //width: screenSize.width * 0.8564,
+      //height: screenSize.height * 0.1398,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.5),
         borderRadius: BorderRadius.circular(12),
@@ -71,7 +71,9 @@ class ScanContainer extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(height: screenSize.height*0.011,),
             const Divider(),
+            SizedBox(height: screenSize.height*0.015,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
