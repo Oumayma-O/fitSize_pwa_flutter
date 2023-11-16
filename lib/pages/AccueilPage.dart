@@ -14,279 +14,254 @@ class AccueilPage extends StatefulWidget {
 class _AccueilPageState extends State<AccueilPage> {
   bool isCheckboxChecked = false;
 
-  TextStyle customTextStyle = TextStyle(
-    fontFamily: 'ForsLight',
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    color:  Color(0xFF08293F),
-  );
-
-TextStyle customTextStyle2 = TextStyle(
-  fontFamily: 'ForsLight',
-  fontSize: 14,
-  fontWeight: FontWeight.w400,
-  color: Color(0xFF08293F),
-  height: 20 / 14, 
-  letterSpacing: 0,
-
-);
-
-
-  TextStyle customTextStyle3 = const TextStyle(
-    fontFamily: 'Fors',
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    color: Color(0xFFFAFAFC),
-  );
-
-  TextStyle customTextStyle4 = const TextStyle(
-    fontFamily: 'Fors',
-    fontSize: 12,
-    fontWeight: FontWeight.w600,
-    color: Color(0xFF4B56DB),
-    decoration: TextDecoration.underline,
-  );
-
-  
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
+    final textScaleFactor = MediaQuery
+        .of(context)
+        .textScaleFactor;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          color: Color(0xFFFAFAFC),
-          child: Stack(
-            children: [
-              // Background image
-              Image.asset(
-                'assets/images/_Layer_.png',
-                fit: BoxFit.cover,
-                height: MediaQuery.of(context).size.height * 0.4,
-                width: double.infinity,
-              ),
-              // Top images
-              Positioned(
-                top: 0.14 * MediaQuery.of(context).size.height,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/image1.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 0.25 * MediaQuery.of(context).size.height,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/image2.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-              // Stack for the icon in the top-left corner
-              Stack(
-                children: [
-                  Positioned(
-                    top: 20, 
-                   right: 20, 
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.close,
-                        color: Color.fromARGB(255, 38, 36, 56),
-                        size: 32,
-                      ),
-                          onPressed: () {
-               
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoadingPage()),
-                      );
-                    },
-                    ),
-                  ),
-    
-            Padding(
-              padding: EdgeInsets.only(top: 0.35 * MediaQuery.of(context).size.height),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(width: 0.1 * MediaQuery.of(context).size.width),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Image.asset('assets/images/Vector.png'),
-                          ),
-                          SizedBox(width: 0.06 * MediaQuery.of(context).size.width),
-                          Text(
-                            'Renseigner votre taille & poids',
-                            style: customTextStyle2,
-                          ),
-                        ],
-                      ),
-                    SizedBox(
-                      height: 0.03 * MediaQuery.of(context).size.height,
-                    ),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/Accueil.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.07179),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              double spacing = constraints.maxHeight * 0.05;
 
-                      Row(
-                        children: [
-                          SizedBox(width: 0.1 * MediaQuery.of(context).size.width),
-                          Image.asset('assets/images/mingcute_photo-album-fill.png'),
-                          SizedBox(width: 0.04 * MediaQuery.of(context).size.width),
-                          Text(
-                            'Prendre deux photos',
-                            style: customTextStyle2,
-                          ),
-                        ],
-                      ),
-                   SizedBox(
-                    height: 0.03 * MediaQuery.of(context).size.height,
-                  ),
-
-                      Row(
-                        children: [
-                          SizedBox(width: 0.1 * MediaQuery.of(context).size.width),
-                          Image.asset('assets/images/mdi_tshirt-crew.png'),
-                          SizedBox(width: 0.04 * MediaQuery.of(context).size.width),
-                          Text(
-                            'Obtenir le meilleur ajustement de taille',
-                            style: customTextStyle2,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 0.06 * MediaQuery.of(context).size.height),
-               ElevatedButton(
-                onPressed: isCheckboxChecked
-                    ? () {
-                       
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => SexePage()),
-                        );
-                    }
-                    : null, 
-                style: ElevatedButton.styleFrom(
-                  primary: const Color(0xFF4B56DB),
-                  minimumSize: Size(0.85 * MediaQuery.of(context).size.width, 60),
-                  padding: EdgeInsets.all(10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                child: Text('Commencer', style: customTextStyle3),
-              ),
-
-                  SizedBox(height: 0.005 * MediaQuery.of(context).size.height),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0), 
-                    child: Transform.scale(
-                      scale: 1.25,
-                      child: Checkbox(
-                        value: isCheckboxChecked,
-                        onChanged: (newValue) {
-                          setState(() {
-                            isCheckboxChecked = newValue ?? false;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(width:5),
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 25),
-                          child: RichText(
-                            text: TextSpan(
-                              style: customTextStyle,
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: "En sélectionnant cette option, j'accepte ",
-                                ),
-                                TextSpan(
-                                  text: "la politique\nde confidentialité",
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: " de Fitsize et nos conditions\nd'utilisation.",
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('ou', style: customTextStyle),
-                    ],
-                  ),
-                  SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => LoginPage()),
-                          );
-                        },
-                        child: Text(
-                          'Créer un compte / Se connecter',
-                          style: customTextStyle4,
-                        ),
-                      )
-                    ],
-                  ),
-                   SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
-                 
-                Column(
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  SizedBox(height: screenSize.height * 0.13),
+                  Column(
                     children: [
-                      Image.asset(
-                        'assets/images/Line 2.png',
+                      Image.asset("images/fit_shop.png"),
+                      SizedBox(height: screenSize.height * 0.0234),
+                      // Responsive spacing
+                      Image.asset("images/by_fitsize.png"),
+                    ],
+                  ),
+                  SizedBox(height: screenSize.height * 0.0829),
+                  // Responsive spacing
+                  Column(
+                    children: [
+                      _buildRowWithTextAndStyle(context,
+                        "images/mdi_human-male-height.png",
+                        "Renseigner votre taille & poids",
+                        textPadding: EdgeInsets.only(
+                            left: screenSize.width * 0.05128),
+                        textStyle: TextStyle(
+                          color: Color(0xFF08293F),
+                          fontSize: 14 * textScaleFactor,
+                          // Responsive font size
+                          fontFamily: 'TT Fors Trial',
+                          fontWeight: FontWeight.w400,
+                          height: 1.5, // Adjust line height for wrapping
+                        ),
+                      ),
+                      SizedBox(height: screenSize.height * 0.028),
+                      // Responsive spacing
+                      _buildRowWithTextAndStyle(context,
+                        "assets/images/mingcute_photo-album-fill.png",
+                        "Prendre deux photos",
+                        textPadding: EdgeInsets.only(
+                            left: screenSize.width * 0.05128),
+                        textStyle: TextStyle(
+                          color: Color(0xFF08293F),
+                          fontSize: 14 * textScaleFactor,
+                          // Responsive font size
+                          fontFamily: 'TT Fors Trial',
+                          fontWeight: FontWeight.w400,
+                          height: 1.5, // Adjust line height for wrapping
+                        ),
+                      ),
+                      SizedBox(height: screenSize.height * 0.028),
+                      // Responsive spacing
+                      _buildRowWithTextAndStyle(context,
+                        "assets/images/mdi_tshirt-crew.png",
+                        "Obtenir le meilleur ajustement de taille",
+                        textPadding: EdgeInsets.only(
+                            left: screenSize.width * 0.05128),
+                        textStyle: TextStyle(
+                          color: Color(0xFF08293F),
+                          fontSize: 14 * textScaleFactor,
+                          // Responsive font size
+                          fontFamily: 'TT Fors Trial',
+                          fontWeight: FontWeight.w400,
+                          height: 1.5, // Adjust line height for wrapping
+                        ),
                       ),
                     ],
                   ),
+                  SizedBox(height: screenSize.height * 0.071),
+                  // Responsive spacing
+                  ElevatedButton(
+                    onPressed:isCheckboxChecked
+                        ? () {
+
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => SexePage()),
+                      );
+                    }
+                        : null,
+                    style: ElevatedButton.styleFrom(
+                      primary: const Color(0xFF4B56DB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      minimumSize: Size(screenSize.width * 0.8564, 50),
+                    ),
+                    child: Text(
+                      "Commencer",
+                      style: TextStyle(
+                        fontFamily: 'TT Fors Trial',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16 * textScaleFactor,
+                        // Responsive font size
+                        color: Colors.white,
+                        letterSpacing: 0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: screenSize.height * 0.028),
+                  // Responsive spacing
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(22),
-                        child: Text(
-                          'Toutes les données sont cryptées dans les deux sens,\nsécurisées par SSL et ne sont jamais partagées avec qui\nque ce soit.',
-                          style: customTextStyle,
+                      //Checkbox(value: false, onChanged: (bool? value) {}),
+                      Theme(
+                        data: Theme.of(context).copyWith(
+                          checkboxTheme: CheckboxThemeData(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            side: const BorderSide(
+                              width: 1.0, // Adjust the border width
                             ),
                           ),
-                        ],
+                        ),
+                        child: ClipRRect(
+                          //borderRadius: BorderRadius.circular(20.0),
+                          child: Transform.scale(
+                            scale: 1.25,
+                            child: Checkbox(
+                              value: isCheckboxChecked,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  isCheckboxChecked = newValue ?? false;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width:screenSize.width * 0.03),
+                      Expanded(
+                        child: Text(
+                          "En sélectionnant cette option, j'accepte la politique de confidentialité de Fitsize et nos conditions d'utilisation.",
+                          style: TextStyle(
+                            color: Color(0xFF08293F),
+                            fontSize: 12 * textScaleFactor,
+                            // Responsive font size
+                            fontFamily: 'TT Fors Trial',
+                            fontWeight: FontWeight.w400,
+                            height: 1.5, // Adjust line height for wrapping
+                          ),
+                        ),
                       ),
                     ],
-                   )
-                   ],
-                   ),
                   ),
+                  SizedBox(height: screenSize.height * 0.0189),
+                  const Text("ou"),
+                  SizedBox(height: screenSize.height * 0.029),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    },
+                    child: Text(
+                      "Créer un compte / Se connecter",
+                      style: TextStyle(
+                        color: Color(0xFF4B56DB),
+                        fontSize: 12 * textScaleFactor,
+                        fontFamily: 'TT Fors Trial',
+                        fontWeight: FontWeight.w600,
+                        decoration: TextDecoration.underline,
+                        // Adjust line height for wrapping
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: screenSize.height * 0.0438),
+                  // Responsive spacing
+                  const Divider(
+                    color: Colors.grey,
+                    thickness: 1.0,
+                  ),
+                  SizedBox(height: screenSize.height * 0.0221),
+                  // Responsive spacing
+                  Opacity(
+                    opacity: 0.70,
+                    child: Expanded(
+                      child: Text(
+                        "Toutes les données sont cryptées dans les deux sens, sécurisées par SSL et ne sont jamais partagées avec qui que ce soit.",
+                        style: TextStyle(
+                          color: Color(0xFF08293F),
+                          fontSize: 12 * textScaleFactor,
+                          // Responsive font size
+                          fontFamily: 'TT Fors Trial',
+                          fontWeight: FontWeight.w400,
+                          height: 1.5, // Adjust line height for wrapping
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: screenSize.height * 0.03),
+
+
                 ],
-              ),
-            ],
+              );
+            },
           ),
         ),
       ),
     );
   }
+  Widget _buildRowWithTextAndStyle(BuildContext context,
+      String imagePath,
+      String text, {
+        TextStyle? textStyle,
+        EdgeInsets? textPadding,
+      }) {
+    return Container(
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
+      child: Row(
+        children: [
+          Image.asset(imagePath),
+          const SizedBox(width: 20),
+          Expanded(
+            child: Padding(
+              padding: textPadding ?? EdgeInsets.all(8),
+              child: Text(
+                text,
+                style: textStyle ?? const TextStyle(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 }

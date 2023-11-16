@@ -45,7 +45,7 @@ class _HomeWomanPageState extends State<HomeWomanPage> {
             child: Stack(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height*1.1,
+                  height: MediaQuery.of(context).size.height*1.01,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/images/H_F.png'),

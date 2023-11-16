@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/DetailsButton.dart';
 import '../components/ScanButton.dart';
 import '../components/ScanContainer.dart';
 import '../components/bas_blue_square_tile.dart';
@@ -7,7 +6,6 @@ import '../components/haut_blue_square_tile.dart';
 import '../components/sexe_blue_square_tile.dart';
 import 'ChoixScanPage.dart';
 import 'SettingsPage.dart';
-import 'TutorielEtape1Page.dart';
 
 class HomeManPage extends StatefulWidget {
   @override
@@ -47,7 +45,7 @@ class _HomeManPageState extends State<HomeManPage> {
             child: Stack(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height*1.1,
+                  height: MediaQuery.of(context).size.height*1.01,
                   //width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
@@ -60,7 +58,7 @@ class _HomeManPageState extends State<HomeManPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(height: screenSize.height * 0.073),
+                        SizedBox(height: screenSize.height * 0.07),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
