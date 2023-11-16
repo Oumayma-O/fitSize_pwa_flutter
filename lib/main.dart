@@ -9,12 +9,13 @@ import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/SettingsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
+import 'package:fitsize/pages/TutorielEtape1Page.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/beamer_routes.dart';
 import 'package:fitsize/pages/LoginPage.dart';
 
 
-
+/*
 void main() {
   final routerDelegate = BeamerDelegate(
     initialPath: '/accueil',
@@ -49,13 +50,13 @@ void main() {
 
   runApp(MyApp(routerDelegate));
 }
+*/
 
-/*
 void main() {
   runApp(   MaterialApp(
-    home: SexePage(),
+    home: TutorielEtape1Page(selectedChoix: 'Seul(e)', selectedSexe: 'Femme',),
   ));
-}*/
+}
 
 class MyApp extends StatelessWidget {
   final BeamerDelegate routerDelegate;

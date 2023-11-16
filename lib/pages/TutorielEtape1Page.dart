@@ -34,9 +34,9 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 195, 194, 194),
       body: Container(
-        
+
         child: Stack(
-          
+
           children: [
             Positioned(
               child: Container(
@@ -50,7 +50,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
               ),
             ),
 
-      
+
               Column(
                 children: [
                   Row(
@@ -66,7 +66,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                       ),
                       Spacer(),
                       Container(
-                        padding: EdgeInsets.all(12),
+                        padding: EdgeInsets.symmetric(horizontal:screenSize.width*0.071),
                         child: IconButton(
                           icon: const Icon(
                             Icons.close,
@@ -82,20 +82,20 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                       ),
                     ],
                   ),
-                  
-                  SizedBox(height: 0),                          
+
+                  SizedBox(height: screenSize.height*0.01),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            height: 162,
-                            width: 334,
+                            //height: 162,
+                            //width: 334,
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
                                 // Replace etape1 image with a Container containing texts
                                 Container(
-                                  padding: EdgeInsets.all(22), // Add padding here
+                                  padding: EdgeInsets.symmetric(horizontal:screenSize.width*0.05,vertical: screenSize.height*0.018),
                                   decoration: BoxDecoration(
                                     color: Color.fromARGB(229, 8, 41, 63),
                                     borderRadius: BorderRadius.circular(12), // Add this for rounded corners
@@ -105,12 +105,12 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                     crossAxisAlignment: CrossAxisAlignment.center, // Center text vertically
                                     mainAxisSize: MainAxisSize.min, // Take minimum vertical space
                                     children: [
-                                    SizedBox(height: screenSize.height*0.017),
+                                    SizedBox(height: screenSize.height*0.0189),
                                       const Text(
                                         'Position de face',
                                         style: TextStyle(
                                           fontFamily: 'Fors',
-                                          fontSize: 16,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xFFFAFAFC),
                                         ),
@@ -120,17 +120,17 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                         "Portez des vêtements près du corps !",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
-                                          fontSize: 14,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w300,
                                           color: Color.fromARGB(151, 255, 255, 255),
                                         ),
                                       ),
-                                      
+
                                       const Text(
                                         "Tenez-vous face à l'appareil photo avec les",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
-                                          fontSize: 14,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w300,
                                           color: Color.fromARGB(151, 255, 255, 255),
                                         ),
@@ -140,7 +140,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                         " bras légèrement écartés et les jambes à",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
-                                          fontSize: 14,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w300,
                                           color:  Color.fromARGB(151, 255, 255, 255),
                                         ),
@@ -149,12 +149,12 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                         " environ 35 degrés.",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
-                                          fontSize: 14,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w300,
                                           color:  Color.fromARGB(151, 255, 255, 255),
                                         ),
                                       ),
-                                      
+
                                     ],
                                   ),
                                 ),
@@ -204,7 +204,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                       ],
                     ),
                   ),
-      
+
                 ],
               ),
             ],

@@ -15,6 +15,9 @@ class TutorielEtape2Page extends StatefulWidget {
 class _TutorielEtape2PageState extends State<TutorielEtape2Page> {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
     print("choixScan tutoriel Etape2 page: ${widget.selectedChoix}");
 
 
@@ -57,7 +60,7 @@ class _TutorielEtape2PageState extends State<TutorielEtape2Page> {
                       ),
                       Spacer(),
                       Container(
-                        padding: EdgeInsets.all(12),
+                        padding: EdgeInsets.symmetric(horizontal:screenSize.width*0.071),
                         child: IconButton(
                           icon: Icon(
                             Icons.close,
@@ -73,20 +76,20 @@ class _TutorielEtape2PageState extends State<TutorielEtape2Page> {
                       ),
                     ],
                   ),
-                  
-                  SizedBox(height: 0),                          
+
+                  SizedBox(height: screenSize.height*0.01),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            height: 162,
-                            width: 334,
+                            //height: 162,
+                            //width: 334,
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
                                 // Replace etape1 image with a Container containing texts
                                 Container(
-                                  padding: EdgeInsets.all(22), // Add padding here
+                                  padding: EdgeInsets.symmetric(horizontal:screenSize.width*0.05,vertical: screenSize.height*0.018),
                                   decoration: BoxDecoration(
                                     color: Color.fromARGB(229, 8, 41, 63),
                                     borderRadius: BorderRadius.circular(12), // Add this for rounded corners
@@ -96,42 +99,42 @@ class _TutorielEtape2PageState extends State<TutorielEtape2Page> {
                                     crossAxisAlignment: CrossAxisAlignment.center, // Center text vertically
                                     mainAxisSize: MainAxisSize.min, // Take minimum vertical space
                                     children: [
-                                    SizedBox(height: 10),
-                                      Text(
+                                      SizedBox(height: screenSize.height*0.025),
+                                      const Text(
                                         'Position de profil',
                                         style: TextStyle(
                                           fontFamily: 'Fors',
-                                          fontSize: 16,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xFFFAFAFC),
                                         ),
                                       ),
-                                      SizedBox(height: 5),
-                                        Text(
+                                      SizedBox(height: screenSize.height*0.0094),
+                                        const Text(
                                         "Tenez-vous de profil en maintenant les",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
-                                          fontSize: 14,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w300,
                                           color: Color.fromARGB(151, 255, 255, 255),
                                         ),
                                       ),
                                       
-                                      Text(
+                                      const Text(
                                         "jambes rapprochées et les bras le long du",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
-                                          fontSize: 14,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w300,
                                           color: Color.fromARGB(151, 255, 255, 255),
                                         ),
                                       ),
 
-                                        Text(
+                                        const Text(
                                         "corps dans la photo.",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
-                                          fontSize: 14,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w300,
                                           color:  Color.fromARGB(151, 255, 255, 255),
                                         ),
@@ -153,7 +156,7 @@ class _TutorielEtape2PageState extends State<TutorielEtape2Page> {
                           ),
                         ],
                       ),
-                  SizedBox(height: 5),
+                  SizedBox(height: screenSize.height*0.016),
                  Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
