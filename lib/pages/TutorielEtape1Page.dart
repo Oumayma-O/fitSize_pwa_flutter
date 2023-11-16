@@ -17,6 +17,13 @@ class TutorielEtape1Page extends StatefulWidget {
 class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
+    final textScaleFactor = MediaQuery
+        .of(context)
+        .textScaleFactor;
+
     print("choixScan tutoriel Etape1 page: ${widget.selectedChoix}");
 
     // Define the image path based on the selectedSexe
@@ -93,13 +100,13 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                     color: Color.fromARGB(229, 8, 41, 63),
                                     borderRadius: BorderRadius.circular(12), // Add this for rounded corners
                                   ),
-                                  child: const Column(
+                                  child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center, // Center text vertically
                                     mainAxisSize: MainAxisSize.min, // Take minimum vertical space
                                     children: [
-                                    SizedBox(height: 10),
-                                      Text(
+                                    SizedBox(height: screenSize.height*0.017),
+                                      const Text(
                                         'Position de face',
                                         style: TextStyle(
                                           fontFamily: 'Fors',
@@ -108,8 +115,8 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                           color: Color(0xFFFAFAFC),
                                         ),
                                       ),
-                                      SizedBox(height: 5),
-                                        Text(
+                                      SizedBox(height: screenSize.height*0.0094),
+                                        const Text(
                                         "Portez des vêtements près du corps !",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
@@ -119,7 +126,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                         ),
                                       ),
                                       
-                                      Text(
+                                      const Text(
                                         "Tenez-vous face à l'appareil photo avec les",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
@@ -129,7 +136,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                         ),
                                       ),
 
-                                        Text(
+                                        const Text(
                                         " bras légèrement écartés et les jambes à",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
@@ -138,7 +145,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                                           color:  Color.fromARGB(151, 255, 255, 255),
                                         ),
                                       ),
-                                          Text(
+                                          const Text(
                                         " environ 35 degrés.",
                                         style: TextStyle(
                                           fontFamily: 'ForsLight',
@@ -165,7 +172,7 @@ class _TutorielEtape1PageState extends State<TutorielEtape1Page> {
                       ),
 
 
-                  SizedBox(height: 5),
+                  SizedBox(height: screenSize.height*0.016),
                  Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
