@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../pages/DetailsPage.dart';
 import 'CustomSwitch.dart';
 import 'DetailsButton.dart';

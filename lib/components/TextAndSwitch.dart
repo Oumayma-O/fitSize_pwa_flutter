@@ -7,7 +7,6 @@ class TextAndSwitch extends StatelessWidget {
   final String inactiveText;
   final Function(bool) onSwitch;
 
-
   const TextAndSwitch({
     super.key,
     required this.text,
@@ -28,9 +27,9 @@ class TextAndSwitch extends StatelessWidget {
             children: [
               Text(
                 text,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Color(0xFF08293F),
-                  fontSize: 13,
+                  fontSize: screenSize.width * 0.03, // Adjust the multiplier as needed
                   fontFamily: 'TT Fors Trial',
                   fontWeight: FontWeight.w400,
                   height: 0,
@@ -42,7 +41,12 @@ class TextAndSwitch extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              CustomSwitch(activeText: activeText, inactiveText: inactiveText,initialValue: true,onSwitch: onSwitch,),
+              CustomSwitch(
+                activeText: activeText,
+                inactiveText: inactiveText,
+                initialValue: true,
+                onSwitch: onSwitch,
+              ),
             ],
           ),
         ],
