@@ -1,7 +1,6 @@
-import 'package:fitsize/pages/AccueilPage.dart';
 import 'package:flutter/material.dart';
-import 'package:fitsize/widgets/PrecedentButton.dart';
-import 'package:fitsize/widgets/SuivantButton.dart';
+import '../components/my_button.dart';
+import '../pages/AccueilPage.dart';
 
 class ResultatsPage extends StatefulWidget {
   @override
@@ -9,10 +8,10 @@ class ResultatsPage extends StatefulWidget {
 }
 
 class _ResultatsPageState extends State<ResultatsPage> {
-  Map<String, double> sizeValues = {
-    "M": 0.80,
-    "L": 0.90,
-    "XL": 0.99,
+  Map<String, String> sizeValues = {
+    'M': 'Serré',
+    'L': 'Ajustement idéal',
+    'XL': 'Ample',
   };
 
   String selectedSize = "L";
@@ -34,172 +33,265 @@ class _ResultatsPageState extends State<ResultatsPage> {
                     left: 0,
                     right: 0,
                     child: Container(
-                   
                       child: Image.asset(
                         'assets/images/Jupe.png',
                         fit: BoxFit.cover,
                         height: MediaQuery.of(context).size.height * 0.65,
-                        width: MediaQuery.of(context).size.height * 0.6,
+                        width: MediaQuery.of(context).size.width,
                       ),
                     ),
                   ),
-                 Positioned(
+                  Positioned(
                     top: 8,
-                    left: 320,
-                    right: 0,
+                    left: 16,
                     child: IconButton(
-                          icon: const Icon(
-                            Icons.close,
-                            color: Color.fromARGB(255, 38, 36, 56),
-                            size: 32,
-                          ),
-                        onPressed: () {                    
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => AccueilPage()),
-                              );
-                            },
-                        ),
-                   ),
-                  Positioned(
-                    top: MediaQuery.of(context).size.height * 0.61,
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: Container(
-                        width: 128, 
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(64.0),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                 
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: const Color.fromARGB(255, 8, 41, 63),
-                            minimumSize: Size(128, 59),
-                            padding: EdgeInsets.all(10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(64.0),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center, 
-                            children: [
-                              Text(
-                                "Fit ${(sizeValues[selectedSize] ?? 0) * 100}%",
-                                style: const TextStyle(
-                                  fontFamily: 'Fors',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Image.asset('assets/images/Group 117.png'), 
-                            ],
-                          ),
-                        ),
+                      icon: const Icon(
+                        Icons.close,
+                        color: Color.fromARGB(255, 38, 36, 56),
+                        size: 32,
                       ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => AccueilPage()),
+                        );
+                      },
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.67,
-                    left: 0,
-                    right: 0,
+                    top: 372,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 40),
+                      padding: EdgeInsets.symmetric(horizontal: 28),
+                      child:Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 472,
+                      decoration: const ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(22),
+                            topRight: Radius.circular(22),
+                          ),
+                        ),
+                        shadows: [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 10,
+                            offset: Offset(-1, -1),
+                            spreadRadius: 0,
+                          )
+                        ],
+                      ),
+                      // Your content goes here
+                    ),
+                    ),
+                  ),
+
+              Positioned(
+                top: 392,
+                //left: 90,
+                child: GestureDetector(
+                    child:Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 11,vertical: 11),
+                      child: Container(
+                      width: 211,
+                      height: 42,
+                      decoration: ShapeDecoration(
+                        color: Color(0xFFF4F4F4),
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(width: 1, color: Color(0xFFD1D1D1)),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: sizeValues.keys.map((key) {
-                          final isSelected = selectedSize == key;
-                       final buttonColor = isSelected
-                        ? const Color(0xFFC0EDD8)
-                        : const Color(0xFFF0F5F8);
-
-                      final onPrimaryColor = isSelected
-                        ? const Color(0xFF08293F)
-                        : const Color(0xFF989DA0);
-
-
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  selectedSize = key;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: buttonColor,
-                                onPrimary: onPrimaryColor,
-                                minimumSize: const Size(101, 48),
-                                padding: const EdgeInsets.all(10),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  side: BorderSide(
-                                    color: isSelected
-                                        ? const Color(0xFF08293F)
-                                        :const Color(0xFF989DA0),
-                                    width: 1.0,
-                                  ),
-                                ),
-                              ),
-                              child: Text(
-                                key,
-                                style: const TextStyle(
-                                  fontFamily: 'Fors',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Sauvegarder votre scan',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF505056),
+                              fontSize: 14,
+                              fontFamily: 'TT Fors Trial',
+                              fontWeight: FontWeight.w400,
+                              height: 0,
                             ),
-                          );
-                        }).toList(),
+                          ),
+                          SizedBox(width: 8,),
+                          Image.asset(
+                              'images/mingcute_user-4-fill.png'
+                          ),
+                        ],
                       ),
-                    ),
+                    ),  )
                   ),
+              ),
+
+              Positioned(
+                top: 460,
+                //left: 90,
+                child:Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child:  Container(
+                width: 334,
+                height: 293,
+                decoration: ShapeDecoration(
+                  color: Color(0xFFF9F9FB),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  shadows: const [
+                    BoxShadow(
+                      color: Color(0x3F000000),
+                      blurRadius: 11,
+                      offset: Offset(1, 1),
+                      spreadRadius: 0,
+                    )
+                  ],
+                ),
+
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 20,),
+                     Row (
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                          'Taille recommandé',
+                          style: TextStyle(
+                            color: Color(0xFF08293F),
+                            fontSize: 16,
+                            fontFamily: 'TT Fors Trial',
+                            fontWeight: FontWeight.w700,
+                            height: 0,
+                          ),
+                        ),
+                          const SizedBox(width: 12,),
+                          Image.asset(
+                              'images/Group_468.png'
+                          ),
+
+                        ],
+                      ),
+                      SizedBox(height: 97,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                         Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: sizeValues.keys.map((key) {
+                                final isSelected = selectedSize == key;
+                                final buttonWidth = isSelected ? 112.0 : 94.0;
+                                final buttonHeight = isSelected ? 80.0 : 74.0;
+                                final buttonColor = isSelected
+                                    ? const Color(0xFF08293F)
+                                    : const Color(0xFFF4F4F4);
+
+                                final onPrimaryColor = isSelected
+                                    ? const Color(0xFF08293F)
+                                    : const Color(0xFFF4F4F4);
+
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        selectedSize = key;
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: buttonColor,
+                                      onPrimary: onPrimaryColor,
+                                      minimumSize: Size(buttonWidth, buttonHeight),
+                                      padding: EdgeInsets.symmetric(vertical: 12),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        side: BorderSide(
+                                          color: isSelected
+                                              ? const Color(0xFF08293F)
+                                              : const Color(0xFFF4F4F4),
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          key,
+                                          style: TextStyle(
+                                            color: selectedSize == key
+                                                ? const Color(0xFFD8FD00)
+                                                : const Color(0xFF08293F),
+                                            fontFamily: 'Fors',
+                                            fontSize: selectedSize == key ? 30 : 18,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        //SizedBox(height: 7),
+                                        SizedBox(
+                                          width: isSelected ? 80 : 74,
+                                          child: Text(
+                                            textAlign: TextAlign.center,
+                                            sizeValues[key]!,
+                                              style: TextStyle(
+                                                color: selectedSize == key
+                                                    ? const Color(0xFFD8FD00)
+                                                    : const Color(0xFF505056),
+                                                fontSize: 14,
+                                                fontFamily: 'TT Fors Trial',
+                                                fontWeight: FontWeight.w400,
+                                                //height: 0.09,
+                                              ),
+                                            ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+
+                        ],
+                      ),
+                      const SizedBox(height: 35,),
+                      const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Taille basée sur le référentiel de la boutique',
+                              style: TextStyle(
+                                color: Color(0xFF08293F),
+                                fontSize: 13,
+                                fontFamily: 'TT Fors Trial',
+                                fontWeight: FontWeight.w400,
+                                height: 0,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                    ],
+                  ),
+              ),
+                ),
+              ),
+
+              /*Positioned(
+                top: 601,
+                left: 40,
+                right: 40,
+                child:
+              ),*/
+
+
+
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.83,
-                    left: 0,
-                    right: 0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            PrecedentButton(
-                              buttonText: "Détail des mensurations",
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => AccueilPage(),
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SuivantButton(
-                              buttonText: "Retour à l’article",
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => const AccueilPage(),
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+                    bottom: 20,
+                    child: MyButton(
+                      onTap: () {
+                        // Your onTap logic here
+                      },
+                      buttonText: "Retour à l'article",
                     ),
                   ),
                 ],

@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-           decoration: BoxDecoration(
+           decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Accueil.png',),
                 fit: BoxFit.cover,
@@ -119,7 +119,7 @@ class LoginPage extends StatelessWidget {
                     obscureText: false,
                   ),
                   SizedBox(height: screenSize.height * 0.0236),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: Row(
                       children: [
@@ -169,6 +169,7 @@ class LoginPage extends StatelessWidget {
                       String userGender = 'male'; // Change this based on your logic
                       signUserIn(userGender, context);
                     },
+                    buttonText: 'Continuer',
                   ),
                   SizedBox(height: screenSize.height * 0.0568),
                 ],

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
   final Function()? onTap;
+  final String buttonText;
 
-  const MyButton({Key? key, required this.onTap});
+  const MyButton({Key? key, required this.onTap, required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +19,9 @@ class MyButton extends StatelessWidget {
         ),
         fixedSize: Size(screenSize.width * 0.8564, screenSize.height * 0.0592),
       ),
-      child: const Text(
-        'Continuer',
-        style: TextStyle(
+      child: Text(
+        buttonText,
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 16,
           fontFamily: 'TT Fors Trial',

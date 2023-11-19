@@ -6,6 +6,7 @@ import 'package:fitsize/pages/HomeWomanPage.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/LoadingPage2.dart';
 import 'package:fitsize/pages/PoidsPage.dart';
+import 'package:fitsize/pages/ResultatsPage.dart';
 import 'package:fitsize/pages/SettingsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
@@ -15,7 +16,7 @@ import 'package:fitsize/beamer_routes.dart';
 import 'package:fitsize/pages/LoginPage.dart';
 
 
-
+/*
 void main() {
   final routerDelegate = BeamerDelegate(
     initialPath: '/accueil',
@@ -50,14 +51,15 @@ void main() {
 
   runApp(MyApp(routerDelegate));
 }
+*/
 
-/*
+
 void main() {
   runApp(   MaterialApp(
-    home: DetailsPage(isMetricStandard: true,),
+    home: ResultatsPage(),
   ));
 }
-*/
+
 class MyApp extends StatelessWidget {
   final BeamerDelegate routerDelegate;
 
