@@ -3,18 +3,27 @@ import '../components/my_button.dart';
 import '../pages/AccueilPage.dart';
 
 class ResultatsPage extends StatefulWidget {
+
   @override
   _ResultatsPageState createState() => _ResultatsPageState();
 }
 
 class _ResultatsPageState extends State<ResultatsPage> {
-  Map<String, String> sizeValues = {
+  Map<String, String> sizeDescription = {
     'M': 'Serré',
     'L': 'Ajustement idéal',
     'XL': 'Ample',
   };
 
+  Map<String, double> sizeValues = {
+    "M": 0.80,
+    "L": 0.90,
+    "XL": 0.99,
+  };
+
+
   String selectedSize = "L";
+
 
   @override
   Widget build(BuildContext context) {
@@ -172,88 +181,92 @@ class _ResultatsPageState extends State<ResultatsPage> {
 
                         ],
                       ),
-                      SizedBox(height: 97,),
-                      Row(
+                      SizedBox(height: 87,),
+                      Container(
+                        height: 95,
+                        child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                         Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: sizeValues.keys.map((key) {
-                                final isSelected = selectedSize == key;
-                                final buttonWidth = isSelected ? 112.0 : 94.0;
-                                final buttonHeight = isSelected ? 80.0 : 74.0;
-                                final buttonColor = isSelected
-                                    ? const Color(0xFF08293F)
-                                    : const Color(0xFFF4F4F4);
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: sizeDescription.keys.map((key) {
+                              final isSelected = selectedSize == key;
+                              final buttonWidth = isSelected ? 112.0 : 94.0;
+                              final buttonHeight = isSelected ? 80.0 : 74.0;
+                              final buttonColor = isSelected
+                                  ? const Color(0xFF08293F)
+                                  : const Color(0xFFF4F4F4);
 
-                                final onPrimaryColor = isSelected
-                                    ? const Color(0xFF08293F)
-                                    : const Color(0xFFF4F4F4);
+                              final onPrimaryColor = isSelected
+                                  ? const Color(0xFF08293F)
+                                  : const Color(0xFFF4F4F4);
 
-                                return Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        selectedSize = key;
-                                      });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: buttonColor,
-                                      onPrimary: onPrimaryColor,
-                                      minimumSize: Size(buttonWidth, buttonHeight),
-                                      padding: EdgeInsets.symmetric(vertical: 12),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8.0),
-                                        side: BorderSide(
-                                          color: isSelected
-                                              ? const Color(0xFF08293F)
-                                              : const Color(0xFFF4F4F4),
-                                          width: 1.0,
-                                        ),
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 4),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      selectedSize = key;
+                                    });
+                                    _showFitPercentageBubble();
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: buttonColor,
+                                    onPrimary: onPrimaryColor,
+                                    minimumSize: Size(buttonWidth, buttonHeight),
+                                    padding: EdgeInsets.symmetric(vertical: 12),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      side: BorderSide(
+                                        color: isSelected
+                                            ? const Color(0xFF08293F)
+                                            : const Color(0xFFF4F4F4),
+                                        width: 1.0,
                                       ),
                                     ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          key,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        key,
+                                        style: TextStyle(
+                                          color: selectedSize == key
+                                              ? const Color(0xFFD8FD00)
+                                              : const Color(0xFF08293F),
+                                          fontFamily: 'Fors',
+                                          fontSize: selectedSize == key ? 30 : 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      //SizedBox(height: 7),
+                                      SizedBox(
+                                        width: isSelected ? 80 : 74,
+                                        child: Text(
+                                          textAlign: TextAlign.center,
+                                          sizeDescription[key]!,
                                           style: TextStyle(
                                             color: selectedSize == key
                                                 ? const Color(0xFFD8FD00)
-                                                : const Color(0xFF08293F),
-                                            fontFamily: 'Fors',
-                                            fontSize: selectedSize == key ? 30 : 18,
-                                            fontWeight: FontWeight.w600,
+                                                : const Color(0xFF505056),
+                                            fontSize: 14,
+                                            fontFamily: 'TT Fors Trial',
+                                            fontWeight: FontWeight.w400,
+                                            //height: 0.09,
                                           ),
                                         ),
-                                        //SizedBox(height: 7),
-                                        SizedBox(
-                                          width: isSelected ? 80 : 74,
-                                          child: Text(
-                                            textAlign: TextAlign.center,
-                                            sizeValues[key]!,
-                                              style: TextStyle(
-                                                color: selectedSize == key
-                                                    ? const Color(0xFFD8FD00)
-                                                    : const Color(0xFF505056),
-                                                fontSize: 14,
-                                                fontFamily: 'TT Fors Trial',
-                                                fontWeight: FontWeight.w400,
-                                                //height: 0.09,
-                                              ),
-                                            ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                );
-                              }).toList(),
-                            ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
 
                         ],
-                      ),
-                      const SizedBox(height: 35,),
+                      ),),
+
+                      const SizedBox(height: 20,),
                       const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -302,4 +315,47 @@ class _ResultatsPageState extends State<ResultatsPage> {
       ),
     );
   }
+
+
+void _showFitPercentageBubble() {
+  final overlay = OverlayEntry(
+    builder: (context) => Positioned(
+      top: 520,
+      left: 135,
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          width: 120,
+          height: 48,
+          padding: const EdgeInsets.all(10),
+          decoration: ShapeDecoration(
+            color: Color(0xFF1CE496),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          child:Center(
+            child:Text(
+              "Fit ${(sizeValues[selectedSize] ?? 0) * 100}%",
+              style: TextStyle(
+                color: Color(0xFF08293F),
+                fontSize: 14,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w600,
+                height: 0,
+              ),
+            ), ),
+        ),
+      ),
+    ),
+  );
+
+  Overlay.of(context)!.insert(overlay);
+
+  // You may want to set a timer to remove the overlay after a certain duration
+  // Timer(Duration(seconds: 2), () {
+  //   overlay.remove();
+  // });
 }
+}
+
