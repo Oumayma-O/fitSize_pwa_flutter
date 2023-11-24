@@ -146,7 +146,7 @@ void initState() {
                     child: Container(
                       alignment: Alignment.centerRight,
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Color(0xFFC0EDD8),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10.0),
@@ -154,6 +154,8 @@ void initState() {
                             bottomLeft: Radius.circular(10.0),
                           ),
                         ),
+                        height: 40,
+                        width: _containerWidth,
                         child: Row(
                           children: [
                             SizedBox(width: 10),
@@ -170,7 +172,7 @@ void initState() {
                                   MaterialPageRoute(builder: (context) => SexePage()),
                                 );
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.edit,
                                 color: Color(0xFF08293F),
                                 size: 16,
@@ -178,8 +180,6 @@ void initState() {
                             ),
                           ],
                         ),
-                        height: 40,
-                        width: _containerWidth,
                       ),
                     ),
                   ),
@@ -188,7 +188,7 @@ void initState() {
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: EdgeInsets.only(left: 20, right: 20),
-                      child: Text('Quelle 2 faites-vous ?', style: customTextStyle),
+                      child: Text('Quelle taille faites-vous ?', style: customTextStyle),
                     ),
                   ),
                   SizedBox(height: 10),

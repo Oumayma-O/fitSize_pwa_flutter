@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../components/my_button.dart';
 import '../pages/AccueilPage.dart';
+import 'DetailsPage.dart';
+import 'LoginPage.dart';
 
 class ResultatsPage extends StatefulWidget {
 
@@ -9,6 +11,15 @@ class ResultatsPage extends StatefulWidget {
 }
 
 class _ResultatsPageState extends State<ResultatsPage> {
+  bool showFitBubble = true;
+
+  /*@override
+  void dispose() {
+    // Remove the overlay when the page is disposed
+    overlay?.remove();
+    super.dispose();
+  }*/
+
   Map<String, String> sizeDescription = {
     'M': 'Serré',
     'L': 'Ajustement idéal',
@@ -99,6 +110,11 @@ class _ResultatsPageState extends State<ResultatsPage> {
                 top: 392,
                 //left: 90,
                 child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
                     child:Padding(
                       padding: EdgeInsets.symmetric(horizontal: 11,vertical: 11),
                       child: Container(
@@ -132,7 +148,8 @@ class _ResultatsPageState extends State<ResultatsPage> {
                           ),
                         ],
                       ),
-                    ),  )
+                    ),
+                    ),
                   ),
               ),
 
@@ -160,7 +177,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                   child: Column(
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: 20,),
+                      SizedBox(height: 16,),
                      Row (
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -170,18 +187,56 @@ class _ResultatsPageState extends State<ResultatsPage> {
                             color: Color(0xFF08293F),
                             fontSize: 16,
                             fontFamily: 'TT Fors Trial',
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w800,
                             height: 0,
                           ),
                         ),
                           const SizedBox(width: 12,),
-                          Image.asset(
-                              'images/Group_468.png'
-                          ),
+                          IconButton(
+                            icon: Image.asset(
+                              'images/Group_468.png',
+                              //width: 24.0,
+                              //height: 24.0,
+                            ),
+                            onPressed: () {
+                                  Navigator.of(context!).push(
+                                    MaterialPageRoute(builder: (context) => DetailsPage(isMetricStandard: true)),
+                                  );
+                            },
+                          )
 
                         ],
                       ),
-                      SizedBox(height: 87,),
+                      SizedBox(height: 16,),
+
+                        Container(
+                              width: 120,
+                              height: 48,
+                              padding: const EdgeInsets.all(10),
+                              decoration: ShapeDecoration(
+                                color: Color(0xFF1CE496),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Fit ${(sizeValues[selectedSize] ?? 0) * 100}%",
+                                  style: const TextStyle(
+                                    color: Color(0xFF08293F),
+                                    fontSize: 14,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w600,
+                                    height: 0,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+
+
+                      SizedBox(height: 24,),
+
                       Container(
                         height: 95,
                         child: Row(
@@ -208,7 +263,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                                     setState(() {
                                       selectedSize = key;
                                     });
-                                    _showFitPercentageBubble();
+                                   // _showFitPercentageBubble();
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: buttonColor,
@@ -266,6 +321,7 @@ class _ResultatsPageState extends State<ResultatsPage> {
                         ],
                       ),),
 
+
                       const SizedBox(height: 20,),
                       const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -316,10 +372,13 @@ class _ResultatsPageState extends State<ResultatsPage> {
     );
   }
 
+  /*void _showFitPercentageBubble() {
+    if (!mounted) {
+      // If the widget is not mounted, do not show the bubble
+      return;
+    }
 
-void _showFitPercentageBubble() {
-  final overlay = OverlayEntry(
-    builder: (context) => Positioned(
+    final overlayBuilder = (context) => Positioned(
       top: 520,
       left: 135,
       child: Material(
@@ -334,28 +393,51 @@ void _showFitPercentageBubble() {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          child:Center(
-            child:Text(
+          child: Center(
+            child: Text(
               "Fit ${(sizeValues[selectedSize] ?? 0) * 100}%",
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xFF08293F),
                 fontSize: 14,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w600,
                 height: 0,
               ),
-            ), ),
+            ),
+          ),
         ),
       ),
-    ),
-  );
+    );
 
-  Overlay.of(context)!.insert(overlay);
+    final overlay = OverlayEntry(builder: overlayBuilder);
 
-  // You may want to set a timer to remove the overlay after a certain duration
-  // Timer(Duration(seconds: 2), () {
-  //   overlay.remove();
-  // });
-}
+    // Add the overlay directly to your widget's tree
+    Overlay.of(context)!.insert(overlay);
+
+    // You may want to set a timer to remove the overlay after a certain duration
+    // Timer(Duration(seconds: 2), () {
+    //   overlay.remove();
+    // });
+  }
+*/
+ /* void _showFitPercentageBubble() {
+    setState(() {
+      showFitBubble = true;
+    });
+
+    // You may want to set a timer to hide the fit bubble after a certain duration
+    /*Timer(Duration(seconds: 2), () {
+      setState(() {
+        showFitBubble = false;
+      });
+    });*/
+  }
+
+  void _removeFitPercentageBubble() {
+    setState(() {
+      showFitBubble = false;
+    });
+  }*/
+
 }
 
