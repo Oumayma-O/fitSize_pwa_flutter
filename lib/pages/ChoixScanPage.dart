@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:fitsize/components/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
@@ -118,13 +119,15 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFAFAFC),
-      body: Column(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 28),
+        child:Column(
         children: [
           Expanded(
             child: ListView(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 10, right: 20, top: 20),
+                  padding: EdgeInsets.only( top: 27),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -143,13 +146,13 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 32),
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(),
                   child: Container(
                     alignment: Alignment.centerRight,
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xFFC0EDD8),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10.0),
@@ -157,9 +160,11 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                           bottomLeft: Radius.circular(10.0),
                         ),
                       ),
+                      height: 44,
+                      width: _containerWidth,
                       child: Row(
                         children: [
-                          SizedBox(width: 10),
+                          //SizedBox(width: 10),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
@@ -173,7 +178,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                                 MaterialPageRoute(builder: (context) => SexePage()),
                               );
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.edit,
                               color: Color(0xFF08293F),
                               size: 16,
@@ -181,18 +186,16 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                           ),
                         ],
                       ),
-                      height: 40,
-                      width: _containerWidth,
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 16),
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(),
                   child: Container(
                     alignment: Alignment.centerRight,
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xFFC0EDD8),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10.0),
@@ -200,9 +203,10 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                           bottomLeft: Radius.circular(10.0),
                         ),
                       ),
+                      height: 44,
+                      width: 142,
                       child: Row(
                         children: [
-                          SizedBox(width: 10),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
@@ -216,7 +220,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                                 MaterialPageRoute(builder: (context) => TaillePage(selectedSexe: widget.selectedSexe)),
                               );
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.edit,
                               color: Color(0xFF08293F),
                               size: 16,
@@ -224,18 +228,16 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                           ),
                         ],
                       ),
-                      height: 40,
-                      width: 160,
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 16),
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(),
                   child: Container(
                     alignment: Alignment.centerRight,
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xFFC0EDD8),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10.0),
@@ -243,17 +245,19 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                           bottomLeft: Radius.circular(10.0),
                         ),
                       ),
+                      height: 44,
+                      width: 122,
                       child: Row(
                         children: [
-                          SizedBox(width: 10),
                           Padding(
-                            padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.only( left: 16,right: 8.0,top:12,bottom: 12),
                             child: Text(
                               'Je fais ${widget.selectedPoids}',
                               style: customTextStyle2,
                             ),
                           ),
-                          GestureDetector(
+
+                           GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context) => PoidsPage(
@@ -263,43 +267,38 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                                 ),
                               );
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.edit,
                               color: Color(0xFF08293F),
                               size: 16,
                             ),
                           ),
+
+
                         ],
                       ),
-                      height: 40,
-                      width: 150,
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 28),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 30, right: 30),
-                    child: Text('Comment souhaitez vous être pris(e) en photo ?', style: customTextStyle),
-                  ),
+                  child:  Text('Comment souhaitez vous être pris(e) en photo ?', style: customTextStyle),
+
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 4),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 30, right: 30),
-                    child: Text('Capturez vos mensurations en prenant une photo de face et de profil.', style: customTextStyle2),
-                  ),
+                  child:  Text('Capturez vos mensurations en prenant une photo de face et de profil.', style: customTextStyle2),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 48),
 
 
                     Row( // Add a Row here
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: cardData.map((card) {
                   return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: CardWidget(
                       card: card,
                       isSelected: card.text == widget.selectedChoix,
@@ -317,10 +316,10 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
            
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 30),
-            child: SuivantButton(
+            padding: EdgeInsets.only(bottom: 48),
+            child: MyButton(
               buttonText: 'Suivant',
-              onPressed: () {
+              onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) =>
@@ -335,6 +334,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
           ),
         ],
       ),
+    ),
     );
   }
 

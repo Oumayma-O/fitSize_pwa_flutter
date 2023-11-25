@@ -1,3 +1,4 @@
+import 'package:fitsize/components/my_button.dart';
 import 'package:fitsize/pages/ChoixScanPage.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
@@ -119,7 +120,7 @@ void initState() {
       body: Stack(
   children: [
     Padding(
-      padding: EdgeInsets.only(left: 10, right: 20, top: 20),
+      padding: EdgeInsets.only(left: 10, right: 20, top: 27),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -139,16 +140,16 @@ void initState() {
       ),
     ),
     Padding(
-      padding: EdgeInsets.only(left: 15, right: 15,top: 40),
-      child: Column(
+      padding: EdgeInsets.only(left: 28, right: 28,top:83),
+      child:Column(
         children: [
-           SizedBox(height: 40),
+           //SizedBox(height: 40),
           Padding(
-            padding: const EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(),
             child: Container(
               alignment: Alignment.centerRight,
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFFC0EDD8),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10.0),
@@ -156,9 +157,11 @@ void initState() {
                     bottomLeft: Radius.circular(10.0),
                   ),
                 ),
+                height: 44,
+                width: _containerWidth,
                 child: Row(
                   children: [
-                    SizedBox(width: 10),
+                    //SizedBox(width: 10),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
@@ -172,7 +175,7 @@ void initState() {
                           MaterialPageRoute(builder: (context) => SexePage()),
                         );
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.edit,
                         color: Color(0xFF08293F),
                         size: 16,
@@ -180,14 +183,12 @@ void initState() {
                     ),
                   ],
                 ),
-                height: 40,
-                width: _containerWidth,
               ),
             ),
           ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               Padding(
-                padding: const EdgeInsets.only(right: 10),
+                padding: const EdgeInsets.only(),
                 child: Container(
                   alignment: Alignment.centerRight,
                   child: Container(
@@ -199,11 +200,11 @@ void initState() {
                         bottomLeft: Radius.circular(10.0),
                       ),
                     ),
-                    height: 40,
-                    width: 160,
+                    height: 44,
+                    width: 142,
                     child: Row(
                       children: [
-                        SizedBox(width: 10),
+                        //SizedBox(width: 10),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
@@ -228,23 +229,19 @@ void initState() {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 28),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Text('Quel poids faites-vous ?', style: customTextStyle),
-                ),
+                child: Text('Quel poids faites-vous ?', style: customTextStyle),
+
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 4),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
-                ),
+                child:Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
+
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 48),
              Container(
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 8, 41, 63),
@@ -356,7 +353,7 @@ void initState() {
                         ),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Ib',
                       style: TextStyle(
                         fontFamily: 'Fors',
@@ -375,9 +372,9 @@ void initState() {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SuivantButton(
+              MyButton(
                 buttonText: 'Suivant',
-                onPressed: () {
+                onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => ChoixScanPage(
@@ -389,7 +386,7 @@ void initState() {
                   );
                 },
               ),
-              SizedBox(height: 35),
+              SizedBox(height: 48),
             ],
           ),
         ),

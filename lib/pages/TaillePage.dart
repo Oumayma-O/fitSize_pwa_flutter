@@ -1,3 +1,4 @@
+import 'package:fitsize/components/my_button.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
@@ -117,12 +118,12 @@ void initState() {
        body: Stack(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 20, top: 20),
+                padding: EdgeInsets.only(left: 10, right: 20, top: 27),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.close,
                         color: Color(0xFF262438),
                         size: 32,
@@ -137,12 +138,12 @@ void initState() {
                 ),
               ),
             Padding(
-              padding: EdgeInsets.only(left: 15, right: 15,top: 40),
+              padding: EdgeInsets.only(left: 28, right: 28,top:83),
               child: Column(
                 children: [
-                  SizedBox(height: 40),
+                  //SizedBox(height: 32),
                   Padding(
-                    padding: const EdgeInsets.only(right: 10),
+                    padding: const EdgeInsets.only(),
                     child: Container(
                       alignment: Alignment.centerRight,
                       child: Container(
@@ -154,11 +155,11 @@ void initState() {
                             bottomLeft: Radius.circular(10.0),
                           ),
                         ),
-                        height: 40,
+                        height: 44,
                         width: _containerWidth,
                         child: Row(
                           children: [
-                            SizedBox(width: 10),
+                            //SizedBox(width: 10),
                             Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
@@ -183,23 +184,19 @@ void initState() {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 28),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      child: Text('Quelle taille faites-vous ?', style: customTextStyle),
-                    ),
+                    child:Text('Quelle taille faites-vous ?', style: customTextStyle),
+
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 4),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      child: Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
-                    ),
+                    child:  Text('Cela nous permet de mieux concevoir votre profil', style: customTextStyle2),
+
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 48),
                   Container(
                     decoration: BoxDecoration(
                       color: Color.fromARGB(255, 8, 41, 63),
@@ -215,7 +212,7 @@ void initState() {
 
                     ),
                   ),
-                SizedBox(height: 20),
+                SizedBox(height: 38),
                 Container(
                 child: RulerPicker(
                   controller: _rulerPickerController!,
@@ -332,9 +329,9 @@ void initState() {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          SuivantButton(
+          MyButton(
             buttonText: 'Suivant',
-            onPressed: () {
+            onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => PoidsPage(
@@ -345,7 +342,7 @@ void initState() {
               );
             },
           ),
-          SizedBox(height: 35),
+          SizedBox(height: 48),
         ],
       ),
     ),

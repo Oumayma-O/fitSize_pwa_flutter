@@ -26,7 +26,6 @@ dependencies:
   rulers: ^1.0.7
   flutter_ruler_picker: ^1.0.6
   app_settings: ^5.0.0
-  http: ^0.13.4
 
 
 

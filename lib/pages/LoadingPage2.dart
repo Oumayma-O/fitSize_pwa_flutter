@@ -22,7 +22,7 @@ class _LoadingPage2State extends State<LoadingPage2> {
   }
 
 void startProgress() {
-  const duration = const Duration(milliseconds: 500000);
+  const duration = const Duration(milliseconds: 500);
   Timer.periodic(duration, (Timer timer) {
     if (progressBarValue < 1.0) {
       setState(() {
