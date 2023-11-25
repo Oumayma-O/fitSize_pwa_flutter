@@ -16,7 +16,7 @@ import 'package:fitsize/beamer_routes.dart';
 import 'package:fitsize/pages/LoginPage.dart';
 
 
-
+/*
 void main() {
   final routerDelegate = BeamerDelegate(
     initialPath: '/accueil',
@@ -50,16 +50,16 @@ void main() {
   );
 
   runApp(MyApp(routerDelegate));
-}
+}*/
 
 
-/*
+
 void main() {
   runApp(   MaterialApp(
-    home: ResultatsPage(),
+    home: LoadingPage2(),
   ));
 }
-*/
+
 class MyApp extends StatelessWidget {
   final BeamerDelegate routerDelegate;
 

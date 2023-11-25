@@ -2,6 +2,7 @@ import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:flutter/material.dart';
 
+import '../data.service.dart';
 import 'LoginPage.dart';
 
 class AccueilPage extends StatefulWidget {
@@ -13,6 +14,32 @@ class AccueilPage extends StatefulWidget {
 
 class _AccueilPageState extends State<AccueilPage> {
   bool isCheckboxChecked = false;
+  late String logoPath="images/fit_shop.png";
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchLogoPath();
+  }
+
+  Future<void> _fetchLogoPath() async {
+    final logoService = DataService();
+
+    try {
+      final path = await logoService.getLogoPath();
+      if (path != null) {
+        setState(() {
+          logoPath = path;
+        });
+      } else {
+        // Handle the case where the API call fails
+      }
+    } catch (e) {
+      // Handle exceptions
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +72,7 @@ class _AccueilPageState extends State<AccueilPage> {
                     SizedBox(height: screenSize.height * 0.13),
                     Column(
                       children: [
-                        Image.asset("images/fit_shop.png"),
+                        Image.asset(logoPath),
                         SizedBox(height: screenSize.height * 0.0234),
                         // Responsive spacing
                         Image.asset("images/by_fitsize.png"),
@@ -58,8 +85,8 @@ class _AccueilPageState extends State<AccueilPage> {
                         _buildRowWithTextAndStyle(context,
                           "images/mdi_human-male-height.png",
                           "Renseigner votre taille & poids",
-                          textPadding: EdgeInsets.only(
-                              left: screenSize.width * 0.05128),
+                          textPadding: const EdgeInsets.only(
+                              ),
                           textStyle: TextStyle(
                             color: Color(0xFF08293F),
                             fontSize: 14 * textScaleFactor,
@@ -74,8 +101,8 @@ class _AccueilPageState extends State<AccueilPage> {
                         _buildRowWithTextAndStyle(context,
                           "assets/images/mingcute_photo-album-fill.png",
                           "Prendre deux photos",
-                          textPadding: EdgeInsets.only(
-                              left: screenSize.width * 0.05128),
+                          textPadding: const EdgeInsets.only(
+                              ),
                           textStyle: TextStyle(
                             color: Color(0xFF08293F),
                             fontSize: 14 * textScaleFactor,
@@ -90,8 +117,8 @@ class _AccueilPageState extends State<AccueilPage> {
                         _buildRowWithTextAndStyle(context,
                           "assets/images/mdi_tshirt-crew.png",
                           "Obtenir le meilleur ajustement de taille",
-                          textPadding: EdgeInsets.only(
-                              left: screenSize.width * 0.05128),
+                          textPadding: const EdgeInsets.only(
+                              ),
                           textStyle: TextStyle(
                             color: Color(0xFF08293F),
                             fontSize: 14 * textScaleFactor,
@@ -135,23 +162,27 @@ class _AccueilPageState extends State<AccueilPage> {
                     SizedBox(height: screenSize.height * 0.028),
                     // Responsive spacing
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      //mainAxisAlignment: MainAxisAlignment.start,
+
                       children: [
-                        //Checkbox(value: false, onChanged: (bool? value) {}),
-                        Theme(
-                          data: Theme.of(context).copyWith(
-                            checkboxTheme: CheckboxThemeData(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              side: const BorderSide(
-                                width: 1.0, // Adjust the border width
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Theme(
+                            data: Theme.of(context).copyWith(
+                              checkboxTheme: CheckboxThemeData(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                side: const BorderSide(
+                                  width: 1.0, // Adjust the border width
+                                ),
                               ),
                             ),
-                          ),
-                          child: ClipRRect(
-                            //borderRadius: BorderRadius.circular(20.0),
                             child: Transform.scale(
                               scale: 1.25,
+                              //alignment: Alignment.topLeft, // Align the top border with the top of the text
                               child: Checkbox(
                                 value: isCheckboxChecked,
                                 onChanged: (newValue) {
@@ -161,24 +192,27 @@ class _AccueilPageState extends State<AccueilPage> {
                                 },
                               ),
                             ),
-                          ),
+                          ),],
                         ),
+
                         SizedBox(width: screenSize.width * 0.03),
-                        Expanded(
-                          child: Text(
-                            "En sélectionnant cette option, j'accepte la politique de confidentialité de Fitsize et nos conditions d'utilisation.",
-                            style: TextStyle(
-                              color: Color(0xFF08293F),
-                              fontSize: 12 * textScaleFactor,
-                              // Responsive font size
-                              fontFamily: 'TT Fors Trial',
-                              fontWeight: FontWeight.w400,
-                              height: 1.5, // Adjust line height for wrapping
+
+                            Expanded(
+                              child: Text(
+                                "En sélectionnant cette option, j'accepte la politique de confidentialité de Fitsize et nos conditions d'utilisation.",
+                                style: TextStyle(
+                                  color: Color(0xFF08293F),
+                                  fontSize: 12 * textScaleFactor,
+                                  fontFamily: 'TT Fors Trial',
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ],
+                          ],
                     ),
+
+
                     SizedBox(height: screenSize.height * 0.0189),
                     const Text("ou"),
                     SizedBox(height: screenSize.height * 0.029),
@@ -247,10 +281,16 @@ class _AccueilPageState extends State<AccueilPage> {
       child: Row(
         children: [
           Image.asset(imagePath),
-          const SizedBox(width: 20),
+           SizedBox(width: MediaQuery
+               .of(context)
+               .size.width*0.041),
           Expanded(
             child: Padding(
-              padding: textPadding ?? EdgeInsets.all(8),
+              padding: textPadding ?? EdgeInsets.only(top:MediaQuery
+                  .of(context)
+                  .size.height*0.009478 ,bottom: MediaQuery
+                  .of(context)
+                  .size.width*0.004739),
               child: Text(
                 text,
                 style: textStyle ?? const TextStyle(),

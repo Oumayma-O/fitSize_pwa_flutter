@@ -22,7 +22,7 @@ class _LoadingPage2State extends State<LoadingPage2> {
   }
 
 void startProgress() {
-  const duration = const Duration(milliseconds: 500);
+  const duration = const Duration(milliseconds: 500000);
   Timer.periodic(duration, (Timer timer) {
     if (progressBarValue < 1.0) {
       setState(() {
@@ -73,40 +73,40 @@ void startProgress() {
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.5,
                       child: Image.asset(
-                        'assets/images/Group 4.png',
+                        'images/Group_4.png',
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.1,
+                    top: MediaQuery.of(context).size.height * 0.359,
                     left: 0,
                     right: 0,
                     child: Image.asset(
                       'assets/images/logo.png',
-                      width: 100,
-                      height: 30,
+                      width: 290,
+                      height: 40,
                       fit: BoxFit.contain,
                     ),
                   ),
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.5,
-                    left: 0,
-                    right: 0,
+                    left:MediaQuery.of(context).size.width * 0.4179,
+                    right: MediaQuery.of(context).size.width * 0.4179,
                     child: Image.asset(
                       'assets/images/tape-measure.png',
-                      width: 200,
-                      height: 60,
+                      width: 64,
+                      height: 64,
                       fit: BoxFit.contain,
                     ),
                   ),
                      Positioned(
-                      top: MediaQuery.of(context).size.height * 0.65,
+                      top: MediaQuery.of(context).size.height * 0.63,
                       left: 0,
                       right: 0,
                       child: Center(
                         child: SizedBox(
-                          width: MediaQuery.of(context).size.width*0.802,
+                          width: MediaQuery.of(context).size.width*0.746,
                           child: GFProgressBar(
                             percentage: progressBarValue,
                             lineHeight: MediaQuery.of(context).size.height * 0.026,
@@ -119,12 +119,12 @@ void startProgress() {
                     ),
 
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.7,
+                    top: MediaQuery.of(context).size.height * 0.677,
                     left: 0,
                     right: 0,
                     child: Center(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 28.0),
+                        padding: EdgeInsets.symmetric(horizontal: 44.0),
                         child: Text(
                           'Notre couturier est en train de relever vos mesures !',
                           style: customTextStyle2,
@@ -134,7 +134,7 @@ void startProgress() {
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.78,
+                    top: MediaQuery.of(context).size.height * 0.7369,
                     left: 0,
                     right: 0,
                     child: Center(

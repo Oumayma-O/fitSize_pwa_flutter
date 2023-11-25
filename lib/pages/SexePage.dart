@@ -1,3 +1,4 @@
+import 'package:fitsize/components/my_button.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
 import 'package:fitsize/widgets/SuivantButton.dart';
@@ -16,7 +17,7 @@ class SexePage extends StatefulWidget {
 
 
 class _SexePageState extends State<SexePage> {
-  String selectedCard = ""; 
+  String selectedCard = "";
   String selectedSexe = "Homme";
 
 
@@ -65,23 +66,28 @@ final TextStyle customTextStyle2 = const TextStyle(
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
      backgroundColor: Color(0xFFFAFAFC),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-   
+
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 20, top: 30),
+            padding: EdgeInsets.only(left:screenSize.width*0.05897,right:screenSize.width*0.07179,top: screenSize.height*0.03554),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                IconButton(
+            Align(
+            alignment: Alignment.centerLeft,
+              child:IconButton(
                   icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 38, 36, 56), size: 30),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                ),
+                ),),
+                Spacer(),
                 IconButton(
                   icon: const Icon(
                     Icons.close,
@@ -89,7 +95,7 @@ final TextStyle customTextStyle2 = const TextStyle(
                     size: 32,
                   ),
                  onPressed: () {
-               
+
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => AccueilPage()),
                       );
@@ -98,48 +104,45 @@ final TextStyle customTextStyle2 = const TextStyle(
               ],
             ),
           ),
-       
+
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Column(
-    
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: screenSize.width*0.0717),
+                child: Column(
+
                 children: <Widget>[
-                SizedBox(height: 50),
+                  SizedBox(height:screenSize.height*0.07582),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Text('Quel est votre sexe ?', style: customTextStyle),
-                    ),
+                    child: Text('Quel est votre sexe ?', style: customTextStyle),
+
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: screenSize.height*0.004739),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Text('Cela me permet de mieux concevoir votre profil', style: customTextStyle2),
-                    ),
+                    child:  Text('Cela me permet de mieux concevoir votre profil', style: customTextStyle2),
+
                   ),
-                  const SizedBox(height: 25),
+                  SizedBox(height: screenSize.height*0.02369),
 
 
-                CardList(cardData: cardData, onCardSelected: _onCardSelected),
+                  CardList(cardData: cardData, onCardSelected: _onCardSelected),
 
-                  
+
                 ],
               ),
-            ),
+    ),
           ),
-      
+
+
           Padding(
-            padding: EdgeInsets.only(bottom: 25),
+            padding: EdgeInsets.only(bottom: screenSize.height*0.0568),
             child: Align(
               alignment: Alignment.bottomCenter,
-              child: 
-              SuivantButton(
+              child:
+              MyButton(
             buttonText: 'Suivant',
-            onPressed: () {
+            onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => TaillePage(selectedSexe: selectedSexe),
@@ -149,12 +152,13 @@ final TextStyle customTextStyle2 = const TextStyle(
           ),
 
             ),
-        
+
           ),
-              
-          SizedBox(height: 20),
+
+          //SizedBox(height: 20),
         ],
-      ),
+
+    ),
     );
   }
 
@@ -162,7 +166,7 @@ final TextStyle customTextStyle2 = const TextStyle(
 void _onCardSelected(CardData card) {
   setState(() {
     selectedCard = card.text;
-    selectedSexe = card.text; 
+    selectedSexe = card.text;
     for (var item in cardData) {
       item.isSelected = item.text == selectedCard;
     }
@@ -173,7 +177,7 @@ void _onCardSelected(CardData card) {
 
 class CardData {
   final String svgIconPath;
-  final String svgDarkIconPath; 
+  final String svgDarkIconPath;
   final String text;
   bool isSelected;
 
@@ -181,7 +185,7 @@ class CardData {
     required this.svgIconPath,
     required this.svgDarkIconPath,
     required this.text,
-    this.isSelected = false, 
+    this.isSelected = false,
   });
 }
 
@@ -215,9 +219,9 @@ class CardWidget extends StatelessWidget {
             card.isSelected ? card.svgIconPath : card.svgDarkIconPath,
             width: 30,
             height: 30,
-        
+
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 8),
           Text(
             card.text,
             style: TextStyle(
@@ -251,7 +255,7 @@ class CardList extends StatelessWidget {
               onCardSelected(card);
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
               child: CardWidget(card: card),
             ),
           ),
