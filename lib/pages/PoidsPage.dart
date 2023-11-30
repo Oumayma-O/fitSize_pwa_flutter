@@ -157,7 +157,7 @@ void initState() {
                     bottomLeft: Radius.circular(10.0),
                   ),
                 ),
-                height: 44,
+                height: MediaQuery.of(context).size.height*0.0521,
                 width: _containerWidth,
                 child: Row(
                   children: [
@@ -200,9 +200,10 @@ void initState() {
                         bottomLeft: Radius.circular(10.0),
                       ),
                     ),
-                    height: 44,
+                    height: MediaQuery.of(context).size.height*0.0521,
                     width: 142,
                     child: Row(
+                      //mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         //SizedBox(width: 10),
                         Padding(

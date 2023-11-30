@@ -1,6 +1,7 @@
 
 import 'package:beamer/beamer.dart';
 import 'package:fitsize/pages/ChoixScanPage.dart';
+import 'package:fitsize/pages/Details2Page.dart';
 import 'package:fitsize/pages/DetailsPage.dart';
 import 'package:fitsize/pages/HomeManPage.dart';
 import 'package:fitsize/pages/HomeWomanPage.dart';
@@ -51,13 +52,13 @@ void main() {
   );
 
   runApp(MyApp(routerDelegate));
-}*/
-
+}
+*/
 
 
 void main() {
   runApp(   MaterialApp(
-    home: ChoixScanPage(selectedSexe: 'Homme', selectedTaille: '160cm', selectedPoids: '45',),
+    home: ResultatsPage(),
   ));
 }
 

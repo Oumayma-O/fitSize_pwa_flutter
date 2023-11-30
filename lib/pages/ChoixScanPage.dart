@@ -1,4 +1,3 @@
-// ignore_for_file: must_be_immutable
 
 import 'package:fitsize/components/my_button.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
 import 'package:fitsize/pages/TutorielEtape1Page.dart';
-import 'package:fitsize/widgets/SuivantButton.dart';
 
 
 class ChoixScanPage extends StatefulWidget {
@@ -120,14 +118,14 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
     return Scaffold(
       backgroundColor: Color(0xFFFAFAFC),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 28),
+        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.07179),
         child:Column(
         children: [
           Expanded(
             child: ListView(
               children: [
                 Padding(
-                  padding: EdgeInsets.only( top: 27),
+                  padding: EdgeInsets.only( top: MediaQuery.of(context).size.height*0.03199),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -146,7 +144,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 32),
+                SizedBox(height: MediaQuery.of(context).size.height*0.0379),
                 Padding(
                   padding: const EdgeInsets.only(),
                   child: Container(
@@ -160,7 +158,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                           bottomLeft: Radius.circular(10.0),
                         ),
                       ),
-                      height: 44,
+                      height: MediaQuery.of(context).size.height*0.0521,
                       width: _containerWidth,
                       child: Row(
                         children: [
@@ -245,8 +243,8 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                           bottomLeft: Radius.circular(10.0),
                         ),
                       ),
-                      height: 44,
-                      width: 122,
+                      height: MediaQuery.of(context).size.height*0.0521,
+                      width: 132,
                       child: Row(
                         children: [
                           Padding(
@@ -280,7 +278,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 28),
+                SizedBox(height: MediaQuery.of(context).size.height*0.0331),
                 Align(
                   alignment: Alignment.centerLeft,
                   child:  Text('Comment souhaitez vous être pris(e) en photo ?', style: customTextStyle),
@@ -291,14 +289,14 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                   alignment: Alignment.centerLeft,
                   child:  Text('Capturez vos mensurations en prenant une photo de face et de profil.', style: customTextStyle2),
                 ),
-                SizedBox(height: 48),
+                SizedBox(height: MediaQuery.of(context).size.height*0.0568),
 
 
-                    Row( // Add a Row here
+                    Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: cardData.map((card) {
                   return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.0205),
                     child: CardWidget(
                       card: card,
                       isSelected: card.text == widget.selectedChoix,
@@ -316,7 +314,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
            
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 48),
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.05687),
             child: MyButton(
               buttonText: 'Suivant',
               onTap: () {
@@ -376,12 +374,12 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector( // Wrap with GestureDetector to capture onTap
+    return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 150,
-        height: 100,
-        padding: EdgeInsets.all(10),
+        width: MediaQuery.of(context).size.width*0.3846,
+        //height: MediaQuery.of(context).size.height*0.1184,
+        padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*0.011848,horizontal: MediaQuery.of(context).size.width*0.025641),
         decoration: BoxDecoration(
           border: Border.all(
             color: isSelected
@@ -394,16 +392,18 @@ class CardWidget extends StatelessWidget {
               ? Color.fromARGB(255, 8, 41, 63)
               : Colors.white,
         ),
-        child: Column(
+        child:  Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.01421,top:MediaQuery.of(context).size.height*0.018957),
+          child:Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 4),
+            //SizedBox(height:MediaQuery.of(context).size.height*0.004),
             SvgPicture.asset(
               isSelected ? card.svgDarkIconPath : card.svgIconPath,
-              width: 27,
-              height: 40,
+              width:  MediaQuery.of(context).size.width*0.0692,
+              height:  MediaQuery.of(context).size.height*0.04739,
             ),
-            SizedBox(height: 10),
+            SizedBox(height: MediaQuery.of(context).size.height*0.011848),
             Text(
               card.text,
               style: TextStyle(
@@ -415,9 +415,10 @@ class CardWidget extends StatelessWidget {
                     : Color.fromARGB(255, 8, 41, 63),
               ),
             ),
-            SizedBox(height: 4),
+            //SizedBox(height: MediaQuery.of(context).size.height*0.004),
           ],
         ),
+      ),
       ),
     );
   }

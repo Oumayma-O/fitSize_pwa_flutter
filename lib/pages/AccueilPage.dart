@@ -2,7 +2,7 @@ import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:flutter/material.dart';
 
-import '../data.service.dart';
+import '../services/data.service.dart';
 import 'LoginPage.dart';
 
 class AccueilPage extends StatefulWidget {

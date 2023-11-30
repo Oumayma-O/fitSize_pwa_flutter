@@ -98,7 +98,7 @@ class CategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: onSelect,
       child: Opacity(
-        opacity: isSelected ? 1.0 : 0.7, // Adjust opacity values as needed
+        opacity: isSelected ? 1.0 : 0.7, 
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: screenSize.width * 0.03),
           padding: EdgeInsets.symmetric(

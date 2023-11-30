@@ -155,7 +155,7 @@ void initState() {
                             bottomLeft: Radius.circular(10.0),
                           ),
                         ),
-                        height: 44,
+                        height: MediaQuery.of(context).size.height*0.0521,
                         width: _containerWidth,
                         child: Row(
                           children: [
