@@ -111,7 +111,7 @@ class _LoadingPageState extends State<LoadingPage> {
                       fit: BoxFit.contain,
                     ),
                   ),
-                  Positioned(
+                  /*Positioned(
                     top: MediaQuery.of(context).size.height * 0.65,
                     left: 30,
                     right: 0,
@@ -140,7 +140,7 @@ class _LoadingPageState extends State<LoadingPage> {
                       style: customTextStyle3,
                       textAlign: TextAlign.left,
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),
