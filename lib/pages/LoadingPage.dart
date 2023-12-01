@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/FitShopData.dart';
+import '../services/data.service.dart';
 
 class LoadingPage extends StatefulWidget {
   LoadingPage({Key? key});
@@ -9,25 +13,56 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  bool navigationCompleted = false; 
+  bool navigationCompleted = false;
+  late DataService dataService;
 
   double calculateTextSize(BuildContext context, double baseSize) {
     double scaleFactor = MediaQuery.of(context).size.height * 0.001;
     return baseSize * scaleFactor;
   }
 
+  _handleUrlParameters() {
+
+    //String url = html.window.location.href;
+    //
+    String url = "https://fitsize.app/?uri=https://fit-shop.com/fitshop&product_id=27&category_id=4";
+
+    Uri uri = Uri.parse(url);
+
+    String shopUri = uri.queryParameters['uri'] ?? '';
+    int productId = int.parse(uri.queryParameters['product_id'] ?? '0');
+    int categoryId = int.parse(uri.queryParameters['category_id'] ?? '0');
+
+    print('uri $uri');
+    print('shopUri $shopUri');
+    print('productId $productId');
+
+    _saveToLocalStorage(FitShopData(shopUri, productId, categoryId));
+  }
+
+
   @override
   void initState() {
     super.initState();
+    dataService = DataService();
+    _handleUrlParameters();
 
-
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 3), () async {
       if (!navigationCompleted) {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccueilPage()));
-        navigationCompleted = true; 
+        navigationCompleted = true;
       }
     });
   }
+
+  _saveToLocalStorage(FitShopData data) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('shopUri', data.shopUri);
+    prefs.setInt('productId', data.productId);
+    prefs.setInt('categoryId', data.categoryId);
+  }
+
+
 
   @override
   Widget build(BuildContext context) {

@@ -16,6 +16,7 @@ class ResultatsPage extends StatefulWidget {
 }
 
 class _ResultatsPageState extends State<ResultatsPage> {
+  bool isImageLoading = true;
   late String productImagePath =
       "img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg?w=1060&t=st=1700829312~exp=1700829912~hmac=4c259d7d1de30adeabe0de5a701daef6faa4d77927c73df468bee5bff0e35811";
   bool showFitBubble = true;
@@ -29,6 +30,10 @@ class _ResultatsPageState extends State<ResultatsPage> {
   }
 
   Future<void> _fetchData() async {
+    setState(() {
+      isImageLoading = true;
+    });
+
     final dataService = DataService();
 
     try {
@@ -37,11 +42,17 @@ class _ResultatsPageState extends State<ResultatsPage> {
       if (productImagePath != null) {
         setState(() {
           this.productImagePath = productImagePath;
+          isImageLoading = false;
         });
       } else {
-        this.productImagePath = 'assets/images/Jupe.png';
+        setState(() {
+          isImageLoading = false;
+        });
       }
     } catch (e) {
+      setState(() {
+        isImageLoading = false;
+      });
       // Handle exceptions
     }
   }
@@ -97,8 +108,16 @@ class _ResultatsPageState extends State<ResultatsPage> {
                     left: 0,
                     right: 0,
                     child: Container(
-                      child: Image.network(
-                        'https://$productImagePath',
+                      child: isImageLoading
+                          ? Center(
+                        child:Container(
+                        alignment: Alignment.center,
+                        height: screenSize.height * 0.2, // Adjust the height as needed
+                        width: screenSize.width * 0.2, // Adjust the width as needed
+                        child: CircularProgressIndicator(),
+                           ))
+                          : Image.network(
+                        'http://$productImagePath',
                         fit: BoxFit.cover,
                         height: screenSize.height * 0.65,
                         width: screenSize.width,

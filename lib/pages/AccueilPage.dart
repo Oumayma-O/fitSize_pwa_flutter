@@ -14,7 +14,7 @@ class AccueilPage extends StatefulWidget {
 
 class _AccueilPageState extends State<AccueilPage> {
   bool isCheckboxChecked = false;
-  late String logoPath="images/fit_shop.png";
+  late String logoPath="http://fit-size.com/fitshop/img/logo-1693983394.jpg";
 
   @override
   void initState() {
@@ -55,7 +55,7 @@ class _AccueilPageState extends State<AccueilPage> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/Accueil.png"),
+              image: AssetImage("images/Accueil.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -72,7 +72,9 @@ class _AccueilPageState extends State<AccueilPage> {
                     SizedBox(height: screenSize.height * 0.13),
                     Column(
                       children: [
-                        Image.asset(logoPath),
+                        Image.network(logoPath,
+                          height: screenSize.height * 0.0663,
+                          width: screenSize.width*0.366,),
                         SizedBox(height: screenSize.height * 0.0234),
                         // Responsive spacing
                         Image.asset("images/by_fitsize.png"),
