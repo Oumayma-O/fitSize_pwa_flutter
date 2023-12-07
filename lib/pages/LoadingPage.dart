@@ -24,7 +24,6 @@ class _LoadingPageState extends State<LoadingPage> {
   _handleUrlParameters() {
 
     //String url = html.window.location.href;
-    //
     String url = "https://fitsize.app/?uri=https://fit-shop.com/fitshop&product_id=27&category_id=4";
 
     Uri uri = Uri.parse(url);

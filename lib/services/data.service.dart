@@ -60,6 +60,7 @@ class DataService {
         final shopUri = uriAndProductId['shopUri'];
         final productId = uriAndProductId['productId'];
 
+        print('Fully constructed URI using apiUrl: ${Uri.parse('$apiUrl?action=getProduct&product_id=$productId')}');
         final response = await http.get(
           Uri.parse('$apiUrl?action=getProduct&product_id=$productId'),
           headers: {'Token': token},

@@ -9,6 +9,7 @@ import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/ResultatsPage.dart';
 import 'package:fitsize/pages/ScanEtape1Page.dart';
 import 'package:fitsize/pages/ScanEtape2Page.dart';
+import 'package:fitsize/pages/ScanEtape9Page.dart';
 import 'package:fitsize/pages/SettingsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
@@ -17,6 +18,7 @@ import 'package:fitsize/pages/TutorielEtape2Page.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
+
 
 
 class LoadingLocation extends BeamLocation<BeamState> {
@@ -372,3 +374,38 @@ class LoginPageLocation extends BeamLocation<BeamState> {
   List<Pattern> get pathPatterns => ['/login'];
 }
 
+class ScanEtape9Location extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    final selectedChoix = state.pathParameters['selectedChoix'] ?? '';
+    final selectedSexe = state.pathParameters['selectedSexe'] ?? '';    return [
+      BeamPage(
+        key: ValueKey('ScanEtape9'),
+        title: "Scan Etape9 Page",
+        name: '/ScanEtape9',
+        child: ScanEtape9Page(selectedChoix: selectedChoix, selectedSexe: selectedSexe,),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/ScanEtape9'];
+}
+
+class ScanEtape10Location extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) {
+    final selectedChoix = state.pathParameters['selectedChoix'] ?? '';
+    return [
+      BeamPage(
+        key: ValueKey('ScanEtape10'),
+        title: "Scan Etape10 Page",
+        name: '/ScanEtape10',
+        child: ScanEtape1Page(selectedChoix: selectedChoix),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['/ScanEtape10'];
+}

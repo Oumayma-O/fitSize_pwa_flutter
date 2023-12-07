@@ -9,6 +9,7 @@ import 'package:fitsize/pages/LoadingPage.dart';
 import 'package:fitsize/pages/LoadingPage2.dart';
 import 'package:fitsize/pages/PoidsPage.dart';
 import 'package:fitsize/pages/ResultatsPage.dart';
+import 'package:fitsize/pages/ScanEtape9Page.dart';
 import 'package:fitsize/pages/SettingsPage.dart';
 import 'package:fitsize/pages/SexePage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
@@ -34,6 +35,7 @@ void main() {
         TutorielEtape1Location(),
         ScanEtape1Location(),
         ScanEtape2Location(),
+        ScanEtape9Location(),
         ResultatsLocation(),
         TutorielEtape1Location(),
         TutorielEtape2Location(),
@@ -58,7 +60,7 @@ void main() {
 /*
 void main() {
   runApp(   MaterialApp(
-    home: ResultatsPage(),
+    home: ScanEtape9Page(selectedChoix: 'Seul(e)',),
   ));
 }
 */

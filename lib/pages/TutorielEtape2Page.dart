@@ -3,6 +3,8 @@ import 'package:fitsize/pages/ScanEtape1Page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'ScanEtape10Page.dart';
+
 class TutorielEtape2Page extends StatefulWidget {
   final String selectedChoix;
   final String selectedSexe;
@@ -175,7 +177,7 @@ class _TutorielEtape2PageState extends State<TutorielEtape2Page> {
                               ..onTap = () {
                          
                                 Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context) => ScanEtape1Page(selectedChoix: widget.selectedChoix),),
+                                      MaterialPageRoute(builder: (context) => ScanEtape10Page(selectedChoix: widget.selectedChoix,),),
                                 );
                               },
                           ),

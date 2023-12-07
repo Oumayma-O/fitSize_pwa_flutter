@@ -13,7 +13,7 @@ class Details2Page extends StatefulWidget {
 
 class _Details2PageState extends State<Details2Page> {
   final MeasurementService measurementService = MeasurementService();
-  late List<Mesure> currentList; // Declare as late, initialize in initState
+  late List<Mesure> currentList;
   int _currentSelection = 0;
 
   @override
