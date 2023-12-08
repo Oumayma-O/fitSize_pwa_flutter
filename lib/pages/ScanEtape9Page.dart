@@ -87,13 +87,12 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> texts = [];
-
-    if (widget.selectedChoix == "Seul(e)") {
-      texts = ['Tout seul', 'Par un ami'];
-    } else if (widget.selectedChoix == "Par un ami") {
-      texts = ['Par un ami', 'Tout seul'];
-    }
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
+    final textScaleFactor = MediaQuery
+        .of(context)
+        .textScaleFactor;
 
     return Scaffold(
       body: isLoading
@@ -118,10 +117,10 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
             child: CameraPreview(_cameraController),
           ),
           Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.symmetric(horizontal:screenSize.width * 0.0512,vertical:screenSize.height * 0.02369 ),
             alignment: Alignment.topLeft,
             child: IconButton(
-              icon: Icon(Icons.arrow_back,
+              icon: const Icon(Icons.arrow_back,
                   color: Color.fromARGB(255, 32, 32, 32), size: 30),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -129,8 +128,8 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
             ),
           ),
           Positioned(
-            top: 32.0,
-            right: 28.0,
+            top:screenSize.height *32.0/844,
+            right:screenSize.width *  28.0/390,
             child: GestureDetector(
               onTap: () {
                 setState(() {
@@ -141,17 +140,17 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
                 isMuted
                     ? 'images/no-sound.png'
                     : 'images/volume.png',
-                width: 28.0,
-                height: 28.0,
+                width: screenSize.width *  28.0/390,
+                height: screenSize.height *28/844,
               ),
             ),
           ),
           Positioned(
-            top: 96,
-            right: 28,
+            top: screenSize.height *96/844,
+            right: screenSize.width *  28.0/390,
             child: Container(
-              width: 38,
-              height: 136,
+              width: screenSize.width *  38.0/390,
+              height: screenSize.height * 136/844,
               decoration: ShapeDecoration(
                 color: Color(0xFFEAEAEA),
                 shape: RoundedRectangleBorder(
@@ -164,8 +163,8 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    width: 24,
-                    height: 24,
+                    width: screenSize.width * 24/390,
+                    height: screenSize.height* 24/844,
                     decoration: ShapeDecoration(
                       color: _getCercleColor(0),
                       shape: CircleBorder(
@@ -176,8 +175,8 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
                     ),
                   ),
                   Container(
-                    width: 24,
-                    height: 24,
+                    width: screenSize.width * 24/390,
+                    height: screenSize.height* 24/844,
                     decoration: ShapeDecoration(
                       color: _getCercleColor(1),
                       shape: CircleBorder(
@@ -188,8 +187,8 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
                     ),
                   ),
                   Container(
-                    width: 24,
-                    height: 24,
+                    width: screenSize.width * 24/390,
+                    height: screenSize.height* 24/844,
                     decoration: ShapeDecoration(
                       color: _getCercleColor(2),
                       shape: CircleBorder(
@@ -204,18 +203,17 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
             ),
           ),
           Positioned(
-            bottom: 28,
-            left: 28,
-            right: 28,
+            bottom: screenSize.height* 28/844,
+            left:screenSize.width * 28/390,
+            right: screenSize.width * 28/390,
             child: TextBlueBox(
                 firstText: 'Position de face', secondText: dynamicMessage),
           ),
-          // Add LoadingMessageContainer when the green circle is lit
           if (phonePosition == PhonePosition.WellPositioned)
             Positioned(
-              bottom: 355,
-              left: 80,
-              right: 80,
+              bottom: screenSize.height* 355/844,
+              left: screenSize.width * 80/390,
+              right: screenSize.width * 80/390,
               child: LoadingMessageContainer(),
             ),
         ],

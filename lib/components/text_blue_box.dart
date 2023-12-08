@@ -8,9 +8,16 @@ class TextBlueBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
+    final textScaleFactor = MediaQuery
+        .of(context)
+        .textScaleFactor;
+
     return Container(
-      width: 334,
-      height: 142,
+      width: screenSize.width*0.8564,
+      //height: screenSize.height*0.1682,
       decoration: ShapeDecoration(
         color: Color(0xFF08293F),
         shape: RoundedRectangleBorder(
@@ -18,7 +25,7 @@ class TextBlueBox extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+        padding: EdgeInsets.symmetric(horizontal: screenSize.width*0.0769, vertical: screenSize.height*0.02132),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -30,7 +37,7 @@ class TextBlueBox extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 16 * textScaleFactor,
                     fontFamily: 'TT Fors Trial',
                     fontWeight: FontWeight.w600,
                     height: 0,
@@ -38,24 +45,24 @@ class TextBlueBox extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: screenSize.height* 16/844),
             Container(
-              width: 40,
-              height: 1,
+              width: screenSize.width * 40 / 390,
+              height: screenSize.height * 1/844,
               color: Color(0x4CF9F9FB),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: screenSize.height* 16/844),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 273,
+                Expanded(
+                  //width: screenSize.width *273/390,
                   child: Text(
                     secondText,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xFFF9F9FB),
-                      fontSize: 18,
+                      fontSize: 18 * textScaleFactor,
                       fontFamily: 'TT Fors Trial',
                       fontWeight: FontWeight.w300,
                       height: 0,

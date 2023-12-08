@@ -197,9 +197,16 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
+    final textScaleFactor = MediaQuery
+        .of(context)
+        .textScaleFactor;
+
     return Container(
-      width: 100,
-      padding: EdgeInsets.all(10),
+      width: screenSize.width * 100/390,
+      padding: EdgeInsets.symmetric(vertical:screenSize.height *10/844 ,horizontal:screenSize.width* 10/390),
       decoration: BoxDecoration(
         border: Border.all(
             color: card.isSelected
@@ -214,14 +221,14 @@ class CardWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 8),
+          SizedBox(height: screenSize.height* 8/844),
           SvgPicture.asset(
             card.isSelected ? card.svgIconPath : card.svgDarkIconPath,
-            width: 30,
-            height: 30,
+            width: screenSize.width * 30/390,
+            height: screenSize.height * 30/844,
 
           ),
-          SizedBox(height: 8),
+          SizedBox(height: screenSize.height* 8/844),
           Text(
             card.text,
             style: TextStyle(
@@ -231,7 +238,7 @@ class CardWidget extends StatelessWidget {
                   : Color.fromARGB(255, 8, 41, 63),
             ),
           ),
-          SizedBox(height: 8),
+          SizedBox(height: screenSize.height* 8/844),
         ],
       ),
     );
@@ -246,6 +253,10 @@ class CardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery
+        .of(context)
+        .size;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -255,7 +266,7 @@ class CardList extends StatelessWidget {
               onCardSelected(card);
             },
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              padding: EdgeInsets.symmetric(horizontal:screenSize.width * 5.0/390),
               child: CardWidget(card: card),
             ),
           ),
