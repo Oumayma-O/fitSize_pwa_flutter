@@ -1,11 +1,13 @@
 import 'dart:async';
+import 'dart:typed_data';
+import 'dart:html' as html;
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import '../components/LoadingMessageContainer.dart';
 import '../components/text_blue_box.dart';
+import '../services/tilt-detector.dart';
 import 'TutorielEtape2Page.dart';
 
 enum PhonePosition { WellPositioned, TiltedTop, TiltedBottom }
@@ -21,21 +23,32 @@ class ScanEtape9Page extends StatefulWidget {
 }
 
 class _ScanEtape9PageState extends State<ScanEtape9Page> {
+  late Image _capturedImage;
   bool isLoading = true;
   bool isCaptured = false;
   late CameraController _cameraController;
   late List<CameraDescription> _cameras;
   String capturedImagePath = '';
-  PhonePosition phonePosition = PhonePosition.WellPositioned;
+  PhonePosition _latestPhonePosition = PhonePosition.WellPositioned;
+
   bool isMuted = false;
   String dynamicMessage = '';
+  late TiltDetector _tiltDetector;
 
   @override
   void initState() {
     super.initState();
+    _tiltDetector = TiltDetector(onPhonePositionChanged: _onPhonePositionChanged);
     _initializeCamera();
     _updateDynamicMessage();
     _startPhotoTaking();
+  }
+
+  void _onPhonePositionChanged(PhonePosition newPhonePosition) {
+    setState(() {
+      _latestPhonePosition = newPhonePosition;
+      _updateDynamicMessage();
+    });
   }
 
 
@@ -82,6 +95,7 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
   @override
   void dispose() {
     _cameraController.dispose();
+    _tiltDetector.dispose();
     super.dispose();
   }
 
@@ -209,7 +223,7 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
             child: TextBlueBox(
                 firstText: 'Position de face', secondText: dynamicMessage),
           ),
-          if (phonePosition == PhonePosition.WellPositioned)
+          if (_latestPhonePosition == PhonePosition.WellPositioned)
             Positioned(
               bottom: screenSize.height* 355/844,
               left: screenSize.width * 80/390,
@@ -222,7 +236,7 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
   }
 
   Color _getCercleColor(int index) {
-    switch (phonePosition) {
+    switch (_latestPhonePosition) {
       case PhonePosition.WellPositioned:
         return index == 1 ? Color(0xFF1CE496) : Color(0xFFE1E1E1);
       case PhonePosition.TiltedTop:
@@ -233,7 +247,7 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
   }
 
   Color _getCercleBorderColor(int index) {
-    switch (phonePosition) {
+    switch (_latestPhonePosition) {
       case PhonePosition.WellPositioned:
         return index == 1 ? Color(0x9908293F) : Color(0xFFB6BCC1);
       case PhonePosition.TiltedTop:
@@ -244,7 +258,7 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
   }
 
   void _updateDynamicMessage() {
-    switch (phonePosition) {
+    switch (_latestPhonePosition) {
       case PhonePosition.WellPositioned:
         dynamicMessage = 'Regardez directement l’appareil photo';
         break;
@@ -259,13 +273,13 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
 
   void _startPhotoTaking() {
 
-      if (phonePosition == PhonePosition.WellPositioned) {
-        // Wait for 3 seconds
-        Timer(Duration(seconds: 3), () {
-          // Take a photo
-          _takePhotoAndNavigate();
-        });
-      }
+    if (_latestPhonePosition == PhonePosition.WellPositioned) {
+      // Wait for 3 seconds
+      Timer(Duration(seconds: 3), () {
+        // Take a photo
+        _takePhotoAndNavigate();
+      });
+    }
   }
 
   void _takePhotoAndNavigate() async {
@@ -278,10 +292,31 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
 
     try {
       XFile file = await _cameraController.takePicture();
+
+      // Convert XFile to Image using the XFileToImage function
+      _capturedImage = await xFileToImage(file);
+
+      // Move the image file to the specified path
+      final String fileName = 'captured_image_${DateTime.now().millisecondsSinceEpoch}.jpg';
+      final String filePath = '$fileName';
+
+      // Save the image to the user's download directory
+      await saveImageToFile(file, filePath);
+
+
       setState(() {
         isCaptured = true;
         capturedImagePath = file.path;
       });
+
+      print('file: $file');
+      print('Photo saved at: $capturedImagePath');
+
+      // Convert XFile to Image using the XFileToImage function
+      _capturedImage = await xFileToImage(file);
+
+      // Print the content of the captured image
+      print('Captured Image Content: $_capturedImage');
 
       // Add a 2-second delay before navigating to LoadingPage2
       await Future.delayed(Duration(seconds: 2));
@@ -290,11 +325,30 @@ class _ScanEtape9PageState extends State<ScanEtape9Page> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => TutorielEtape2Page(selectedChoix: widget.selectedChoix,
-              selectedSexe: widget.selectedSexe,), // Replace with your actual page
+            selectedSexe: widget.selectedSexe,),
         ),
       );
     } catch (e) {
       debugPrint("Error occurred while taking a picture: $e");
     }
   }
+
+  Future<void> saveImageToFile(XFile file, String filePath) async {
+    final Uint8List bytes = await file.readAsBytes();
+    final html.Blob blob = html.Blob([Uint8List.fromList(bytes)]);
+    final url = html.Url.createObjectUrlFromBlob(blob);
+
+    final html.AnchorElement anchor = html.AnchorElement(href: url)
+      ..target = 'webbrowser'
+      ..download = filePath
+      ..click();
+
+    html.Url.revokeObjectUrl(url);
+  }
 }
+
+Future<Image> xFileToImage(XFile xFile) async {
+  final Uint8List bytes = await xFile.readAsBytes();
+  return Image.memory(bytes);
+}
+

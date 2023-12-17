@@ -43,6 +43,7 @@ class DataService {
         return 'http://fit-size.com/fitshop/img/logo-1693983394.jpg';
       }
       }else {
+        print('the else part');
         return null;
       }
     } catch (e) {

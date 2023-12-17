@@ -1,7 +1,6 @@
 import 'package:fitsize/components/my_button.dart';
 import 'package:fitsize/pages/AccueilPage.dart';
 import 'package:fitsize/pages/TaillePage.dart';
-import 'package:fitsize/widgets/SuivantButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

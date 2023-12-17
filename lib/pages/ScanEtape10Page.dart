@@ -1,15 +1,14 @@
 import 'dart:async';
+import 'dart:typed_data';
+import 'dart:html' as html;
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:fitsize/pages/LoadingPage2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import '../components/LoadingMessageContainer.dart';
 import '../components/text_blue_box.dart';
-import 'TutorielEtape2Page.dart';
-
-enum PhonePosition { WellPositioned, TiltedTop, TiltedBottom }
+import 'ScanEtape9Page.dart';
 
 class ScanEtape10Page extends StatefulWidget {
   final String selectedChoix;
@@ -21,6 +20,7 @@ class ScanEtape10Page extends StatefulWidget {
 }
 
 class _ScanEtape10PageState extends State<ScanEtape10Page> {
+  late Image _capturedImage;
   bool isLoading = true;
   bool isCaptured = false;
   late CameraController _cameraController;
@@ -279,10 +279,30 @@ class _ScanEtape10PageState extends State<ScanEtape10Page> {
 
     try {
       XFile file = await _cameraController.takePicture();
+
+      // Convert XFile to Image using the XFileToImage function
+      _capturedImage = await xFileToImage(file);
+
+      // Move the image file to the specified path
+      final String fileName = 'captured_image_${DateTime.now().millisecondsSinceEpoch}.jpg';
+      final String filePath = '$fileName';
+
+      // Save the image to the user's download directory
+      await saveImageToFile(file, filePath);
+
       setState(() {
         isCaptured = true;
         capturedImagePath = file.path;
       });
+
+      print('Photo saved at: $capturedImagePath');
+
+      // Convert XFile to Image using the XFileToImage function
+      _capturedImage = await xFileToImage(file);
+
+      // Print the content of the captured image
+      print('Captured Image Content: $_capturedImage');
+
 
       // Add a 2-second delay before navigating to LoadingPage2
       await Future.delayed(Duration(seconds: 2));
@@ -297,4 +317,24 @@ class _ScanEtape10PageState extends State<ScanEtape10Page> {
       debugPrint("Error occurred while taking a picture: $e");
     }
   }
+
+  Future<void> saveImageToFile(XFile file, String filePath) async {
+    final Uint8List bytes = await file.readAsBytes();
+    final html.Blob blob = html.Blob([Uint8List.fromList(bytes)]);
+    final url = html.Url.createObjectUrlFromBlob(blob);
+
+    final html.AnchorElement anchor = html.AnchorElement(href: url)
+      ..target = 'webbrowser'
+      ..download = filePath
+      ..click();
+
+    html.Url.revokeObjectUrl(url);
+  }
+
+}
+
+
+Future<Image> xFileToImage(XFile xFile) async {
+  final Uint8List bytes = await xFile.readAsBytes();
+  return Image.memory(bytes);
 }

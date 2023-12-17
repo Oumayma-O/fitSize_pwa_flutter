@@ -91,7 +91,6 @@ void initState() {
     });
   }
 
-
   String _getSelectedSexe() {
     switch (widget.selectedSexe) {
       case 'Homme':
@@ -104,10 +103,12 @@ void initState() {
         _containerWidth = 280;
         return "Je suis une personne non binaire";
       default:
-        _containerWidth = 180;
-        return "";
+        _containerWidth = 280; // Set a default width for unknown cases
+        return "Unknown";
     }
   }
+
+
 
 
   @override
@@ -143,7 +144,7 @@ void initState() {
                 children: [
                   //SizedBox(height: 32),
                   Padding(
-                    padding: const EdgeInsets.only(),
+                    padding: EdgeInsets.only(left: widget.selectedSexe == 'Autres' ? 60 : 160),
                     child: Container(
                       alignment: Alignment.centerRight,
                       child: Container(
@@ -155,28 +156,34 @@ void initState() {
                             bottomLeft: Radius.circular(10.0),
                           ),
                         ),
-                        height: MediaQuery.of(context).size.height*0.0521,
-                        width: _containerWidth,
+                        height: MediaQuery.of(context).size.height * 0.0521,
+                        //width: _containerWidth,
                         child: Row(
                           children: [
-                            //SizedBox(width: 10),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                _getSelectedSexe(),
-                                style: customTextStyle2,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) => SexePage()),
-                                );
-                              },
-                              child: const Icon(
-                                Icons.edit,
-                                color: Color(0xFF08293F),
-                                size: 16,
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      _getSelectedSexe(),
+                                      style: customTextStyle2,
+                                    ),
+                                    const SizedBox(width: 8,),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context) => SexePage()),
+                                        );
+                                      },
+                                      child: const Icon(
+                                        Icons.edit,
+                                        color: Color(0xFF08293F),
+                                        size: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

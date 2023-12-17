@@ -7,6 +7,10 @@ environment:
 
 
 dependencies:
+  cross_file_image: ^1.1.0
+  camera_web: ^0.3.2+3
+  image_picker_web: ^3.1.1
+  sensors_plus: ^4.0.1
   window_location_href : ^1.0.1+2
   material_segmented_control: ^5.0.0
   shared_preferences: ^2.2.2
@@ -16,12 +20,12 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   getwidget: ^4.0.0
-  camera: ^0.10.5+5
+  camera: ^0.10.5+7
   permission_handler: ^11.0.1
   font_awesome_flutter: ^10.6.0
   beamer: ^1.5.6
   video_player: ^2.2.14
-  path_provider: ^2.0.5
+  path_provider: ^2.1.1
   image_picker: ^1.0.4
   video_viewer: ^1.2.7
   html: ^0.15.0

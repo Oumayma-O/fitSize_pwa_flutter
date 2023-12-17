@@ -146,7 +146,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height*0.0379),
                 Padding(
-                  padding: const EdgeInsets.only(),
+                  padding: EdgeInsets.only(left: widget.selectedSexe == 'Autres' ? 60 : 160),
                   child: Container(
                     alignment: Alignment.centerRight,
                     child: Container(
@@ -159,7 +159,7 @@ class _ChoixScanPageState extends State<ChoixScanPage> {
                         ),
                       ),
                       height: MediaQuery.of(context).size.height*0.0521,
-                      width: _containerWidth,
+                      //width: _containerWidth,
                       child: Row(
                         children: [
                           //SizedBox(width: 10),

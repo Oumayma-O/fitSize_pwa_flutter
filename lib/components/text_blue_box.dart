@@ -17,7 +17,7 @@ class TextBlueBox extends StatelessWidget {
 
     return Container(
       width: screenSize.width*0.8564,
-      //height: screenSize.height*0.1682,
+      height: screenSize.height*0.1682,
       decoration: ShapeDecoration(
         color: Color(0xFF08293F),
         shape: RoundedRectangleBorder(

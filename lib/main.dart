@@ -1,5 +1,6 @@
 
 import 'package:beamer/beamer.dart';
+import 'package:fitsize/pages/Camera.dart';
 import 'package:fitsize/pages/ChoixScanPage.dart';
 import 'package:fitsize/pages/Details2Page.dart';
 import 'package:fitsize/pages/DetailsPage.dart';
@@ -17,7 +18,6 @@ import 'package:fitsize/pages/TutorielEtape1Page.dart';
 import 'package:flutter/material.dart';
 import 'package:fitsize/beamer_routes.dart';
 import 'package:fitsize/pages/LoginPage.dart';
-
 
 
 void main() {
@@ -60,7 +60,7 @@ void main() {
 /*
 void main() {
   runApp(   MaterialApp(
-    home: ScanEtape9Page(selectedChoix: 'Seul(e)',),
+    home: CameraPage(),
   ));
 }
 */

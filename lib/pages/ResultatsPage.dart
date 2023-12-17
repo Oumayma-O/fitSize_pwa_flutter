@@ -17,8 +17,7 @@ class ResultatsPage extends StatefulWidget {
 
 class _ResultatsPageState extends State<ResultatsPage> {
   bool isImageLoading = true;
-  late String productImagePath =
-      "img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg?w=1060&t=st=1700829312~exp=1700829912~hmac=4c259d7d1de30adeabe0de5a701daef6faa4d77927c73df468bee5bff0e35811";
+  late String productImagePath ="images/white1.jpg";
   bool showFitBubble = true;
   OverlayEntry? overlayEntry;
 
@@ -40,8 +39,12 @@ class _ResultatsPageState extends State<ResultatsPage> {
       final productImagePath = await dataService.getProductImagePath();
 
       if (productImagePath != null) {
+        final imagePath = productImagePath.startsWith('http://')
+            ? productImagePath
+            : 'http://$productImagePath';
+
         setState(() {
-          this.productImagePath = productImagePath;
+          this.productImagePath = imagePath;
           isImageLoading = false;
         });
       } else {
@@ -116,12 +119,19 @@ class _ResultatsPageState extends State<ResultatsPage> {
                         width: screenSize.width * 0.2, // Adjust the width as needed
                         child: CircularProgressIndicator(),
                            ))
-                          : Image.network(
-                        'http://$productImagePath',
-                        fit: BoxFit.cover,
-                        height: screenSize.height * 0.65,
-                        width: screenSize.width,
-                      ),
+                          :productImagePath.startsWith('http')
+                        ? Image.network(
+                      productImagePath,
+                      fit: BoxFit.cover,
+                      height: screenSize.height * 0.65,
+                      width: screenSize.width,
+                    )
+                        : Image.asset(
+                      productImagePath,
+                      fit: BoxFit.cover,
+                      height: screenSize.height * 0.65,
+                      width: screenSize.width,
+                    ),
                     ),
                   ),
                   Positioned(

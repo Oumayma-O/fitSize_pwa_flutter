@@ -145,7 +145,7 @@ void initState() {
         children: [
            //SizedBox(height: 40),
           Padding(
-            padding: const EdgeInsets.only(),
+            padding: EdgeInsets.only(left: widget.selectedSexe == 'Autres' ? 60 : 160),
             child: Container(
               alignment: Alignment.centerRight,
               child: Container(
@@ -158,7 +158,7 @@ void initState() {
                   ),
                 ),
                 height: MediaQuery.of(context).size.height*0.0521,
-                width: _containerWidth,
+                //width: _containerWidth,
                 child: Row(
                   children: [
                     //SizedBox(width: 10),
